@@ -16,3 +16,9 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    Images.qrc
+
+OTHER_FILES += \
+    ../../../../Desktop/Ingenieria de Software/screen manager.txt

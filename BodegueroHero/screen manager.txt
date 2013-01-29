@@ -1,0 +1,9 @@
+0 Start Screen
+1 Menu Screen (Continue - New Game)
+2 Profiles
+3 Create New Game (user)
+4 Select Difficult
+5 Select Level
+6 Scores Screen (Top 5)
+7 Play Screen
+8 Ranking Screen?
