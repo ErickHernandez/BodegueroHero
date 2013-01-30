@@ -33,3 +33,11 @@ void MainWindow::on_btBack_clicked()
 {
      ui->screenManager->setCurrentIndex(0);
 }
+
+void MainWindow::on_btnBackFromP4_clicked()
+{
+    //!!Comment: Moises
+    //Presione Back en la pagina4 (pantalla de dificultades)
+    //Regreso a la pantalla del menu de opciones (pagina1)
+    this->ui->screenManager->setCurrentIndex(1);
+}
