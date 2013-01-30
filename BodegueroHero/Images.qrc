@@ -12,5 +12,6 @@
         <file>images/Nube1.png</file>
         <file>images/Tenaza_Abierta.png</file>
         <file>images/Tenaza_Cerrada.png</file>
+        <file>images/background.png</file>
     </qresource>
 </RCC>
