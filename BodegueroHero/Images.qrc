@@ -17,5 +17,6 @@
         <file>images/avanzado.png</file>
         <file>images/tutorial.png</file>
         <file>images/1_navigation_back.png</file>
+        <file>qss/style.qss</file>
     </qresource>
 </RCC>

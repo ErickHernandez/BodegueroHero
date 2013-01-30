@@ -6,13 +6,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    ui->setupUi(this);
+
     QFile file(":/qss/style.qss");
+
     if(file.open(QFile::ReadOnly)) {
        QString StyleSheet = QLatin1String(file.readAll());
        qApp->setStyleSheet(StyleSheet);
-    }
-
-    ui->setupUi(this);    
+   }
 }
 
 MainWindow::~MainWindow()
@@ -46,5 +47,10 @@ void MainWindow::on_btnBackFromP4_clicked()
     //!!Comment: Moises
     //Presione Back en la pagina4 (pantalla de dificultades)
     //Regreso a la pantalla del menu de opciones (pagina1)
+    this->ui->screenManager->setCurrentIndex(1);
+}
+
+void MainWindow::on_cmdStart_clicked()
+{
     this->ui->screenManager->setCurrentIndex(1);
 }
