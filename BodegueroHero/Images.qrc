@@ -13,5 +13,9 @@
         <file>images/Tenaza_Abierta.png</file>
         <file>images/Tenaza_Cerrada.png</file>
         <file>images/background.png</file>
+        <file>images/dificultadesTexto.png</file>
+        <file>images/avanzado.png</file>
+        <file>images/tutorial.png</file>
+        <file>images/1_navigation_back.png</file>
     </qresource>
 </RCC>
