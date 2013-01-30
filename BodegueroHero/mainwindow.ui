@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>BodegueroHero</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QStackedWidget" name="screenManager">
     <property name="geometry">
@@ -40,7 +43,8 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/Start.png);</string>
+       <string notr="true">
+	background-image: url(:/images/Start.png); </string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -48,6 +52,31 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>40</y>
+         <width>191</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(0,125,0,0)</string>
+       </property>
+       <property name="text">
+        <string>adfasdfsd</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="page_2"/>
