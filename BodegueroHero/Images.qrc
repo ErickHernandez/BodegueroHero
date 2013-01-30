@@ -1,5 +1,16 @@
 <RCC>
     <qresource prefix="/">
         <file>images/Start.png</file>
+        <file>images/Cables.png</file>
+        <file>images/Caja1.png</file>
+        <file>images/Centro de Mando.png</file>
+        <file>images/Fondo.png</file>
+        <file>images/FondoInicio.jpg</file>
+        <file>images/Nube 2.png</file>
+        <file>images/Nube 3.png</file>
+        <file>images/Nube 4.png</file>
+        <file>images/Nube1.png</file>
+        <file>images/Tenaza_Abierta.png</file>
+        <file>images/Tenaza_Cerrada.png</file>
     </qresource>
 </RCC>
