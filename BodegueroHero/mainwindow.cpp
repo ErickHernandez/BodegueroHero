@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFile file(":/qss/style.qss");
+    QFile file(":/qss/style.qss");//
 
     if(file.open(QFile::ReadOnly)) {
        QString StyleSheet = QLatin1String(file.readAll());
