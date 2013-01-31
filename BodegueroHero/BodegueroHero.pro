@@ -13,7 +13,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    dbConnection.h
 
 FORMS    += mainwindow.ui
 
@@ -22,3 +23,4 @@ RESOURCES += \
 
 OTHER_FILES += \
     ../../../../Desktop/Ingenieria de Software/screen manager.txt
+QT       += sql
