@@ -92,6 +92,7 @@ void MainWindow::on_pushButton_clicked()
     CrearPerfil(nombre);
     ui->NewPlayer->clear();
     cargarPerfil();
+}
 
 void MainWindow::on_btSeleccionar_clicked()
 {
