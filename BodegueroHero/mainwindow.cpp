@@ -88,10 +88,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString nombre =ui->NewPlayer->toPlainText();
-    CrearPerfil(nombre);
-    ui->NewPlayer->clear();
-    cargarPerfil();
+
 }
 
 void MainWindow::on_btSeleccionar_clicked()
@@ -125,4 +122,17 @@ void MainWindow::on_btnBackFromP4_clicked()
 void MainWindow::on_cmdStart_clicked()
 {
     this->ui->screenManager->setCurrentIndex(1);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
+}
+
+void MainWindow::on_CrearNuevoPerfil_btn_clicked()
+{
+    QString nombre =ui->CrearNuevoPerfil_txt->toPlainText();
+    CrearPerfil(nombre);
+    ui->CrearNuevoPerfil_txt->clear();
+    cargarPerfil();
 }
