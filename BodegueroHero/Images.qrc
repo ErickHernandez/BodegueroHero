@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/Start.png</file>
         <file>images/Cables.png</file>
         <file>images/Caja1.png</file>
         <file>images/Centro de Mando.png</file>
@@ -12,11 +11,15 @@
         <file>images/Nube1.png</file>
         <file>images/Tenaza_Abierta.png</file>
         <file>images/Tenaza_Cerrada.png</file>
-        <file>images/background.png</file>
         <file>images/dificultadesTexto.png</file>
         <file>images/avanzado.png</file>
         <file>images/tutorial.png</file>
         <file>images/1_navigation_back.png</file>
         <file>qss/style.qss</file>
+        <file>images/back.png</file>
+        <file>images/home.png</file>
+        <file>images/reload.png</file>
+        <file>images/Background.png</file>
+        <file>images/Start.png</file>
     </qresource>
 </RCC>

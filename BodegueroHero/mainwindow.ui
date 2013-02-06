@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>998</width>
-    <height>585</height>
+    <width>1031</width>
+    <height>657</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,24 +26,24 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1001</width>
-      <height>551</height>
+      <width>1064</width>
+      <height>601</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="StartPage">
      <widget class="QPushButton" name="cmdStart">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-10</y>
-        <width>1001</width>
-        <height>551</height>
+        <y>0</y>
+        <width>1031</width>
+        <height>601</height>
        </rect>
       </property>
       <property name="text">
@@ -51,29 +51,33 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2">
+    <widget class="QWidget" name="MenuPage">
      <property name="styleSheet">
-      <string notr="true">background-image: url(:/images/background.png);</string>
+      <string notr="true"/>
      </property>
      <widget class="QPushButton" name="btSeleccionar">
       <property name="geometry">
        <rect>
-        <x>375</x>
-        <y>77</y>
-        <width>250</width>
+        <x>380</x>
+        <y>110</y>
+        <width>311</width>
         <height>80</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Showcard Gothic</family>
+        <pointsize>24</pointsize>
         <weight>75</weight>
         <italic>false</italic>
         <bold>true</bold>
        </font>
       </property>
+      <property name="toolTip">
+       <string/>
+      </property>
       <property name="text">
-       <string>Seleccionar Perfil</string>
+       <string>CONTINUE..</string>
       </property>
       <property name="icon">
        <iconset resource="Images.qrc">
@@ -81,80 +85,43 @@
       </property>
       <property name="iconSize">
        <size>
-        <width>16</width>
-        <height>16</height>
+        <width>32</width>
+        <height>32</height>
        </size>
       </property>
      </widget>
      <widget class="QPushButton" name="btCrear">
       <property name="geometry">
        <rect>
-        <x>375</x>
-        <y>234</y>
-        <width>250</width>
+        <x>380</x>
+        <y>260</y>
+        <width>311</width>
         <height>80</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Showcard Gothic</family>
+        <pointsize>25</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
+      <property name="toolTip">
+       <string/>
+      </property>
       <property name="text">
-       <string>Crear Perfil</string>
+       <string>NEW GAME..</string>
       </property>
       <property name="icon">
        <iconset resource="Images.qrc">
         <normaloff>:/images/Centro de Mando.png</normaloff>:/images/Centro de Mando.png</iconset>
       </property>
-     </widget>
-     <widget class="QPushButton" name="btJugar">
-      <property name="geometry">
-       <rect>
-        <x>375</x>
-        <y>391</y>
-        <width>250</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Showcard Gothic</family>
-       </font>
-      </property>
-      <property name="text">
-       <string>Jugar</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <selectedon>:/images/Tenaza_Cerrada.png</selectedon>
-       </iconset>
-      </property>
-      <property name="autoRepeat">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btBack">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>40</y>
-        <width>91</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>20</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>&lt;-</string>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
       </property>
      </widget>
     </widget>
@@ -287,7 +254,7 @@
          </font>
         </property>
         <property name="text">
-         <string/>
+         <string>kjkj</string>
         </property>
        </widget>
        <widget class="QPushButton" name="player2">
@@ -1097,8 +1064,8 @@
      <widget class="QFrame" name="frame_2">
       <property name="geometry">
        <rect>
-        <x>-70</x>
-        <y>-10</y>
+        <x>0</x>
+        <y>0</y>
         <width>1000</width>
         <height>550</height>
        </rect>
@@ -1166,25 +1133,6 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QPushButton" name="btnBackFromP4">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>20</y>
-         <width>64</width>
-         <height>64</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-image: url(:/images/1_navigation_back.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="page_5"/>
@@ -1198,7 +1146,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>998</width>
+     <width>1031</width>
      <height>21</height>
     </rect>
    </property>
@@ -1213,6 +1161,9 @@
    <property name="acceptDrops">
     <bool>false</bool>
    </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
    <property name="movable">
     <bool>false</bool>
    </property>
@@ -1225,8 +1176,34 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionHome"/>
+   <addaction name="actionBack"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionHome">
+   <property name="icon">
+    <iconset resource="Images.qrc">
+     <normaloff>:/images/home.png</normaloff>:/images/home.png</iconset>
+   </property>
+   <property name="text">
+    <string>Home</string>
+   </property>
+   <property name="toolTip">
+    <string>Home Screen</string>
+   </property>
+  </action>
+  <action name="actionBack">
+   <property name="icon">
+    <iconset resource="Images.qrc">
+     <normaloff>:/images/back.png</normaloff>:/images/back.png</iconset>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="toolTip">
+    <string>Back</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

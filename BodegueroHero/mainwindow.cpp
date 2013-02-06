@@ -69,22 +69,16 @@ void MainWindow::cargarPerfil()
 
 }
 
-void MainWindow::recibir(const QString & txt)
-{
-
-   this->CurrentUser=txt;
-   ui->screenManager->setCurrentIndex(0);
-
-}
-
-
-
-
 MainWindow::~MainWindow()
 {
     delete ui;            
 }
 
+void MainWindow::recibir(const QString & txt)
+{
+   this->CurrentUser=txt;
+   ui->screenManager->setCurrentIndex(0);
+}
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -109,20 +103,30 @@ void MainWindow::on_btJugar_clicked()
     ui->screenManager->setCurrentIndex(4);
 }
 
-void MainWindow::on_btBack_clicked()
-{
-     ui->screenManager->setCurrentIndex(0);
-}
-
-void MainWindow::on_btnBackFromP4_clicked()
-{
-    //!!Comment: Moises
-    //Presione Back en la pagina4 (pantalla de dificultades)
-    //Regreso a la pantalla del menu de opciones (pagina1)
-    this->ui->screenManager->setCurrentIndex(1);
-}
-
 void MainWindow::on_cmdStart_clicked()
 {
     this->ui->screenManager->setCurrentIndex(1);
 }
+
+void MainWindow::on_actionHome_triggered()
+{
+    //EH: si esta en la pantalla de juegos preguntarle si quiere abandonar el juego.
+    this->ui->screenManager->setCurrentIndex(0);
+}
+
+void MainWindow::on_actionBack_triggered()
+{
+    int index = this->ui->screenManager->currentIndex();
+
+    if(index>0)
+    {
+        if(index == 7)// si esta en la pantalla de jugar
+        {
+            //EH: Preguntar si realmente quiere abandonar el juego.
+        }
+        else
+            //EH: Validar ciertas cosas, como dejar en blanco textbox, etc
+            this->ui->screenManager->setCurrentIndex(index-1);
+    }
+}
+
