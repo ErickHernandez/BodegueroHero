@@ -1,0 +1,20 @@
+#################
+## QT
+#################
+
+*pro.user
+moc_*
+*.o
+Makefil*
+*build-desktop
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
