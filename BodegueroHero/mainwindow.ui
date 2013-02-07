@@ -34,7 +34,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="StartPage">
      <widget class="QPushButton" name="cmdStart">
@@ -125,7 +125,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2">
+    <widget class="QWidget" name="Profiles">
      <widget class="QFrame" name="frame_3">
       <property name="geometry">
        <rect>
@@ -1059,8 +1059,8 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_3"/>
-    <widget class="QWidget" name="page_4">
+    <widget class="QWidget" name="NewGames"/>
+    <widget class="QWidget" name="Difficults">
      <widget class="QFrame" name="frame_2">
       <property name="geometry">
        <rect>
@@ -1135,9 +1135,9 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_5"/>
-    <widget class="QWidget" name="page_6"/>
-    <widget class="QWidget" name="page_7"/>
+    <widget class="QWidget" name="Levels"/>
+    <widget class="QWidget" name="Scores"/>
+    <widget class="QWidget" name="Play"/>
     <widget class="QWidget" name="page_8"/>
    </widget>
   </widget>
