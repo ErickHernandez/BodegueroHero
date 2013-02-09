@@ -18,8 +18,15 @@
         <file>qss/style.qss</file>
         <file>images/back.png</file>
         <file>images/home.png</file>
-        <file>images/reload.png</file>
         <file>images/Background.png</file>
         <file>images/Start.png</file>
+        <file>images/background_preview.png</file>
+        <file>images/blue_box_preview.png</file>
+        <file>images/coffee_box_preview.png</file>
+        <file>images/green_box_preview.png</file>
+        <file>images/orange_box_preview.png</file>
+        <file>images/red_box_preview.png</file>
+        <file>images/yellow_box_preview.png</file>
+        <file>puzzles/tutorial_1.txt</file>
     </qresource>
 </RCC>

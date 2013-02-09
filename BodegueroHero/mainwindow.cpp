@@ -17,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent) :
     createConection();
     CrearTablas();
     cargarPerfil();
+
+    //MM: ESTE ES UN TEST PARA PINTAR EL PREVIEW
+    this->ui->graphicsView_Preview->setScene(new GraphicsScenePreview("asdasd"));
 }
 
 void MainWindow::cargarPerfil()

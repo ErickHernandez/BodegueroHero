@@ -1137,7 +1137,56 @@
     </widget>
     <widget class="QWidget" name="Levels"/>
     <widget class="QWidget" name="Scores"/>
-    <widget class="QWidget" name="Play"/>
+    <widget class="QWidget" name="Play">
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>350</width>
+        <height>290</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QGraphicsView" name="graphicsView_Preview">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>60</y>
+         <width>280</width>
+         <height>200</height>
+        </rect>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>290</y>
+        <width>350</width>
+        <height>290</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="page_8"/>
    </widget>
   </widget>
@@ -1147,7 +1196,7 @@
      <x>0</x>
      <y>0</y>
      <width>1031</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

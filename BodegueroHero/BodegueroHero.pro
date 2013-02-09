@@ -5,16 +5,22 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += xml
 
 TARGET = BodegueroHero
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    xmlpuzzletree.cpp \
+    graphicsscenepreview.cpp
 
 HEADERS  += mainwindow.h \
-    dbConnection.h
+    dbConnection.h \
+    xmlpuzzletree.h \
+    MyXmlHandler.h \
+    graphicsscenepreview.h
 
 FORMS    += mainwindow.ui
 
