@@ -24,8 +24,8 @@
    <widget class="QStackedWidget" name="screenManager">
     <property name="geometry">
      <rect>
-      <x>-60</x>
-      <y>-10</y>
+      <x>0</x>
+      <y>0</y>
       <width>1064</width>
       <height>601</height>
      </rect>
@@ -34,7 +34,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="StartPage">
      <widget class="QPushButton" name="cmdStart">
