@@ -4,6 +4,8 @@
 #include "QSignalMapper"
 #include "QGridLayout"
 #include <QMainWindow>
+//MM: AGREGADO INCLUDE
+#include "graphicsscenepreview.h"
 
 namespace Ui {
     class MainWindow;

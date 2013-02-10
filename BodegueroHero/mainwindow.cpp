@@ -17,48 +17,34 @@ MainWindow::MainWindow(QWidget *parent) :
     createConection();
     CrearTablas();
     cargarPerfil();
+
+    //MM: ESTE ES UN TEST PARA PINTAR EL PREVIEW
+    this->ui->graphicsView_Preview->setScene(new GraphicsScenePreview("asdasd"));
 }
 
 void MainWindow::cargarPerfil()
 {
 
-    ui->player1->setVisible(false);ui->player2->setVisible(false);ui->player3->setVisible(false);
-                            ui->player4->setVisible(false);
-                                        ui->player5->setVisible(false);
+
      QList<QString> jugadores =  SelectAllJugadoresL();
      UsuariosDisponibles=5-jugadores.size();
      if(UsuariosDisponibles<0){UsuariosDisponibles=0;}
      QSignalMapper *signalMapper = new QSignalMapper(this);
      if(jugadores.size()>0){
-        ui->player1->setVisible(true);
-        ui->player1->setText(jugadores.at(0));
-       connect(ui->player1, SIGNAL(clicked()), signalMapper, SLOT(map()));
-       signalMapper->setMapping(ui->player1,jugadores.at(0));
+
    }
      if (jugadores.size()>1){
-       ui->player2->setVisible(true);
-       ui->player2->setText(jugadores.at(1));
-       connect(ui->player2, SIGNAL(clicked()), signalMapper, SLOT(map()));
-       signalMapper->setMapping(ui->player2,jugadores.at(1));
+
    }
      if (jugadores.size()>2){
-          ui->player3->setVisible(true);
-       ui->player3->setText(jugadores.at(2));
-       connect(ui->player3, SIGNAL(clicked()), signalMapper, SLOT(map()));
-       signalMapper->setMapping(ui->player3,jugadores.at(2));
+
       }
 
      if (jugadores.size()>3){
-       ui->player4->setVisible(true);
-       ui->player4->setText(jugadores.at(3));
-       connect(ui->player4, SIGNAL(clicked()), signalMapper, SLOT(map()));
-       signalMapper->setMapping(ui->player4,jugadores.at(3));
+
    }
      if(jugadores.size()>4){
-       ui->player5->setVisible(true);
-       ui->player5->setText(jugadores.at(4));
-       connect(ui->player5, SIGNAL(clicked()), signalMapper, SLOT(map()));
-       signalMapper->setMapping(ui->player5,jugadores.at(4));
+
 
    }
 
@@ -83,10 +69,8 @@ void MainWindow::recibir(const QString & txt)
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString nombre =ui->NewPlayer->toPlainText();
-    CrearPerfil(nombre);
-    ui->NewPlayer->clear();
-    cargarPerfil();
+
+
 }
 
 void MainWindow::on_btSeleccionar_clicked()
