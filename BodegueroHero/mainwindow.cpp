@@ -26,7 +26,8 @@ void MainWindow::cargarPerfil()
                             ui->player4->setVisible(false);
                                         ui->player5->setVisible(false);
      QList<QString> jugadores =  SelectAllJugadoresL();
-
+     UsuariosDisponibles=5-jugadores.size();
+     if(UsuariosDisponibles<0){UsuariosDisponibles=0;}
      QSignalMapper *signalMapper = new QSignalMapper(this);
      if(jugadores.size()>0){
         ui->player1->setVisible(true);
@@ -77,7 +78,7 @@ MainWindow::~MainWindow()
 void MainWindow::recibir(const QString & txt)
 {
    this->CurrentUser=txt;
-   ui->screenManager->setCurrentIndex(0);
+   ui->screenManager->setCurrentIndex(4);
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -130,3 +131,59 @@ void MainWindow::on_actionBack_triggered()
     }
 }
 
+
+void MainWindow::on_btn_CrearPerfil_clicked()
+{
+    cargarPerfil();
+    if(UsuariosDisponibles>0){
+        QString nombre =ui->NewPlayer->toPlainText();
+        CrearPerfil(nombre);
+        ui->NewPlayer->clear();
+        CurrentUser=nombre;
+        cargarPerfil();
+    }else
+    {
+         QMessageBox msgBox;
+          msgBox.setText("Si continua borrará el jugador mas antiguo en este menu \n ¿Desea Continuar?");
+          QPushButton *connectButton = msgBox.addButton(tr("Si"), QMessageBox::ActionRole);
+          QPushButton *abortButton = msgBox.addButton(QMessageBox::No);
+          msgBox.exec();
+
+        if (msgBox.clickedButton() == connectButton) {
+            QString nombre =ui->NewPlayer->toPlainText();
+            CrearPerfil(nombre);
+            ui->NewPlayer->clear();
+            CurrentUser=nombre;
+            cargarPerfil();
+            ui->screenManager->setCurrentIndex(3);
+        } else if (msgBox.clickedButton() == abortButton) {
+          ui->screenManager->setCurrentIndex(2);
+        }
+    }
+}
+
+
+void MainWindow::on_label_26_linkActivated(QString link)
+{
+
+}
+
+void MainWindow::on_btn_ir_CrearPerfil_clicked()
+{
+    ui->screenManager->setCurrentIndex(3);
+}
+
+void MainWindow::on_btnTutorial_clicked()
+{
+     this->CurrentLevel="Tutorial";
+    ui->screenManager->setCurrentIndex(4);
+
+}
+
+
+void MainWindow::on_btnAvanzado_clicked()
+{
+    this->CurrentLevel="Avanzado";
+    ui->screenManager->setCurrentIndex(4);
+
+}

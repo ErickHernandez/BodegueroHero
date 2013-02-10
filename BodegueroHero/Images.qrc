@@ -18,7 +18,6 @@
         <file>qss/style.qss</file>
         <file>images/back.png</file>
         <file>images/home.png</file>
-        <file>images/reload.png</file>
         <file>images/Background.png</file>
         <file>images/Start.png</file>
     </qresource>
