@@ -28,5 +28,6 @@
         <file>images/red_box_preview.png</file>
         <file>images/yellow_box_preview.png</file>
         <file>puzzles/tutorial_1.txt</file>
+        <file alias="gold_star">images/3_rating_important2.png</file>
     </qresource>
 </RCC>

@@ -16,9 +16,8 @@ int id;
 QString nombre;
 };
 
-struct nivel
+struct score
 {
-int id;
 int nivel;
 int puntaje;
 };
@@ -56,7 +55,7 @@ static bool CrearTablas(){
      QSqlQuery query2;
 
      a2=query2.exec("create table if not exists Niveles "
-                "(id integer,nivel integer,puntaje integer) ");
+                "(id integer,Nombre varchar(50),nivel integer,puntaje integer) ");
 
      a3=query2.exec( "CREATE UNIQUE INDEX [IDX_NIVELES_ID] ON [Niveles]("
                 "[id]  DESC,"
@@ -79,6 +78,36 @@ static bool CrearPerfil(QString nombre)
 }
 
 
+static QList<score> getScores(QString nombre, int level)
+{
+    QList<score> listadePuntos;
+
+    if(level==0){
+        QSqlQuery R("select nivel,puntaje from niveles where  nombre=""'"+nombre+"' and nivel<7");
+        while(R.next()){
+            score pt;
+
+            pt.nivel=R.value(0).toInt();
+            pt.puntaje=R.value(1).toInt();
+
+            listadePuntos.push_back(pt);
+        }
+    }else
+    {
+        QSqlQuery R("select nivel,puntaje from niveles where nombre='"+nombre+"' and nivel>7");
+        while(R.next()){
+            score pt;
+
+            pt.nivel=R.value(0).toInt();
+            pt.puntaje=R.value(1).toInt();
+
+            listadePuntos.push_back(pt);
+
+
+        }
+
+    }return listadePuntos;
+}
 
 static QList<QString> SelectAllJugadoresL()
 {
@@ -117,38 +146,48 @@ static QList<nivel> SelectAllNiveles()
 //dbConection.close();
             return lista;
 }
+*/
+
+static int idJugador(QString nombre)
+{
+      QString Q;
+      Q="select nombre from jugador where nombre=""'"+nombre+"'"")";
+//      Q.append(nombre);
+
+        bool a;
+        QSqlQuery R(Q);
+      a=R.exec();
+      R.next();
+      int id = R.value(0).toInt();
+
+
+      return id;
+  }
+
+
+
 static QString NombreJugador(int id)
 {
-    createConection();
       QString Q;
       Q="select nombre from jugador where id=";
       Q.append(id+48);
 
-bool a;
+        bool a;
         QSqlQuery R(Q);
       a=R.exec();
       R.next();
       QString name = R.value(0).toString();
 
-      dbConection.close();
+
       return name;
   }
-static bool CrearPerfil(QString nombre)
-{
-    createConection();
-    QString data = "insert into jugador (id,nombre)values(null,""'"+nombre+"'"")";
-    QSqlQuery R;
-   bool ret= R.exec(data);
-    dbConection.close();
-    return ret;
-}
 
-
-*/
-static QSqlQueryModel* SelectAllJugadores()
+    static QSqlQueryModel* SelectTop5(int id)
 {
     QSqlQueryModel *R= new QSqlQueryModel();
-    R->setQuery("select id,nombre from jugador");
+    QString que="select nombre,puntaje from niveles where nivel="+QString::number(id);
+    que.append( " ORDER BY puntaje desc limit 5");
+    R->setQuery(que);
     return R;
 
 }

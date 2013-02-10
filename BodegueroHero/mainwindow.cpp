@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     createConection();
     CrearTablas();
     cargarPerfil();
-
+    ui->screenManager->setCurrentIndex(0);
     //MM: ESTE ES UN TEST PARA PINTAR EL PREVIEW
     this->ui->graphicsView_Preview->setScene(new GraphicsScenePreview("asdasd"));
 }
@@ -25,25 +25,51 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::cargarPerfil()
 {
 
+    ui->player1->setVisible(false);
+    ui->player2->setVisible(false);
+    ui->player3->setVisible(false);
+    ui->player4->setVisible(false);
+    ui->player5->setVisible(false);
 
-     QList<QString> jugadores =  SelectAllJugadoresL();
-     UsuariosDisponibles=5-jugadores.size();
-     if(UsuariosDisponibles<0){UsuariosDisponibles=0;}
-     QSignalMapper *signalMapper = new QSignalMapper(this);
-     if(jugadores.size()>0){
+    QList<QString> jugadores =  SelectAllJugadoresL();
+    UsuariosDisponibles=5-jugadores.size();
+    if(UsuariosDisponibles<0){UsuariosDisponibles=0;}
+    QSignalMapper *signalMapper = new QSignalMapper(this);
 
+    if(jugadores.size()>0){
+        ui->player1->setVisible(true);
+        ui->player1->setText(jugadores.at(0));
+       connect(ui->player1, SIGNAL(clicked()), signalMapper, SLOT(map()));
+       signalMapper->setMapping(ui->player1,jugadores.at(0));
    }
      if (jugadores.size()>1){
+         ui->player2->setVisible(true);
+         ui->player2->setText(jugadores.at(1));
+         connect(ui->player2, SIGNAL(clicked()), signalMapper, SLOT(map()));
+         signalMapper->setMapping(ui->player2,jugadores.at(1));
+
 
    }
      if (jugadores.size()>2){
+         ui->player3->setVisible(true);
+      ui->player3->setText(jugadores.at(2));
+      connect(ui->player3, SIGNAL(clicked()), signalMapper, SLOT(map()));
+      signalMapper->setMapping(ui->player3,jugadores.at(2));
 
       }
 
      if (jugadores.size()>3){
+         ui->player4->setVisible(true);
+         ui->player4->setText(jugadores.at(3));
+         connect(ui->player4, SIGNAL(clicked()), signalMapper, SLOT(map()));
+         signalMapper->setMapping(ui->player4,jugadores.at(3));
 
    }
      if(jugadores.size()>4){
+         ui->player5->setVisible(true);
+         ui->player5->setText(jugadores.at(4));
+         connect(ui->player5, SIGNAL(clicked()), signalMapper, SLOT(map()));
+         signalMapper->setMapping(ui->player5,jugadores.at(4));
 
 
    }
@@ -125,6 +151,7 @@ void MainWindow::on_btn_CrearPerfil_clicked()
         ui->NewPlayer->clear();
         CurrentUser=nombre;
         cargarPerfil();
+        ui->screenManager->setCurrentIndex(4);
     }else
     {
          QMessageBox msgBox;
@@ -139,7 +166,7 @@ void MainWindow::on_btn_CrearPerfil_clicked()
             ui->NewPlayer->clear();
             CurrentUser=nombre;
             cargarPerfil();
-            ui->screenManager->setCurrentIndex(3);
+            ui->screenManager->setCurrentIndex(4);
         } else if (msgBox.clickedButton() == abortButton) {
           ui->screenManager->setCurrentIndex(2);
         }
@@ -159,15 +186,216 @@ void MainWindow::on_btn_ir_CrearPerfil_clicked()
 
 void MainWindow::on_btnTutorial_clicked()
 {
-     this->CurrentLevel="Tutorial";
-    ui->screenManager->setCurrentIndex(4);
+    this->CurrentLevel=0;
+   PUNTOS=getScores(CurrentUser,CurrentLevel);//piden los scores del nivel tutorial con este usuario
+    setHighScore(PUNTOS);
+    ui->screenManager->setCurrentIndex(5);
+
+}
+
+void MainWindow::setHighScore(QList<score> PUNTOS)
+{
+    this->ui->lbl_level1->setText(0);
+      this->ui->lbl_level2->setText(0);
+       this->ui->lbl_level3->setText(0);
+        this->ui->lbl_level4->setText(0);
+         this->ui->lbl_level5->setText(0);
+          this->ui->lbl_level6->setText(0);
+
+
+    if(!PUNTOS.isEmpty()){//si la lista viene vacia
+    for(int x=0;x<PUNTOS.size();x++)
+     {
+        QString highscore;
+         switch(PUNTOS.at(x).nivel)
+         {
+         case 1:
+         case 7:
+             highscore="";
+              highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level1->setText(highscore);
+         break;
+
+         case 2:
+         case 8:
+             highscore="";
+             highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level2->setText(highscore);
+         break;
+         case 3:
+         case 9:
+             highscore="";
+             highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level3->setText(highscore);
+         break;
+         case 4:
+         case 10:
+             highscore="";
+             highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level4->setText(highscore);
+         break;
+         case 5:
+         case 11:
+             highscore="";
+             highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level5->setText(highscore);
+         break;
+         case 6:
+         case 12:
+             highscore="";
+             highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level6->setText(highscore);
+         break;
+
+         }
+
+     }
+
+ }
+}
+
+void MainWindow::on_btnAvanzado_clicked()
+{
+
+    this->CurrentLevel=6;
+    PUNTOS=getScores(CurrentUser,CurrentLevel);//piden los scores del nivel tutorial con este usuario
+
+    setHighScore(PUNTOS);
+    ui->screenManager->setCurrentIndex(5);
+}
+
+void MainWindow::on_btn_lvl1_clicked()
+{
+    ui->screenManager->setCurrentIndex(7);
+    if(CurrentLevel==0)
+    {
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_1"));
+    }else
+    {
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_1"));
+    }
+}
+
+void MainWindow::on_btn_HighScore1_clicked()
+{
+
+QSqlQueryModel * model=SelectTop5(1+CurrentLevel);
+model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
+model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
+QTableView *view = new QTableView;
+ view->setModel(model);
+ view->show();
+}
+
+void MainWindow::on_btn_HighScore2_clicked()
+{
+    QSqlQueryModel * model=SelectTop5(2+CurrentLevel);
+    model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
+    QTableView *view = new QTableView;
+     view->setModel(model);
+     view->show();
 
 }
 
 
-void MainWindow::on_btnAvanzado_clicked()
+void MainWindow::on_btn_HighScore3_clicked()
 {
-    this->CurrentLevel="Avanzado";
-    ui->screenManager->setCurrentIndex(4);
+    QSqlQueryModel * model=SelectTop5(3+CurrentLevel);
+    model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
+    QTableView *view = new QTableView;
+     view->setModel(model);
+     view->show();
+}
 
+void MainWindow::on_btn_HighScore4_clicked()
+{
+    QSqlQueryModel * model=SelectTop5(4+CurrentLevel);
+    model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
+    QTableView *view = new QTableView;
+     view->setModel(model);
+     view->show();
+}
+
+void MainWindow::on_btn_HighScore5_clicked()
+{
+    QSqlQueryModel * model=SelectTop5(5+CurrentLevel);
+    model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
+    QTableView *view = new QTableView;
+     view->setModel(model);
+     view->show();
+}
+
+
+void MainWindow::on_btn_HighScore6_clicked()
+{
+    QSqlQueryModel * model=SelectTop5(6+CurrentLevel);
+    model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
+    QTableView *view = new QTableView;
+     view->setModel(model);
+     view->show();
+}
+
+void MainWindow::on_bnt_lvl3_clicked()
+{
+    ui->screenManager->setCurrentIndex(7);
+    if(CurrentLevel==0)
+    {
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_3"));
+    }else
+    {
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_3"));
+    }
+}
+
+void MainWindow::on_bnt_lvl5_clicked()
+{
+    ui->screenManager->setCurrentIndex(7);
+    if(CurrentLevel==0)
+    {
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_5"));
+    }else
+    {
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_5"));
+    }
+}
+
+void MainWindow::on_bnt_lvl2_clicked()
+{
+    ui->screenManager->setCurrentIndex(7);
+    if(CurrentLevel==0)
+    {
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_2"));
+    }else
+    {
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_2"));
+    }
+}
+
+void MainWindow::on_bnt_lvl4_clicked()
+{
+    ui->screenManager->setCurrentIndex(7);
+    if(CurrentLevel==0)
+    {
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_4"));
+    }else
+    {
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_4"));
+    }
+}
+
+void MainWindow::on_bnt_lvl6_clicked()
+{
+    ui->screenManager->setCurrentIndex(7);
+    if(CurrentLevel==0)
+    {
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_6"));
+    }else
+    {
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_6"));
+    }
 }
