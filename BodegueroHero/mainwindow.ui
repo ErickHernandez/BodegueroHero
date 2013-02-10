@@ -2637,7 +2637,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string> </string>
        </property>
       </widget>
       <widget class="QLabel" name="lbl_level5">
