@@ -39,5 +39,15 @@
         <file>images/red_box_game.png</file>
         <file>images/Tenaza_game.png</file>
         <file>images/yellow_box_game.png</file>
+        <file>images/toolbox.png</file>
+        <file>images/block_background.png</file>
+        <file>images/lane_1.png</file>
+        <file>images/lane_2.png</file>
+        <file>images/lane_3.png</file>
+        <file>images/lane_4.png</file>
+        <file>images/down_arrow.png</file>
+        <file>images/left_arrow.png</file>
+        <file>images/right_arrow.png</file>
+        <file>images/up_arrow.png</file>
     </qresource>
 </RCC>

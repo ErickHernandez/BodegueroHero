@@ -1,29 +1,63 @@
 #include "dragwidget.h"
 #include <QLabel>
 
-DragWidget::DragWidget(bool irOriginFrame, QWidget *parent): QFrame(parent)
+DragWidget::DragWidget(bool isOriginFrame, QWidget *parent): QFrame(parent)
 {
     setMinimumSize(200, 200);
     setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
     setAcceptDrops(true);
 
-    QLabel *boatIcon = new QLabel(this);
-    boatIcon->setPixmap(QPixmap(":/images/boat.png"));
-    boatIcon->move(20, 20);
-    boatIcon->show();
-    boatIcon->setAttribute(Qt::WA_DeleteOnClose);
+    if(isOriginFrame)
+    {
+        QLabel *down_arrow = new QLabel(this);
+        down_arrow->setPixmap(QPixmap(":/images/down_arrow.png"));
+        down_arrow->move(24, 20);
+        down_arrow->show();
+        down_arrow->setAttribute(Qt::WA_DeleteOnClose);
 
-    QLabel *carIcon = new QLabel(this);
-    carIcon->setPixmap(QPixmap(":/images/car.png"));
-    carIcon->move(120, 20);
-    carIcon->show();
-    carIcon->setAttribute(Qt::WA_DeleteOnClose);
+        QLabel *up_arrow = new QLabel(this);
+        up_arrow->setPixmap(QPixmap(":/images/up_arrow.png"));
+        up_arrow->move(74, 20);
+        up_arrow->show();
+        up_arrow->setAttribute(Qt::WA_DeleteOnClose);
 
-    QLabel *houseIcon = new QLabel(this);
-    houseIcon->setPixmap(QPixmap(":/images/house.png"));
-    houseIcon->move(20, 120);
-    houseIcon->show();
-    houseIcon->setAttribute(Qt::WA_DeleteOnClose);
+        QLabel *left_arrow = new QLabel(this);
+        left_arrow->setPixmap(QPixmap(":/images/left_arrow.png"));
+        left_arrow->move(124, 20);
+        left_arrow->show();
+        left_arrow->setAttribute(Qt::WA_DeleteOnClose);
+
+        QLabel *right_arrow = new QLabel(this);
+        right_arrow->setPixmap(QPixmap(":/images/right_arrow.png"));
+        right_arrow->move(174, 20);
+        right_arrow->show();
+        right_arrow->setAttribute(Qt::WA_DeleteOnClose);
+
+        QLabel *lane_1 = new QLabel(this);
+        lane_1->setPixmap(QPixmap(":/images/lane_1.png"));
+        lane_1->move(24, 80);
+        lane_1->show();
+        lane_1->setAttribute(Qt::WA_DeleteOnClose);
+
+        QLabel *lane_2 = new QLabel(this);
+        lane_2->setPixmap(QPixmap(":/images/lane_2.png"));
+        lane_2->move(74, 80);
+        lane_2->show();
+        lane_2->setAttribute(Qt::WA_DeleteOnClose);
+
+        QLabel *lane_3 = new QLabel(this);
+        lane_3->setPixmap(QPixmap(":/images/lane_3.png"));
+        lane_3->move(124, 80);
+        lane_3->show();
+        lane_3->setAttribute(Qt::WA_DeleteOnClose);
+
+        QLabel *lane_4 = new QLabel(this);
+        lane_4->setPixmap(QPixmap(":/images/lane_4.png"));
+        lane_4->move(174, 80);
+        lane_4->show();
+        lane_4->setAttribute(Qt::WA_DeleteOnClose);
+
+    }
 }
 
 void DragWidget::dragEnterEvent(QDragEnterEvent *event)
@@ -77,7 +111,7 @@ void DragWidget::dropEvent(QDropEvent *event)
          } else {
              event->acceptProposedAction();
          }
-     } else {
+     } else {         
          event->ignore();
      }
  }

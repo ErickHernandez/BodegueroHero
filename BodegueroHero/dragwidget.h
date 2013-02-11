@@ -15,7 +15,7 @@ class DragWidget: public QFrame
 {
 public:
     //DragWidget(QWidget *parent=0);
-    DragWidget(bool irOriginFrame, QWidget *parent=0);
+    DragWidget(bool isOriginFrame, QWidget *parent=0);
     bool hasItem;//Determina si ese frame ya tiene alguna instruccion dentro o esta vacio.
     bool isOriginFrame;//Determina si es el frame del toolkit o es el de destino donde estan las lanes.
 

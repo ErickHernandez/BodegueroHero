@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QFile"
+#include <QGridLayout>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,6 +22,16 @@ MainWindow::MainWindow(QWidget *parent) :
     //MM: ESTE ES UN TEST PARA PINTAR EL PREVIEW
     //this->ui->graphicsView_Game->setScene(new graphicsscenegame("asdasd"));
     this->ui->graphicsView_Preview->setScene(new GraphicsScenePreview("asdasd"));
+
+
+    //EH: Carga del toolbox
+    QGridLayout *toolboxLayout = new QGridLayout(this);
+    toolboxLayout->addWidget(new DragWidget(true,this->parentWidget()));
+    this->ui->toolbox_frame->setLayout(toolboxLayout);
+    this->ui->screenManager->setCurrentIndex(7);// Por test nada mas
+
+    initializeLanes();
+
 }
 
 void MainWindow::cargarPerfil()
@@ -411,3 +422,59 @@ void MainWindow::on_bnt_lvl6_clicked()
          ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_6"));
     }
 }
+
+void MainWindow::initializeLanes()
+{
+
+//    for(int i=0; i<8; i++)
+//    {
+//        //EH: Carga de los lanes
+//        DragWidget *dw = new DragWidget(false, parentWidget());
+//        dw->setFrameRect(QRect(0,0,2,2));
+//        lanesLayout->addWidget(dw);
+
+//        //this->ui->lanes_frame->layout()->addWidget(dw);
+//        lanesLayout->addWidget(dw);
+
+//        this->laneBlocks.append(dw);
+//        this->ui->lanes_frame->setLayout(lanesLayout);
+//    }
+    this->ui->block0->setLayout(getNewLayout());
+    this->ui->block1->setLayout(getNewLayout());
+    this->ui->block2->setLayout(getNewLayout());
+    this->ui->block3->setLayout(getNewLayout());
+    this->ui->block4->setLayout(getNewLayout());
+    this->ui->block5->setLayout(getNewLayout());
+    this->ui->block6->setLayout(getNewLayout());
+    this->ui->block7->setLayout(getNewLayout());
+    this->ui->block8->setLayout(getNewLayout());
+    this->ui->block9->setLayout(getNewLayout());
+    this->ui->block10->setLayout(getNewLayout());
+    this->ui->block11->setLayout(getNewLayout());
+    this->ui->block12->setLayout(getNewLayout());
+    this->ui->block13->setLayout(getNewLayout());
+    this->ui->block14->setLayout(getNewLayout());
+    this->ui->block15->setLayout(getNewLayout());
+    this->ui->block16->setLayout(getNewLayout());
+    this->ui->block17->setLayout(getNewLayout());
+    this->ui->block18->setLayout(getNewLayout());
+    this->ui->block19->setLayout(getNewLayout());
+    this->ui->block20->setLayout(getNewLayout());
+    this->ui->block21->setLayout(getNewLayout());
+    this->ui->block22->setLayout(getNewLayout());
+    this->ui->block23->setLayout(getNewLayout());
+    this->ui->block24->setLayout(getNewLayout());
+    this->ui->block25->setLayout(getNewLayout());
+    this->ui->block26->setLayout(getNewLayout());
+    this->ui->block27->setLayout(getNewLayout());
+}
+
+QGridLayout* MainWindow::getNewLayout()
+{
+    QGridLayout *layout = new QGridLayout(this);
+    DragWidget * dw = new DragWidget(false, this->parentWidget());
+    layout->addWidget(dw);
+    layout->setMargin(0);
+    return layout;
+}
+

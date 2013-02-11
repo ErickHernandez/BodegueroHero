@@ -2820,7 +2820,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QFrame" name="frame_4">
+     <widget class="QFrame" name="frame3">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -2835,22 +2835,22 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-     </widget>
-     <widget class="QFrame" name="frame_5">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>419</y>
-        <width>730</width>
-        <height>161</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
+      <widget class="QFrame" name="toolbox_frame">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>261</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
      </widget>
      <widget class="QFrame" name="frame_3">
       <property name="geometry">
@@ -2858,7 +2858,7 @@
         <x>299</x>
         <y>-1</y>
         <width>731</width>
-        <height>421</height>
+        <height>411</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -2881,6 +2881,546 @@
        </property>
        <property name="horizontalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="lanes_frame">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>410</y>
+        <width>701</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QFrame" name="lane1">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block0">
+       <property name="geometry">
+        <rect>
+         <x>57</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block1">
+       <property name="geometry">
+        <rect>
+         <x>104</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block2">
+       <property name="geometry">
+        <rect>
+         <x>151</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block3">
+       <property name="geometry">
+        <rect>
+         <x>198</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block4">
+       <property name="geometry">
+        <rect>
+         <x>245</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block5">
+       <property name="geometry">
+        <rect>
+         <x>292</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block6">
+       <property name="geometry">
+        <rect>
+         <x>339</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block7">
+       <property name="geometry">
+        <rect>
+         <x>386</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block15">
+       <property name="geometry">
+        <rect>
+         <x>386</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block12">
+       <property name="geometry">
+        <rect>
+         <x>245</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block11">
+       <property name="geometry">
+        <rect>
+         <x>198</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="lane2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block14">
+       <property name="geometry">
+        <rect>
+         <x>339</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block8">
+       <property name="geometry">
+        <rect>
+         <x>57</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block10">
+       <property name="geometry">
+        <rect>
+         <x>151</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block13">
+       <property name="geometry">
+        <rect>
+         <x>292</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block9">
+       <property name="geometry">
+        <rect>
+         <x>104</x>
+         <y>52</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block26">
+       <property name="geometry">
+        <rect>
+         <x>601</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block25">
+       <property name="geometry">
+        <rect>
+         <x>554</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block19">
+       <property name="geometry">
+        <rect>
+         <x>198</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block23">
+       <property name="geometry">
+        <rect>
+         <x>386</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="lane4">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block16">
+       <property name="geometry">
+        <rect>
+         <x>57</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="lane3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block27">
+       <property name="geometry">
+        <rect>
+         <x>648</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block18">
+       <property name="geometry">
+        <rect>
+         <x>151</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block22">
+       <property name="geometry">
+        <rect>
+         <x>339</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block24">
+       <property name="geometry">
+        <rect>
+         <x>507</x>
+         <y>5</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block17">
+       <property name="geometry">
+        <rect>
+         <x>104</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block21">
+       <property name="geometry">
+        <rect>
+         <x>292</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="block20">
+       <property name="geometry">
+        <rect>
+         <x>245</x>
+         <y>99</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
        </property>
       </widget>
      </widget>

@@ -13,10 +13,14 @@
 
 #Levels	{    background-image: url(:/images/Background.png);}
 
+#Play{    background-image: url(:/images/Background.png);}
 
-#cmdStart
+#toolbox_frame
 {
+    background-image: url(:/images/toolbox.png);
 }
+
+
 
 QPushButton
 {
@@ -31,3 +35,38 @@ QPushButton
     padding-right: 5px;
 }
 
+#QLable{border-radius: 4; border-style: solid;}
+
+#lane1{background-image: url(:/images/lane_1.png); border-radius: 4; border-style: solid;}
+#lane2{background-image: url(:/images/lane_2.png); border-radius: 4; border-style: solid;}
+#lane3{background-image: url(:/images/lane_3.png); border-radius: 4; border-style: solid;}
+#lane4{background-image: url(:/images/lane_4.png); border-radius: 4; border-style: solid;}
+
+#block0{background-image: url(:/images/block_background.png);}
+#block1{background-image: url(:/images/block_background.png);}
+#block2{background-image: url(:/images/block_background.png);}
+#block3{background-image: url(:/images/block_background.png);}
+#block4{background-image: url(:/images/block_background.png);}
+#block5{background-image: url(:/images/block_background.png);}
+#block6{background-image: url(:/images/block_background.png);}
+#block7{background-image: url(:/images/block_background.png);}
+#block8{background-image: url(:/images/block_background.png);}
+#block9{background-image: url(:/images/block_background.png);}
+#block10{background-image: url(:/images/block_background.png);}
+#block11{background-image: url(:/images/block_background.png);}
+#block12{background-image: url(:/images/block_background.png);}
+#block13{background-image: url(:/images/block_background.png);}
+#block14{background-image: url(:/images/block_background.png);}
+#block15{background-image: url(:/images/block_background.png);}
+#block16{background-image: url(:/images/block_background.png);}
+#block17{background-image: url(:/images/block_background.png);}
+#block18{background-image: url(:/images/block_background.png);}
+#block19{background-image: url(:/images/block_background.png);}
+#block20{background-image: url(:/images/block_background.png);}
+#block21{background-image: url(:/images/block_background.png);}
+#block22{background-image: url(:/images/block_background.png);}
+#block23{background-image: url(:/images/block_background.png);}
+#block24{background-image: url(:/images/block_background.png);}
+#block25{background-image: url(:/images/block_background.png);}
+#block26{background-image: url(:/images/block_background.png);}
+#block27{background-image: url(:/images/block_background.png);}
