@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QGridLayout *toolboxLayout = new QGridLayout(this);
     toolboxLayout->addWidget(new DragWidget(true,this->parentWidget()));
     this->ui->toolbox_frame->setLayout(toolboxLayout);
-    this->ui->screenManager->setCurrentIndex(7);// Por test nada mas
+    //this->ui->screenManager->setCurrentIndex(7);// Por test nada mas
 
     initializeLanes();
 
