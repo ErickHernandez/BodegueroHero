@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     cargarPerfil();
     ui->screenManager->setCurrentIndex(0);
     //MM: ESTE ES UN TEST PARA PINTAR EL PREVIEW
+    //this->ui->graphicsView_Game->setScene(new graphicsscenegame("asdasd"));
     this->ui->graphicsView_Preview->setScene(new GraphicsScenePreview("asdasd"));
 }
 
@@ -270,6 +271,7 @@ void MainWindow::on_btn_lvl1_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_1"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_1.txt"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_1"));
@@ -346,9 +348,11 @@ void MainWindow::on_bnt_lvl3_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_3"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_3"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_3"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_3"));
     }
 }
 
@@ -358,9 +362,11 @@ void MainWindow::on_bnt_lvl5_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_5"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_5"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_5"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_5"));
     }
 }
 
@@ -370,9 +376,11 @@ void MainWindow::on_bnt_lvl2_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_2"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_2"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_2"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_2"));
     }
 }
 
@@ -382,9 +390,11 @@ void MainWindow::on_bnt_lvl4_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_4"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_4"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_4"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_4"));
     }
 }
 
@@ -394,8 +404,10 @@ void MainWindow::on_bnt_lvl6_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_6"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_6"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_6"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_6"));
     }
 }

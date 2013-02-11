@@ -14,13 +14,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     xmlpuzzletree.cpp \
-    graphicsscenepreview.cpp
+    graphicsscenepreview.cpp \
+    graphicsscenegame.cpp
 
 HEADERS  += mainwindow.h \
     dbConnection.h \
     xmlpuzzletree.h \
     MyXmlHandler.h \
-    graphicsscenepreview.h
+    graphicsscenepreview.h \
+    graphicsscenegame.h
 
 FORMS    += mainwindow.ui
 

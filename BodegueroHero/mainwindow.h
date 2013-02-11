@@ -7,6 +7,7 @@
 #include <QTableView>
 //MM: AGREGADO INCLUDE
 #include "graphicsscenepreview.h"
+#include "graphicsscenegame.h"
 
 namespace Ui {
     class MainWindow;

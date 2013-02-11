@@ -29,5 +29,15 @@
         <file>images/yellow_box_preview.png</file>
         <file>puzzles/tutorial_1.txt</file>
         <file alias="gold_star">images/3_rating_important2.png</file>
+        <file>images/background_game.png</file>
+        <file>images/blue_box_game.png</file>
+        <file>images/Cables_game.png</file>
+        <file>images/Cables_small_game.png</file>
+        <file>images/coffee_box_game.png</file>
+        <file>images/green_box_game.png</file>
+        <file>images/orange_box_game.png</file>
+        <file>images/red_box_game.png</file>
+        <file>images/Tenaza_game.png</file>
+        <file>images/yellow_box_game.png</file>
     </qresource>
 </RCC>
