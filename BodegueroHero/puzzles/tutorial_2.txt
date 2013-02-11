@@ -1,0 +1,31 @@
+<PuzzleBodegueroHero>
+
+
+	<Informacion>
+		<SizeCajaPreview size="10" />
+		<SizeCajaEstadoInicial size="20" />
+		<StackInicial	 value="2" />	
+		<StackFinal	 value="5" />	
+		<PosicionInicialGrua pos="2" />
+	</Informacion>
+
+	
+
+
+	<Preview>		
+		<Pila id="5">
+			<Caja color="amarillo"/>
+		</Pila>
+	</Preview>	
+
+
+
+
+	<EstadoInicialPuzzle>		
+		<Pila id="2">
+			<Caja color="amarillo"/>
+		</Pila>
+	</EstadoInicialPuzzle>
+	
+
+</PuzzleBodegueroHero>

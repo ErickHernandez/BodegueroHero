@@ -1,7 +1,7 @@
 #include "graphicsscenepreview.h"
 
 #define Pos_X_Inicial  25
-#define Pos_Y_Inicial  160.6
+#define Pos_Y_Inicial  160.6 - 6
 #define Size_Caja      18
 //MM: NOTES TO SELF
 //21.4 tamanio del suelo
@@ -19,8 +19,7 @@ GraphicsScenePreview::GraphicsScenePreview(QString puzzle, QObject *parent): QGr
     this->addItem(background);
 
 
-
-    XmlPuzzleTree *tree = this->getXmlPuzzleTree(":puzzles/tutorial_1.txt");
+    XmlPuzzleTree *tree = this->getXmlPuzzleTree(puzzle);
     this->PintarPuzzle(tree);
 }
 
@@ -51,6 +50,11 @@ void GraphicsScenePreview::PintarPuzzle(XmlPuzzleTree *puzzleTree)
 {
     int posPilaInicial = puzzleTree->getIdStackInicial();
     int posPilaFinal   = puzzleTree->getIdStackFinal();
+
+    //MM: PINTAR LAS BASES DE LAS PILAS
+    this->PintarBasesDeLasPilas(posPilaInicial, posPilaFinal);
+
+
 
     for(int i=posPilaInicial; i<=posPilaFinal; i++)
     {
@@ -86,5 +90,21 @@ void GraphicsScenePreview::PintarPuzzle(XmlPuzzleTree *puzzleTree)
             //cajita->setZValue(-20);
             this->addItem(cajita);
         }
+    }
+}
+
+void GraphicsScenePreview::PintarBasesDeLasPilas(int posInicial, int posFinal)
+{
+    for(int i=posInicial; i<=posFinal; i++)
+    {
+        int posX = Pos_X_Inicial + (1.7 * Size_Caja * i) - 3;
+        int posY = 172;
+
+        QPixmap *pixmap = new QPixmap(":images/base_pila_preview.png");
+        QGraphicsPixmapItem *base_pila = new QGraphicsPixmapItem();
+        base_pila->setPixmap(*pixmap);
+        base_pila->setPos(posX,posY);
+        this->addItem(base_pila);
+
     }
 }

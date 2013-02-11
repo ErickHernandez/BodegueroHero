@@ -1,0 +1,88 @@
+<PuzzleBodegueroHero>
+
+
+	<Informacion>
+		<SizeCajaPreview size="10" />
+		<SizeCajaEstadoInicial size="20" />
+		<StackInicial	 value="2" />	
+		<StackFinal	 value="6" />	
+		<PosicionInicialGrua pos="2" />
+	</Informacion>
+
+	
+
+
+	<Preview>
+
+		<Pila id="2">
+			<Caja color="verde"/>
+			<Caja color="rojo"/>
+		</Pila>
+		
+
+		<Pila id="3">
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+			<Caja color="rojo"/>
+		</Pila>
+
+		<Pila id="3">
+			<Caja color="rojo"/>
+			<Caja color="verde"/>
+			<Caja color="rojo"/>
+		</Pila>
+
+		<Pila id="4">
+			<Caja color="rojo"/>
+		</Pila>
+
+		<Pila id="5">
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+		</Pila>
+
+	</Preview>	
+
+
+
+
+	<EstadoInicialPuzzle>	
+
+		<Pila id="2">
+			<Caja color="verde"/>
+			<Caja color="rojo"/>
+			<Caja color="verde"/>
+		</Pila>
+		
+
+		<Pila id="3">
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+			<Caja color="rojo"/>
+			<Caja color="verde"/>
+		</Pila>
+
+		<Pila id="4">
+			<Caja color="rojo"/>
+			<Caja color="verde"/>
+			<Caja color="rojo"/>
+			<Caja color="verde"/>
+		</Pila>		
+
+		<Pila id="5">
+			<Caja color="rojo"/>
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+			<Caja color="verde"/>
+		</Pila>		
+
+
+	</EstadoInicialPuzzle>
+	
+
+</PuzzleBodegueroHero>

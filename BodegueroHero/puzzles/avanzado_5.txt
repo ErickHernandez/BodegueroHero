@@ -1,0 +1,60 @@
+<PuzzleBodegueroHero>
+
+
+	<Informacion>
+		<SizeCajaPreview size="10" />
+		<SizeCajaEstadoInicial size="20" />
+		<StackInicial	 value="0" />	
+		<StackFinal	 value="7" />	
+		<PosicionInicialGrua pos="4" />
+	</Informacion>
+
+	
+
+
+	<Preview>		
+
+		<Pila id="7">
+			<Caja color="amarillo"/>
+			<Caja color="amarillo"/>
+			<Caja color="amarillo"/>
+			<Caja color="amarillo"/>
+			<Caja color="amarillo"/>
+			<Caja color="amarillo"/>
+		</Pila>
+
+	</Preview>	
+
+
+
+
+	<EstadoInicialPuzzle>	
+
+		<Pila id="1">
+			<Caja color="amarillo"/>
+		</Pila>
+
+		<Pila id="2">
+			<Caja color="amarillo"/>
+		</Pila>
+
+		<Pila id="3">
+			<Caja color="amarillo"/>
+		</Pila>
+
+		<Pila id="4">
+			<Caja color="amarillo"/>
+		</Pila>
+
+		<Pila id="5">
+			<Caja color="amarillo"/>
+		</Pila>
+
+		<Pila id="6">
+			<Caja color="amarillo"/>
+		</Pila>	
+
+	</EstadoInicialPuzzle>
+	
+
+</PuzzleBodegueroHero>
