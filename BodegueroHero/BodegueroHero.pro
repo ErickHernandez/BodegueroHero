@@ -15,14 +15,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     xmlpuzzletree.cpp \
     graphicsscenepreview.cpp \
-    dragwidget.cpp
+    graphicsscenegame.cpp
 
 HEADERS  += mainwindow.h \
     dbConnection.h \
     xmlpuzzletree.h \
     MyXmlHandler.h \
     graphicsscenepreview.h \
-    dragwidget.h
+    graphicsscenegame.h
 
 FORMS    += mainwindow.ui
 
