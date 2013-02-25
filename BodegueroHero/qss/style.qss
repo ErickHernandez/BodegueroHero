@@ -37,10 +37,10 @@ QPushButton
 
 #QLable{border-radius: 4; border-style: solid;}
 
-#lane1{background-image: url(:/images/lane_1.png); border-radius: 4; border-style: solid;}
-#lane2{background-image: url(:/images/lane_2.png); border-radius: 4; border-style: solid;}
-#lane3{background-image: url(:/images/lane_3.png); border-radius: 4; border-style: solid;}
-#lane4{background-image: url(:/images/lane_4.png); border-radius: 4; border-style: solid;}
+#lane1{background-image: url(:/images/lane1.png); border-radius: 4; border-style: solid;}
+#lane2{background-image: url(:/images/lane2.png); border-radius: 4; border-style: solid;}
+#lane3{background-image: url(:/images/lane3.png); border-radius: 4; border-style: solid;}
+#lane4{background-image: url(:/images/lane4.png); border-radius: 4; border-style: solid;}
 
 #block0{background-image: url(:/images/block_background.png);}
 #block1{background-image: url(:/images/block_background.png);}

@@ -62,5 +62,9 @@
         <file>puzzles/avanzado_1.txt</file>
         <file>images/base_pila_preview.png</file>
         <file>images/base_pila_game.png</file>
+        <file>images/lane1.png</file>
+        <file>images/lane2.png</file>
+        <file>images/lane3.png</file>
+        <file>images/lane4.png</file>
     </qresource>
 </RCC>
