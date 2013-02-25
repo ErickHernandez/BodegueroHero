@@ -3,6 +3,8 @@
 #include "QFile"
 #include <QGridLayout>
 
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -15,6 +17,12 @@ MainWindow::MainWindow(QWidget *parent) :
        QString StyleSheet = QLatin1String(file.readAll());
        qApp->setStyleSheet(StyleSheet);
    }
+
+    for(int i=0; i<28; i++)
+        Action::Actions[i] = Action::Empty();
+
+
+
     createConection();
     CrearTablas();
     cargarPerfil();
@@ -26,7 +34,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //EH: Carga del toolbox
     QGridLayout *toolboxLayout = new QGridLayout(this);
-    toolboxLayout->addWidget(new DragWidget(true,this->parentWidget()));
+    toolboxLayout->setObjectName("originLayout");
+    toolboxLayout->addWidget(new DragWidget(true, -1, this->parentWidget()));
     this->ui->toolbox_frame->setLayout(toolboxLayout);
     //this->ui->screenManager->setCurrentIndex(7);// Por test nada mas
 
@@ -146,6 +155,7 @@ void MainWindow::on_actionBack_triggered()
         if(index == 7)// si esta en la pantalla de jugar
         {
             //EH: Preguntar si realmente quiere abandonar el juego.
+             this->ui->screenManager->setCurrentIndex(index-1);
         }
         else
             //EH: Validar ciertas cosas, como dejar en blanco textbox, etc
@@ -439,42 +449,41 @@ void MainWindow::initializeLanes()
 //        this->laneBlocks.append(dw);
 //        this->ui->lanes_frame->setLayout(lanesLayout);
 //    }
-    this->ui->block0->setLayout(getNewLayout());
-    this->ui->block1->setLayout(getNewLayout());
-    this->ui->block2->setLayout(getNewLayout());
-    this->ui->block3->setLayout(getNewLayout());
-    this->ui->block4->setLayout(getNewLayout());
-    this->ui->block5->setLayout(getNewLayout());
-    this->ui->block6->setLayout(getNewLayout());
-    this->ui->block7->setLayout(getNewLayout());
-    this->ui->block8->setLayout(getNewLayout());
-    this->ui->block9->setLayout(getNewLayout());
-    this->ui->block10->setLayout(getNewLayout());
-    this->ui->block11->setLayout(getNewLayout());
-    this->ui->block12->setLayout(getNewLayout());
-    this->ui->block13->setLayout(getNewLayout());
-    this->ui->block14->setLayout(getNewLayout());
-    this->ui->block15->setLayout(getNewLayout());
-    this->ui->block16->setLayout(getNewLayout());
-    this->ui->block17->setLayout(getNewLayout());
-    this->ui->block18->setLayout(getNewLayout());
-    this->ui->block19->setLayout(getNewLayout());
-    this->ui->block20->setLayout(getNewLayout());
-    this->ui->block21->setLayout(getNewLayout());
-    this->ui->block22->setLayout(getNewLayout());
-    this->ui->block23->setLayout(getNewLayout());
-    this->ui->block24->setLayout(getNewLayout());
-    this->ui->block25->setLayout(getNewLayout());
-    this->ui->block26->setLayout(getNewLayout());
-    this->ui->block27->setLayout(getNewLayout());
+    this->ui->block0->setLayout(getNewLayout(0));
+    this->ui->block1->setLayout(getNewLayout(1));
+    this->ui->block2->setLayout(getNewLayout(2));
+    this->ui->block3->setLayout(getNewLayout(3));
+    this->ui->block4->setLayout(getNewLayout(4));
+    this->ui->block5->setLayout(getNewLayout(5));
+    this->ui->block6->setLayout(getNewLayout(6));
+    this->ui->block7->setLayout(getNewLayout(7));
+    this->ui->block8->setLayout(getNewLayout(8));
+    this->ui->block9->setLayout(getNewLayout(9));
+    this->ui->block10->setLayout(getNewLayout(10));
+    this->ui->block11->setLayout(getNewLayout(11));
+    this->ui->block12->setLayout(getNewLayout(12));
+    this->ui->block13->setLayout(getNewLayout(13));
+    this->ui->block14->setLayout(getNewLayout(14));
+    this->ui->block15->setLayout(getNewLayout(15));
+    this->ui->block16->setLayout(getNewLayout(16));
+    this->ui->block17->setLayout(getNewLayout(17));
+    this->ui->block18->setLayout(getNewLayout(18));
+    this->ui->block19->setLayout(getNewLayout(19));
+    this->ui->block20->setLayout(getNewLayout(20));
+    this->ui->block21->setLayout(getNewLayout(21));
+    this->ui->block22->setLayout(getNewLayout(22));
+    this->ui->block23->setLayout(getNewLayout(23));
+    this->ui->block24->setLayout(getNewLayout(24));
+    this->ui->block25->setLayout(getNewLayout(25));
+    this->ui->block26->setLayout(getNewLayout(26));
+    this->ui->block27->setLayout(getNewLayout(27));
 }
 
-QGridLayout* MainWindow::getNewLayout()
+QGridLayout* MainWindow::getNewLayout(int id)
 {
     QGridLayout *layout = new QGridLayout(this);
-    DragWidget * dw = new DragWidget(false, this->parentWidget());
+    DragWidget * dw = new DragWidget(false, id,this->parentWidget());
     layout->addWidget(dw);
     layout->setMargin(0);
     return layout;
 }
-

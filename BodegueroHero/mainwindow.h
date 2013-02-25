@@ -8,7 +8,8 @@
 //MM: AGREGADO INCLUDE
 #include "graphicsscenepreview.h"
 #include "graphicsscenegame.h"
-#include <dragwidget.h>
+#include "dragwidget.h"
+
 
 namespace Ui {
     class MainWindow;
@@ -23,17 +24,19 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void cargarPerfil();
-    QString CurrentUser;
-   // QString CurrentLevel;
+    QString CurrentUser;    
+   // QString CurrentLevel;    
 
 private:
     Ui::MainWindow *ui;
     int CurrentLevel;
+
+
     QList<score> PUNTOS;
     QList<DragWidget*> laneBlocks;
     void setHighScore(QList<score> puntos);
-    void initializeLanes();
-    QGridLayout* getNewLayout();
+    void initializeLanes();    
+    QGridLayout* getNewLayout(int id);
  private slots:
     void on_bnt_lvl6_clicked();
     void on_bnt_lvl4_clicked();
@@ -44,7 +47,7 @@ private:
     void on_btn_HighScore5_clicked();
     void on_btn_HighScore4_clicked();
     void on_btn_HighScore3_clicked();
-        void on_btn_HighScore2_clicked();
+    void on_btn_HighScore2_clicked();
     void on_btn_HighScore1_clicked();
     void on_btn_lvl1_clicked();
     void on_btnAvanzado_clicked();

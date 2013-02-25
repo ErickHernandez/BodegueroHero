@@ -16,7 +16,8 @@ SOURCES += main.cpp\
     xmlpuzzletree.cpp \
     graphicsscenepreview.cpp \
     graphicsscenegame.cpp \
-    dragwidget.cpp
+    dragwidget.cpp \
+    action.cpp
 
 HEADERS  += mainwindow.h \
     dbConnection.h \
@@ -24,7 +25,8 @@ HEADERS  += mainwindow.h \
     MyXmlHandler.h \
     graphicsscenepreview.h \
     graphicsscenegame.h \
-    dragwidget.h
+    dragwidget.h \
+    action.h
 
 FORMS    += mainwindow.ui
 
