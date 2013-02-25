@@ -155,7 +155,7 @@ void MainWindow::on_actionBack_triggered()
         if(index == 7)// si esta en la pantalla de jugar
         {
             //EH: Preguntar si realmente quiere abandonar el juego.
-             this->ui->screenManager->setCurrentIndex(index-1);
+             this->ui->screenManager->setCurrentIndex(index-2);
         }
         else
             //EH: Validar ciertas cosas, como dejar en blanco textbox, etc
@@ -487,4 +487,22 @@ QGridLayout* MainWindow::getNewLayout(int id)
     layout->addWidget(dw);
     layout->setMargin(0);
     return layout;
+}
+
+void MainWindow::on_btn_PlayGame_clicked()
+{
+    graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
+    scene->AnimarPuzzle();
+}
+
+void MainWindow::on_btn_StopGame_clicked()
+{
+    graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
+    scene->DetenerPuzzle();
+}
+
+void MainWindow::on_btn_ConfigurarVelocidad_clicked()
+{
+    graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
+    scene->CambiarVelocidad();
 }

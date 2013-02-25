@@ -66,5 +66,7 @@
         <file>images/lane2.png</file>
         <file>images/lane3.png</file>
         <file>images/lane4.png</file>
+        <file>images/grua_der.png</file>
+        <file>images/grua_izq.png</file>
     </qresource>
 </RCC>

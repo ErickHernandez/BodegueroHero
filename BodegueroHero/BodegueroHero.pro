@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     graphicsscenepreview.cpp \
     graphicsscenegame.cpp \
     dragwidget.cpp \
-    action.cpp
+    action.cpp \
+    caja.cpp
 
 HEADERS  += mainwindow.h \
     dbConnection.h \
@@ -26,7 +27,8 @@ HEADERS  += mainwindow.h \
     graphicsscenepreview.h \
     graphicsscenegame.h \
     dragwidget.h \
-    action.h
+    action.h \
+    caja.h
 
 FORMS    += mainwindow.ui
 
