@@ -17,6 +17,7 @@ public:
 
 private:
     void PintarPuzzle(XmlPuzzleTree *puzzleTree);
+    void PintarBasesDeLasPilas(int posInicial, int posFinal);
     XmlPuzzleTree *getXmlPuzzleTree(QString puzzle);
 
 };

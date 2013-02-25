@@ -49,5 +49,18 @@
         <file>images/left_arrow.png</file>
         <file>images/right_arrow.png</file>
         <file>images/up_arrow.png</file>
+        <file>puzzles/avanzado_2.txt</file>
+        <file>puzzles/avanzado_3.txt</file>
+        <file>puzzles/avanzado_4.txt</file>
+        <file>puzzles/avanzado_5.txt</file>
+        <file>puzzles/avanzado_6.txt</file>
+        <file>puzzles/tutorial_2.txt</file>
+        <file>puzzles/tutorial_3.txt</file>
+        <file>puzzles/tutorial_4.txt</file>
+        <file>puzzles/tutorial_5.txt</file>
+        <file>puzzles/tutorial_6.txt</file>
+        <file>puzzles/avanzado_1.txt</file>
+        <file>images/base_pila_preview.png</file>
+        <file>images/base_pila_game.png</file>
     </qresource>
 </RCC>

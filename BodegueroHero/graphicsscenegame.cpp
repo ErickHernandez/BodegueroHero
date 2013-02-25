@@ -1,13 +1,12 @@
 #include "graphicsscenegame.h"
 
 #define Pos_X_Inicial  180
-#define Pos_Y_Inicial  324
+#define Pos_Y_Inicial  324  - 12
 #define Size_Caja      36
 #define Pos_Grua_Inicial 167.5
 
 graphicsscenegame::graphicsscenegame(QString puzzle, QObject *parent): QGraphicsScene(parent)
 {
-
     QPixmap *pixmap = new QPixmap(":images/background_game.png");
     QGraphicsPixmapItem *background = new QGraphicsPixmapItem();
     background->setPixmap(*pixmap);
@@ -65,7 +64,7 @@ void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
     int posPilaFinal   = puzzleTree->getIdStackFinal();
     int posTenazaInicial = puzzleTree->getPosicionInicialGrua();
 
-
+    this->PintarBasesDeLasPilas(posPilaInicial, posPilaFinal);
 
     for(int i=posPilaInicial; i<=posPilaFinal; i++)
     {
@@ -116,4 +115,18 @@ void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
 
 }
 
+void graphicsscenegame::PintarBasesDeLasPilas(int posInicial, int posFinal)
+{
+    for(int i=posInicial; i<=posFinal; i++)
+    {
+        int posX = (Pos_X_Inicial + Size_Caja * i + 20*i) - 5;
+        int posY = 357.5 - 12 ;
 
+        QPixmap *pixmap = new QPixmap(":images/base_pila_game.png");
+        QGraphicsPixmapItem *base_pila = new QGraphicsPixmapItem();
+        base_pila->setPixmap(*pixmap);
+        base_pila->setPos(posX,posY);
+        this->addItem(base_pila);
+
+    }
+}

@@ -291,11 +291,12 @@ void MainWindow::on_btn_lvl1_clicked()
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
-        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_1"));
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_1.txt"));
         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_1.txt"));
     }else
     {
-         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_1"));
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_1.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_1.txt"));
     }
 }
 
@@ -368,12 +369,12 @@ void MainWindow::on_bnt_lvl3_clicked()
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
-        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_3"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_3"));
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_3.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_3.txt"));
     }else
     {
-         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_3"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_3"));
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_3.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_3.txt"));
     }
 }
 
@@ -382,12 +383,12 @@ void MainWindow::on_bnt_lvl5_clicked()
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
-        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_5"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_5"));
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_5.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_5.txt"));
     }else
     {
-         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_5"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_5"));
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_5.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_5.txt"));
     }
 }
 
@@ -396,12 +397,12 @@ void MainWindow::on_bnt_lvl2_clicked()
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
-        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_2"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_2"));
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_2.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_2.txt"));
     }else
     {
-         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_2"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_2"));
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_2.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_2.txt"));
     }
 }
 
@@ -410,12 +411,12 @@ void MainWindow::on_bnt_lvl4_clicked()
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
-        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_4"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_4"));
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_4.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_4.txt"));
     }else
     {
-         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_4"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_4"));
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_4.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_4.txt"));
     }
 }
 
@@ -424,12 +425,12 @@ void MainWindow::on_bnt_lvl6_clicked()
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
-        ui->graphicsView_Preview->setScene(new GraphicsScenePreview("tutorial_6"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame("tutorial_6"));
+        ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_6.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_6.txt"));
     }else
     {
-         ui->graphicsView_Preview->setScene(new GraphicsScenePreview("avanzado_6"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame("avanzado_6"));
+         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_6.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_6.txt"));
     }
 }
 
