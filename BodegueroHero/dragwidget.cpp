@@ -130,7 +130,7 @@ void DragWidget::dropEvent(QDropEvent *event)
              this->action = act;
              Action::Actions[this->id] = act;
 
-             QLabel *newIcon = new QLabel(this);
+             this->newIcon = new QLabel(this);
              newIcon->setPixmap(pixmap);             
              offset.setX(0);
              offset.setY(0);
