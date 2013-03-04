@@ -506,3 +506,8 @@ void MainWindow::on_btn_ConfigurarVelocidad_clicked()
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
     scene->CambiarVelocidad();
 }
+
+void MainWindow::resetPuzzle()
+{
+
+}
