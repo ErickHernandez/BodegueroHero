@@ -131,12 +131,13 @@ void DragWidget::dropEvent(QDropEvent *event)
              Action::Actions[this->id] = act;
 
              QLabel *newIcon = new QLabel(this);
-             newIcon->setPixmap(pixmap);
+             newIcon->setPixmap(pixmap);             
              offset.setX(0);
              offset.setY(0);
              newIcon->move(offset);
              newIcon->show();
              newIcon->setAttribute(Qt::WA_DeleteOnClose);
+             newIcon->setObjectName(_Action);
 
              //if(((DragWidget*)event->source())->isOriginFrame)//Aqui me quede
              //{
@@ -151,12 +152,12 @@ void DragWidget::dropEvent(QDropEvent *event)
              //}
 
          } else {
-              event->ignore();//EH:Intento fallido
+              event->ignore();
               return;
              //event->acceptProposedAction();
          }
      } else {         
-         event->ignore();//EH:Intento fallido
+         event->ignore();
      }
  }
 
@@ -194,9 +195,13 @@ void DragWidget::mousePressEvent(QMouseEvent *event)
 
      if (drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction) {
          if(this->isOriginFrame == false){
-            child->close(); // OK OK OK aqui es cuando le doy click sobre el mismo bloque y ya tiene imagen :/
+            child->close(); // OK OK OK cuando le un bloque ya tiene imagen y se le da click este evento se dispara,
+                            // tambien se dispara cuando se mueve de un bloque a otro.
+            this->action = Action::Empty();
+            Action::Actions[this->id] = Action::Empty();
+           child->close();
          } else {
-            event->ignore();
+            event->ignore();//Origin Frame a un Bloque (Lo normal)
          }
          return;
      } else {
