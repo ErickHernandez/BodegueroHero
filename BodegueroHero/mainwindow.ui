@@ -34,7 +34,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="StartPage">
      <widget class="QPushButton" name="cmdStart">
@@ -2822,7 +2822,7 @@
       <widget class="QPushButton" name="btn_PlayGame">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>0</x>
          <y>10</y>
          <width>75</width>
          <height>40</height>
@@ -2835,7 +2835,7 @@
       <widget class="QPushButton" name="btn_StopGame">
        <property name="geometry">
         <rect>
-         <x>110</x>
+         <x>70</x>
          <y>10</y>
          <width>75</width>
          <height>40</height>
@@ -2848,7 +2848,7 @@
       <widget class="QPushButton" name="btn_ConfigurarVelocidad">
        <property name="geometry">
         <rect>
-         <x>200</x>
+         <x>140</x>
          <y>10</y>
          <width>75</width>
          <height>40</height>
@@ -2857,6 +2857,19 @@
        <property name="text">
         <string>Cambiar
 Velocidad</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_ClearGame">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>10</y>
+         <width>90</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Limpiar</string>
        </property>
       </widget>
      </widget>
@@ -2890,19 +2903,6 @@ Velocidad</string>
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <widget class="QPushButton" name="btn_ClearGame">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>190</y>
-          <width>90</width>
-          <height>40</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Limpiar</string>
-        </property>
-       </widget>
       </widget>
      </widget>
      <widget class="QFrame" name="frame_3">

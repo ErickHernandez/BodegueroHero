@@ -517,17 +517,13 @@ void MainWindow::resetPuzzle()
         {
             this->laneBlocks[i]->newIcon->close();
             this->laneBlocks[i]->action = Action::Empty();
-
-void MainWindow::on_btn_ClearGame_clicked()
-{
-    for(int i=0; i<28; i++)
-    {
-        Action::Actions[i] = 0;
-    }
-
-}
         }
 
         Action::Actions[i] = Action::Empty();
     }
+}
+
+void MainWindow::on_btn_ClearGame_clicked()
+{
+    this->resetPuzzle();
 }
