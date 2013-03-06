@@ -105,7 +105,7 @@ void DragWidget::dragMoveEvent(QDragMoveEvent *event)
 
 
 void DragWidget::dropEvent(QDropEvent *event)
- {
+ {       
 
     if(this->action != Action::Empty()){// OK OK OK pero funciona
         event->ignore();
@@ -114,7 +114,12 @@ void DragWidget::dropEvent(QDropEvent *event)
 
      if (event->mimeData()->hasFormat("application/x-dnditemdata")) {
 
-         if (event->source() != this && this->isOriginFrame == false){//VALIDAR SI EL ACION ES EMPTY
+         if(this == event->source())
+             return;
+
+//event->source() != this &&
+         if ( this->isOriginFrame == false){//VALIDAR SI EL ACION ES EMPTY
+
              QByteArray itemData = event->mimeData()->data("application/x-dnditemdata");
              QDataStream dataStream(&itemData, QIODevice::ReadOnly);
 
