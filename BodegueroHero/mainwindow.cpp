@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
         Action::Actions[i] = Action::Empty();
 
 
-
+    laneBlocks = new DragWidget*[28];
     createConection();
     CrearTablas();
     cargarPerfil();
@@ -156,6 +156,7 @@ void MainWindow::on_actionBack_triggered()
         {
             //EH: Preguntar si realmente quiere abandonar el juego.
              this->ui->screenManager->setCurrentIndex(index-2);
+             this->resetPuzzle();
         }
         else
             //EH: Validar ciertas cosas, como dejar en blanco textbox, etc
@@ -486,6 +487,7 @@ QGridLayout* MainWindow::getNewLayout(int id)
     DragWidget * dw = new DragWidget(false, id,this->parentWidget());
     layout->addWidget(dw);
     layout->setMargin(0);
+    this->laneBlocks[id] = dw;//OK OK OK
     return layout;
 }
 
@@ -507,6 +509,15 @@ void MainWindow::on_btn_ConfigurarVelocidad_clicked()
     scene->CambiarVelocidad();
 }
 
+void MainWindow::resetPuzzle()
+{
+    for(int i=0; i<28; i++)
+    {
+        if(Action::Actions[i] != Action::Empty())
+        {
+            this->laneBlocks[i]->newIcon->close();
+            this->laneBlocks[i]->action = Action::Empty();
+
 void MainWindow::on_btn_ClearGame_clicked()
 {
     for(int i=0; i<28; i++)
@@ -514,4 +525,9 @@ void MainWindow::on_btn_ClearGame_clicked()
         Action::Actions[i] = 0;
     }
 
+}
+        }
+
+        Action::Actions[i] = Action::Empty();
+    }
 }

@@ -23,13 +23,6 @@ DragWidget::DragWidget(bool isOriginFrame, int id, QWidget *parent): QFrame(pare
         down_arrow->show();
         down_arrow->setAttribute(Qt::WA_DeleteOnClose);
 
-
-//        QLabel *up_arrow = new QLabel(this);
-//        up_arrow->setPixmap(QPixmap(":/images/up_arrow.png"));
-//        up_arrow->move(74, 20);
-//        up_arrow->show();
-//        up_arrow->setAttribute(Qt::WA_DeleteOnClose);
-
         QLabel *left_arrow = new QLabel(this);
         left_arrow->setPixmap(QPixmap(":/images/left_arrow.png"));
         left_arrow->move(74, 80);
@@ -113,6 +106,12 @@ void DragWidget::dragMoveEvent(QDragMoveEvent *event)
 
 void DragWidget::dropEvent(QDropEvent *event)
  {
+
+    if(this->action != Action::Empty()){// OK OK OK pero funciona
+        event->ignore();
+        return;
+    }
+
      if (event->mimeData()->hasFormat("application/x-dnditemdata")) {
 
          if (event->source() != this && this->isOriginFrame == false){//VALIDAR SI EL ACION ES EMPTY
@@ -131,13 +130,14 @@ void DragWidget::dropEvent(QDropEvent *event)
              this->action = act;
              Action::Actions[this->id] = act;
 
-             QLabel *newIcon = new QLabel(this);
-             newIcon->setPixmap(pixmap);
+             this->newIcon = new QLabel(this);
+             newIcon->setPixmap(pixmap);             
              offset.setX(0);
              offset.setY(0);
              newIcon->move(offset);
              newIcon->show();
              newIcon->setAttribute(Qt::WA_DeleteOnClose);
+             newIcon->setObjectName(_Action);
 
              //if(((DragWidget*)event->source())->isOriginFrame)//Aqui me quede
              //{
@@ -152,12 +152,12 @@ void DragWidget::dropEvent(QDropEvent *event)
              //}
 
          } else {
-              event->ignore();//EH:Intento fallido
+              event->ignore();
               return;
              //event->acceptProposedAction();
          }
      } else {         
-         event->ignore();//EH:Intento fallido
+         event->ignore();
      }
  }
 
@@ -194,14 +194,20 @@ void DragWidget::mousePressEvent(QMouseEvent *event)
 
 
      if (drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction) {
-         if(this->isOriginFrame == false){//this->width() != 241){
-            child->close();
+         if(this->isOriginFrame == false){
+            child->close(); // OK OK OK cuando le un bloque ya tiene imagen y se le da click este evento se dispara,
+                            // tambien se dispara cuando se mueve de un bloque a otro.
+            this->action = Action::Empty();
+            Action::Actions[this->id] = Action::Empty();
+           child->close();
          } else {
-            event->ignore();
+            event->ignore();//Origin Frame a un Bloque (Lo normal)
          }
          return;
      } else {
-         if(this->isOriginFrame == false){//this->width() !=241){
+         if(this->isOriginFrame == false){
+             this->action = Action::Empty();// OK OK OK aqui es cuando se elimina una imagen con drag and drop
+             Action::Actions[this->id] = Action::Empty();
             child->close();
          } else {
             event->ignore();
@@ -229,3 +235,5 @@ int DragWidget::parsingActions(QString action)
     else if(action == "right")
         return Action::Right();
 }
+
+

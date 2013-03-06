@@ -21,7 +21,7 @@ public:
     bool hasItem;//Determina si ese frame ya tiene alguna instruccion dentro o esta vacio.
     bool isOriginFrame;//Determina si es el frame del toolkit o es el de destino donde estan las lanes.
     int action, id;
-
+    QLabel *newIcon;
 
 protected:
      void dragEnterEvent(QDragEnterEvent *event);
