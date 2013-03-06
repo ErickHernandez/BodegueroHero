@@ -522,3 +522,8 @@ void MainWindow::resetPuzzle()
         Action::Actions[i] = Action::Empty();
     }
 }
+
+void MainWindow::on_btn_ClearGame_clicked()
+{
+    this->resetPuzzle();
+}

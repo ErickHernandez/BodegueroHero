@@ -9,11 +9,11 @@
 class Caja: public QGraphicsPixmapItem
 {
 public:
-    Caja(enum Colores color);
-    enum Colores getColorCaja();
+    Caja(XmlPuzzleTree::Colores color);
+    XmlPuzzleTree::Colores getColorCaja();
 
 private:
-    enum Colores colorCaja;
+    XmlPuzzleTree::Colores colorCaja;
     QGraphicsPixmapItem *pixmapItem;
 };
 

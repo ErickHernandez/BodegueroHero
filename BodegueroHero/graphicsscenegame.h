@@ -16,6 +16,7 @@
 #include "action.h"
 #include <math.h>
 #include <stack>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -32,6 +33,8 @@ public:
 private:
     int posActualGrua;
     int posPilaInicial, posPilaFinal;
+    bool gruaAbierta;
+    int anguloActualGrua;
 
     //ELEMTOS QUE TIENE EL GRAPHICS SCENE
     QGraphicsPixmapItem *cableDeLaGrua;
@@ -40,11 +43,18 @@ private:
     QVector<QVector<Caja *> > pilasDeCajas;
     Caja *cajitaDeLaGrua;
 
-    //ELEMTOS PARA LA ANIMACION
+    //ELEMENTOS PARA LA ANIMACION
     bool subirGrua;
     //int instruccionActual;
     QTimer *timer;
     stack<int> stackDeInstrucciones;
+
+
+    //FUNCIONES GENERALES PARA HACER COSAS GENERALES
+    void SiguienteInstruccion();
+    bool PuzzleResuelto();
+    int getCantidadInstruccionesUtilizadas();
+
 
     //LOS ARBOLES QUE DEVOLVIO EL PARSER XML
     XmlPuzzleTree *xmlTreeInicial;

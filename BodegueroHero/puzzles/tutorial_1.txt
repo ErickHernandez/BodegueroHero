@@ -4,8 +4,8 @@
 	<Informacion>
 		<SizeCajaPreview size="10" />
 		<SizeCajaEstadoInicial size="20" />
-		<StackInicial	 value="0" />	
-		<StackFinal	 value="7" />	
+		<StackInicial	 value="3" />	
+		<StackFinal	 value="4" />	
 		<PosicionInicialGrua pos="3" />
 	</Informacion>
 
@@ -14,51 +14,8 @@
 
 	<Preview>	
 
-		<Pila id="0">
-			<Caja color="azul"/>
-			<Caja color="rojo"/>
-		</Pila>
-
-		<Pila id="1">
-			<Caja color="azul"/>
-			<Caja color="verde"/>
-			<Caja color="azul"/>
-		</Pila>
-
-		<Pila id="2">
-			<Caja color="amarillo"/>
-			<Caja color="cafe"/>
-			<Caja color="azul"/>
-			<Caja color="rojo"/>
-		</Pila>
-	
-		<Pila id="3">
-			<Caja color="azul"/>
-			<Caja color="azul"/>
-		</Pila>
-
 		<Pila id="4">
-			<Caja color="azul"/>
-			<Caja color="verde"/>
-			<Caja color="azul"/>
-		</Pila>
-
-		<Pila id="5">
-			<Caja color="rojo"/>
-			<Caja color="azul"/>
-			<Caja color="rojo"/>
-			<Caja color="cafe"/>
-		</Pila>
-
-		<Pila id="6">
-			<Caja color="azul"/>
-			<Caja color="azul"/>
-		</Pila>
-
-		<Pila id="7">
-			<Caja color="azul"/>
-			<Caja color="azul"/>
-			<Caja color="azul"/>
+			<Caja color="amarillo"/>
 		</Pila>
 
 	</Preview>	
@@ -68,52 +25,10 @@
 
 	<EstadoInicialPuzzle>
 		
-		<Pila id="0">
-			<Caja color="azul"/>
-			<Caja color="rojo"/>
-		</Pila>
-
-		<Pila id="1">
-			<Caja color="azul"/>
-			<Caja color="verde"/>
-			<Caja color="azul"/>
-		</Pila>
-
-		<Pila id="2">
-			<Caja color="amarillo"/>
-			<Caja color="cafe"/>
-			<Caja color="azul"/>
-			<Caja color="rojo"/>
-		</Pila>
-	
 		<Pila id="3">
-			<Caja color="azul"/>
-			<Caja color="azul"/>
+			<Caja color="amarillo"/>
 		</Pila>
 
-		<Pila id="4">
-			<Caja color="azul"/>
-			<Caja color="verde"/>
-			<Caja color="azul"/>
-		</Pila>
-
-		<Pila id="5">
-			<Caja color="rojo"/>
-			<Caja color="azul"/>
-			<Caja color="rojo"/>
-			<Caja color="cafe"/>
-		</Pila>
-
-		<Pila id="6">
-			<Caja color="azul"/>
-			<Caja color="azul"/>
-		</Pila>
-
-		<Pila id="7">
-			<Caja color="azul"/>
-			<Caja color="azul"/>
-			<Caja color="azul"/>
-		</Pila>
 	</EstadoInicialPuzzle>
 	
 
