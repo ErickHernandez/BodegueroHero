@@ -58,7 +58,7 @@ void GraphicsScenePreview::PintarPuzzle(XmlPuzzleTree *puzzleTree)
 
     for(int i=posPilaInicial; i<=posPilaFinal; i++)
     {
-        QVector<enum Colores> colores = puzzleTree->getPilaDeCajitas(i);
+        QVector<XmlPuzzleTree::Colores > colores = puzzleTree->getPilaDeCajitas(i);
         for(int j=0; j<colores.size(); j++)
         {
             int posX = Pos_X_Inicial + (1.7 * Size_Caja * i);
@@ -69,17 +69,17 @@ void GraphicsScenePreview::PintarPuzzle(XmlPuzzleTree *puzzleTree)
 
             QString colorCajita = "";
 
-            if(colores[j] == AZUL)
+            if(colores[j] == XmlPuzzleTree::AZUL)
                 colorCajita = ":images/blue_box_preview.png";
-            else if(colores[j] == VERDE)
+            else if(colores[j] == XmlPuzzleTree::VERDE)
                 colorCajita = ":images/green_box_preview.png";
-            else if(colores[j] == NARANJA)
+            else if(colores[j] == XmlPuzzleTree::NARANJA)
                 colorCajita = ":images/orange_box_preview.png";
-            else if(colores[j] == ROJO)
+            else if(colores[j] == XmlPuzzleTree::ROJO)
                 colorCajita = ":images/red_box_preview.png";
-            else if(colores[j] == CAFE)
+            else if(colores[j] == XmlPuzzleTree::CAFE)
                 colorCajita = ":images/coffee_box_preview.png";
-            else if(colores[j] == AMARILLO)
+            else if(colores[j] == XmlPuzzleTree::AMARILLO)
                 colorCajita = ":images/yellow_box_preview.png";
 
 

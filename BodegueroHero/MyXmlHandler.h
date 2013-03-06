@@ -124,17 +124,17 @@ public:
             if(this->currentContextDelTag == "Preview")
             {
                 if(caja == "azul")
-                    this->arbolDelPreview->agregarCajitaPila(posPila,AZUL);
+                    this->arbolDelPreview->agregarCajitaPila(posPila,XmlPuzzleTree::AZUL);
                 else if(caja == "verde")
-                    this->arbolDelPreview->agregarCajitaPila(posPila,VERDE);
+                    this->arbolDelPreview->agregarCajitaPila(posPila,XmlPuzzleTree::VERDE);
                 else if(caja == "naranja")
-                    this->arbolDelPreview->agregarCajitaPila(posPila,NARANJA);
+                    this->arbolDelPreview->agregarCajitaPila(posPila,XmlPuzzleTree::NARANJA);
                 else if(caja == "rojo")
-                    this->arbolDelPreview->agregarCajitaPila(posPila,ROJO);
+                    this->arbolDelPreview->agregarCajitaPila(posPila,XmlPuzzleTree::ROJO);
                 else if(caja == "cafe")
-                    this->arbolDelPreview->agregarCajitaPila(posPila,CAFE);
+                    this->arbolDelPreview->agregarCajitaPila(posPila,XmlPuzzleTree::CAFE);
                 else if(caja == "amarillo")
-                    this->arbolDelPreview->agregarCajitaPila(posPila ,AMARILLO);
+                    this->arbolDelPreview->agregarCajitaPila(posPila ,XmlPuzzleTree::AMARILLO);
                 else
                     return false;
 
@@ -143,17 +143,17 @@ public:
             if(this->currentContextDelTag == "EstadoInicialPuzzle")
             {
                 if(caja == "azul")
-                    this->arbolEstadoInicial->agregarCajitaPila(posPila,AZUL);
+                    this->arbolEstadoInicial->agregarCajitaPila(posPila,XmlPuzzleTree::AZUL);
                 else if(caja == "verde")
-                    this->arbolEstadoInicial->agregarCajitaPila(posPila,VERDE);
+                    this->arbolEstadoInicial->agregarCajitaPila(posPila,XmlPuzzleTree::VERDE);
                 else if(caja == "naranja")
-                    this->arbolEstadoInicial->agregarCajitaPila(posPila,NARANJA);
+                    this->arbolEstadoInicial->agregarCajitaPila(posPila,XmlPuzzleTree::NARANJA);
                 else if(caja == "rojo")
-                    this->arbolEstadoInicial->agregarCajitaPila(posPila,ROJO);
+                    this->arbolEstadoInicial->agregarCajitaPila(posPila,XmlPuzzleTree::ROJO);
                 else if(caja == "cafe")
-                    this->arbolEstadoInicial->agregarCajitaPila(posPila,CAFE);
+                    this->arbolEstadoInicial->agregarCajitaPila(posPila,XmlPuzzleTree::CAFE);
                 else if(caja == "amarillo")
-                    this->arbolEstadoInicial->agregarCajitaPila(posPila ,AMARILLO);
+                    this->arbolEstadoInicial->agregarCajitaPila(posPila ,XmlPuzzleTree::AMARILLO);
                 else
                     return false;
 

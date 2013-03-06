@@ -51,7 +51,7 @@ int XmlPuzzleTree::getIdStackInicial()
     return idStackInicial;
 }
 
-QVector<enum Colores> XmlPuzzleTree::getPilaDeCajitas(int posicionPila)
+QVector<XmlPuzzleTree::Colores > XmlPuzzleTree::getPilaDeCajitas(int posicionPila)
 {
     return this->pilasDeCajitas[posicionPila];
 }

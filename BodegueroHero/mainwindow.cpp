@@ -506,3 +506,12 @@ void MainWindow::on_btn_ConfigurarVelocidad_clicked()
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
     scene->CambiarVelocidad();
 }
+
+void MainWindow::on_btn_ClearGame_clicked()
+{
+    for(int i=0; i<28; i++)
+    {
+        Action::Actions[i] = 0;
+    }
+
+}

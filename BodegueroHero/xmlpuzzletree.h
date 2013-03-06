@@ -4,11 +4,11 @@
 //MM: El parser genera esta clase
 #include <QVector>
 
-enum Colores {AZUL, VERDE, NARANJA, ROJO, CAFE, AMARILLO};
 
 class XmlPuzzleTree
 {
 public:
+    enum Colores {AZUL = 0, VERDE = 1, NARANJA = 2, ROJO = 3, CAFE = 4, AMARILLO = 5};
     XmlPuzzleTree();
     ~XmlPuzzleTree(){};
     void agregarCajitaPila(int posicionPila, enum Colores cajita);

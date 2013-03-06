@@ -11,6 +11,9 @@ graphicsscenegame::graphicsscenegame(QString puzzle, QObject *parent): QGraphics
 {
     //LA GRUA NO TIENE UN CAJA INCIALMENTE
     this->cajitaDeLaGrua = 0;
+    this->gruaAbierta = true;
+    this->anguloActualGrua = 0;
+
 //    this->instruccionActual = 0;
 
     this->setXmlPuzzleTrees(puzzle);
@@ -83,15 +86,15 @@ void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
     this->addItem(background);
 
 
-    int posPilaInicial = puzzleTree->getIdStackInicial();
-    int posPilaFinal   = puzzleTree->getIdStackFinal();
+    this->posPilaInicial = puzzleTree->getIdStackInicial();
+    this->posPilaFinal   = puzzleTree->getIdStackFinal();
     int posTenazaInicial = puzzleTree->getPosicionInicialGrua();
 
     this->PintarBasesDeLasPilas(posPilaInicial, posPilaFinal);
 
     for(int i=posPilaInicial; i<=posPilaFinal; i++)
     {
-        QVector<enum Colores> colores = puzzleTree->getPilaDeCajitas(i);
+        QVector<XmlPuzzleTree::Colores > colores = puzzleTree->getPilaDeCajitas(i);
         for(int j=0; j<colores.size(); j++)
         {
             int posX = Pos_X_Inicial + Size_Caja * i + 20*i;
@@ -133,27 +136,12 @@ void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
     this->grua_izq->setTransformOriginPoint(this->grua_izq->boundingRect().center());
     this->grua_der->setTransformOriginPoint(this->grua_der->boundingRect().center());
 
-//    this->grua_izq->rotate(30);
-//    this->grua_der->rotate(-30);
 
-//    //TIMELINE DE LA ANIMACION
-//    QTimeLine *timeline = new QTimeLine(2000);
-
-//    //ANIMACION PARA LA PARTE IZQUIERDA DE LA GRUA
-//    QGraphicsItemAnimation *animation_izq = new QGraphicsItemAnimation;
-//    animation_izq->setItem(this->grua_izq);
-//    animation_izq->setTimeLine(timeline);
-//    animation_izq->setRotationAt(0.5, 30);
-
-//    //ANIMACION PARA LA PARTE DERECAH DE LA GRUA
-//    QGraphicsItemAnimation *animation_der = new QGraphicsItemAnimation;
-//    animation_der->setItem(this->grua_der);
-//    animation_der->setTimeLine(timeline);
-//    animation_der->setRotationAt(0.5, -30);
-
-
-//    timeline->start();
-
+    //ROTACION
+    this->grua_izq->setTransform(QTransform().translate(36,0).rotate(20).translate(-36,0));
+    this->grua_der->setTransform(QTransform().translate(0,0).rotate(-20).translate(0,0));
+    this->gruaAbierta = true;
+    this->anguloActualGrua = 20;
 
 }
 
@@ -205,6 +193,14 @@ void graphicsscenegame::AnimarPuzzle()
         this->timer->stop();
 
 
+    int actions[28];
+    for(int i=0; i<28; i++)
+        actions[i] = Action::Actions[i];
+
+    int x = 2;
+    int suma = 20 + x;
+
+
 
     this->subirGrua = false;
     this->ReiniciarPuzzle();
@@ -218,51 +214,40 @@ void graphicsscenegame::AnimarPuzzle()
 void graphicsscenegame::animar_v2()
 {
     if(this->stackDeInstrucciones.empty())
+    {
         this->timer->stop();
+        return;
+    }
 
     int instruccionActual = this->stackDeInstrucciones.top();
 
     //INSTRUCCION VACIA
     if(Action::Actions[instruccionActual] == 0)
     {
-        if((instruccionActual+1) % 8 == 0 || instruccionActual == 27)
-            this->timer->stop();
-        else
-        {
-            instruccionActual++;
-            this->stackDeInstrucciones.pop();
-            this->stackDeInstrucciones.push(instruccionActual);
-        }
+        this->SiguienteInstruccion();
         return;
     }
 
     //DOWN
     if(Action::Actions[instruccionActual] == 1)
     {
-        //SI LA GRUA NO TIENE CAJA, Y ESTA EN SU PUNTO MAS ALTO, QUE HAGA LA ANIMACION
-//        if(this->cableDeLaGrua->y()== (-453 + 50) && this->cajitaDeLaGrua==0)
-//        {
-//            this->grua_izq->setTransformOriginPoint(this->grua_izq->boundingRect().center());
-//            this->grua_der->setTransformOriginPoint(this->grua_der->boundingRect().center());
 
-//            //TIMELINE DE LA ANIMACION
-//            QTimeLine *timeline = new QTimeLine(2000);
+        //#####################################################################################################
+        //#                       TODO: MOSTRAR ERROR AL PONER MAS DE SEIS CAJAS                              #
+        //#####################################################################################################
 
-//            //ANIMACION PARA LA PARTE IZQUIERDA DE LA GRUA
-//            QGraphicsItemAnimation *animation_izq = new QGraphicsItemAnimation;
-//            animation_izq->setItem(this->grua_izq);
-//            animation_izq->setTimeLine(timeline);
-//            animation_izq->setRotationAt(0.5, 30);
+        if(this->cajitaDeLaGrua != 0 && this->pilasDeCajas[posActualGrua].size() == 6)
+        {
+            this->timer->stop();
+            while(!this->stackDeInstrucciones.empty())
+                this->stackDeInstrucciones.pop();
 
-//            //ANIMACION PARA LA PARTE DERECAH DE LA GRUA
-//            QGraphicsItemAnimation *animation_der = new QGraphicsItemAnimation;
-//            animation_der->setItem(this->grua_der);
-//            animation_der->setTimeLine(timeline);
-//            animation_der->setRotationAt(0.5, -30);
+            QMessageBox msg;
+            msg.setText("Usted esta loco! Solo son seis cajas por pila, plis!");
+            msg.exec();
 
-
-//            timeline->start();
-//        }
+            return;
+        }
 
 
         int posY_grua = 0;
@@ -285,12 +270,32 @@ void graphicsscenegame::animar_v2()
 
 
         if(posY_grua != this->cableDeLaGrua->y() && !subirGrua)
-        {
+        {            
+
+            //ACTUALIZAR LA POSICION 'Y' DE LA GRUA Y DE LA CAJA QUE TIENE
             this->cableDeLaGrua->setPos(this->cableDeLaGrua->x(), this->cableDeLaGrua->y()+1);
             this->grua_izq->setPos(this->grua_izq->x(), this->grua_izq->y()+1);
             this->grua_der->setPos(this->grua_der->x(), this->grua_der->y()+1);
             if(this->cajitaDeLaGrua != 0)
                 this->cajitaDeLaGrua->setY(this->cajitaDeLaGrua->y() + 1);
+
+
+            //RELIZAR LA ANIMACION SI LA GRUA VA A AGARRAR UNA CAJA
+            if(this->gruaAbierta == true)
+            {
+
+                if(posY_gruaActual>(posY_grua - 65) &&  posY_gruaActual%3 == 0)
+                {
+                    if(this->anguloActualGrua != 0)
+                    {
+                        int anguloGrua = this->anguloActualGrua - 1;
+                        this->grua_izq->setTransform(QTransform().translate(36,0).rotate(anguloGrua).translate(-36,0));
+                        this->grua_der->setTransform(QTransform().translate(0,0).rotate((anguloGrua) * -1).translate(0,0));
+
+                        this->anguloActualGrua--;
+                    }
+                }
+            }
         }
         else
         {
@@ -310,6 +315,30 @@ void graphicsscenegame::animar_v2()
                  this->cajitaDeLaGrua = 0;
             }
 
+            //SI LA GRUA LLEGO A SU PUNTO MAS BAJO, DEJO UNA CAJA O NO HAY CAJAS POR LEVANTAR, ENTONCES ABRO LA GRUA
+            if(this->cajitaDeLaGrua == 0)
+                this->gruaAbierta = true;
+            else
+                this->gruaAbierta = false;
+
+            if(this->cableDeLaGrua->y() == posY_grua &&
+                    (this->cajitaDeLaGrua == 0 || this->pilasDeCajas[posActualGrua].size()==0))
+            {
+                 this->gruaAbierta = true;
+            }
+
+            if(this->gruaAbierta && posY_gruaActual%3 == 0)
+            {
+                if(this->anguloActualGrua <= 20)
+                {
+                    this->anguloActualGrua++;
+
+                    int anguloGrua = this->anguloActualGrua + 1;
+                    this->grua_izq->setTransform(QTransform().translate(36,0).rotate(anguloGrua).translate(-36,0));
+                    this->grua_der->setTransform(QTransform().translate(0,0).rotate((anguloGrua)*-1).translate(0,0));
+                }
+            }
+
             this->cableDeLaGrua->setY(this->cableDeLaGrua->y()-1);
             this->grua_izq->setY(this->grua_izq->y()-1);
             this->grua_der->setY(this->grua_der->y()-1);
@@ -318,42 +347,40 @@ void graphicsscenegame::animar_v2()
 
 
 
-            //#####################################################################################################
-            //#                       TODO: MOSTRAR ERROR AL PONER MAS DE SEIS CAJAS                              #
-            //#####################################################################################################
-
-
-
             //SI LLEGUE A LA PARTE MAS ALTA, SEGUIR CON LA OTRA INSTRUCCION
             if(this->cableDeLaGrua->y() == -453 + 50)
             {
-                if((instruccionActual+1) % 8 == 0 || instruccionActual == 27)
-                    this->stackDeInstrucciones.pop();
-                else
-                {
-                    this->subirGrua = false;
-                    instruccionActual++;
-                    this->stackDeInstrucciones.pop();
-                    this->stackDeInstrucciones.push(instruccionActual);
-                }
+                this->SiguienteInstruccion();
+                this->subirGrua = false;
             }
 
-
-
-
         }
+        return;
     }
-
-
-    //#####################################################################################################
-    //#                  TODO: MOSTRAR ERROR SI SE QUIERE SALIR DEL RANGO DE PILAS                        #
-    //#####################################################################################################
 
 
 
     //LEFT
     if(Action::Actions[instruccionActual] == 2)
     {
+
+        //#####################################################################################################
+        //#                  TODO: MOSTRAR ERROR SI SE QUIERE SALIR DEL RANGO DE PILAS                        #
+        //#####################################################################################################
+
+        if(this->posActualGrua == this->posPilaInicial)
+        {
+            this->timer->stop();
+            while(!this->stackDeInstrucciones.empty())
+                this->stackDeInstrucciones.pop();
+
+            QMessageBox msg;
+            msg.setText("Usted esta loco! No se salga del rango, plis!");
+            msg.exec();
+
+            return;
+        }
+
         //la posicion X que deberia de tener
         int posX_grua = Pos_Grua_Inicial + ((posActualGrua-1) * (Size_Caja + 20));
         int posX_gruaActual = this->cableDeLaGrua->x();
@@ -369,22 +396,35 @@ void graphicsscenegame::animar_v2()
         }
         else
         {
-            posActualGrua--;
-            if((instruccionActual+1) % 8 == 0 || instruccionActual == 27)
-                this->stackDeInstrucciones.pop();
-            else
-            {
-                instruccionActual++;
-                this->stackDeInstrucciones.pop();
-                this->stackDeInstrucciones.push(instruccionActual);
-            }
-            return;
+            this->posActualGrua--;
+            this->SiguienteInstruccion();
         }
+        return;
     }
 
     //RIGHT
     if(Action::Actions[instruccionActual] == 3)
     {
+
+        //#####################################################################################################
+        //#                  TODO: MOSTRAR ERROR SI SE QUIERE SALIR DEL RANGO DE PILAS                        #
+        //#####################################################################################################
+
+
+        if(this->posActualGrua == this->posPilaFinal)
+        {
+            this->timer->stop();
+            while(!this->stackDeInstrucciones.empty())
+                this->stackDeInstrucciones.pop();
+
+            QMessageBox msg;
+            msg.setText("Usted esta loco! No se salga del rango, plis!");
+            msg.exec();
+
+            return;
+        }
+
+
         //la posicion X que deberia de tener
         int posX_grua = Pos_Grua_Inicial + ((posActualGrua+1) * (Size_Caja + 20));
         int posX_gruaActual = this->cableDeLaGrua->x();
@@ -400,17 +440,10 @@ void graphicsscenegame::animar_v2()
         }
         else
         {
-            posActualGrua++;
-            if((instruccionActual+1) % 8 == 0 || instruccionActual == 27)
-                this->stackDeInstrucciones.pop();
-            else
-            {
-                instruccionActual++;
-                this->stackDeInstrucciones.pop();
-                this->stackDeInstrucciones.push(instruccionActual);
-            }
-            return;
+            this->posActualGrua++;
+            this->SiguienteInstruccion();
         }
+        return;
     }
 
 
@@ -418,28 +451,40 @@ void graphicsscenegame::animar_v2()
     //NUMBER JUAN (1)
     if(Action::Actions[instruccionActual] == 4)
     {
+        this->SiguienteInstruccion();
         this->stackDeInstrucciones.push(0);
+
+        return;
     }
 
 
     //NUMBER TU (2)
     if(Action::Actions[instruccionActual] == 5)
     {
+        this->SiguienteInstruccion();
         this->stackDeInstrucciones.push(8);
+
+        return;
     }
 
 
     //NUMBER TREE (3)
     if(Action::Actions[instruccionActual] == 6)
     {
+        this->SiguienteInstruccion();
         this->stackDeInstrucciones.push(16);
+
+        return;
     }
 
 
     //NUMBER FOR (4)
     if(Action::Actions[instruccionActual] == 7)
     {
+        this->SiguienteInstruccion();
         this->stackDeInstrucciones.push(24);
+
+        return;
     }
 
 
@@ -460,4 +505,72 @@ void graphicsscenegame::terminoAnimacion()
 
 }
 
+void graphicsscenegame::SiguienteInstruccion()
+{
+    if((stackDeInstrucciones.top()+1) % 8 == 0 || stackDeInstrucciones.top() == 27)
+        this->stackDeInstrucciones.pop();
+    else
+    {
+        int instruccionActual = this->stackDeInstrucciones.top() + 1;
+        this->stackDeInstrucciones.pop();
+        this->stackDeInstrucciones.push(instruccionActual);
+    }
 
+    //#####################################################################################################
+    //#                        TODO: MOSTRAR LA PANTALLA DE FIN DEL JUEGO                                 #
+    //#####################################################################################################
+
+    if(PuzzleResuelto())
+    {
+        this->timer->stop();
+        while(!this->stackDeInstrucciones.empty())
+            this->stackDeInstrucciones.pop();
+
+        QMessageBox a;
+        a.setText("puzzle realizado con " + QString::number(this->getCantidadInstruccionesUtilizadas()) + " instrucciones");
+        a.exec();
+    }
+}
+
+bool graphicsscenegame::PuzzleResuelto()
+{
+    //PROCEDIMIENTO LOCO :E
+    QVector<QVector<XmlPuzzleTree::Colores > > cajitas;
+    for(int i=0; i<8; i++)
+    {
+        QVector<XmlPuzzleTree::Colores > temp;
+        cajitas.push_back(temp);
+    }
+
+    for(int i=posPilaInicial; i<=posPilaFinal; i++)
+    {
+        for(int j=0; j<this->pilasDeCajas[i].size(); j++)
+        {
+            cajitas[i].push_back(pilasDeCajas[i][j]->getColorCaja());
+        }
+    }
+
+    bool puzzleResuelto = true;
+
+    for(int i=posPilaInicial; i<=posPilaFinal; i++)
+    {
+        if(cajitas[i] != this->xmlTreeFinal->getPilaDeCajitas(i))
+        {
+            puzzleResuelto = false;
+            break;
+        }
+    }
+
+    return puzzleResuelto;
+}
+
+int graphicsscenegame::getCantidadInstruccionesUtilizadas()
+{
+    int count = 0;
+    for(int i=0; i<28; i++)
+    {
+        if(Action::Actions[i] != 0)
+            count++;
+    }
+    return count;
+}

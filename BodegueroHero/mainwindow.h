@@ -38,6 +38,7 @@ private:
     void initializeLanes();    
     QGridLayout* getNewLayout(int id);
  private slots:
+    void on_btn_ClearGame_clicked();
     void on_btn_ConfigurarVelocidad_clicked();
     void on_btn_StopGame_clicked();
     void on_btn_PlayGame_clicked();
