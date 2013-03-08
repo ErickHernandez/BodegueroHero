@@ -107,15 +107,12 @@ void DragWidget::dragMoveEvent(QDragMoveEvent *event)
 void DragWidget::dropEvent(QDropEvent *event)
  {       
 
-    if(this->action != Action::Empty()){// OK OK OK pero funciona
+    if(this->action != Action::Empty() && this != event->source()){// OK OK OK pero funciona
         event->ignore();
         return;
     }
 
-     if (event->mimeData()->hasFormat("application/x-dnditemdata")) {
-
-         if(this == event->source())
-             return;
+     if (event->mimeData()->hasFormat("application/x-dnditemdata")) {         
 
 //event->source() != this &&
          if ( this->isOriginFrame == false){//VALIDAR SI EL ACION ES EMPTY

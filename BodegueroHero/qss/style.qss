@@ -1,17 +1,17 @@
 #cmdStart {
-    background-image: url(:/images/Start.png);
+    background-image: url(:/images/FondoInicio.png);
 }
 
 #MenuPage {
-    background-image: url(:/images/Background.png);
+    background-image: url(:/images/FondoMenu.png);
 }
 
-#Profiles{    background-image: url(:/images/Background.png);}
-#NewGames{    background-image: url(:/images/Background.png);}
+#Profiles{    background-image: url(:/images/FondoMenu.png);}
+#NewGames{    background-image: url(:/images/FondoMenu.png);}
 
-#Difficults{    background-image: url(:/images/Background.png);}
+#Difficults{    background-image: url(:/images/FondoMenu.png);}
 
-#Levels	{    background-image: url(:/images/Background.png);}
+#Levels	{    background-image: url(:/images/FondoMenu.png);}
 
 #Play{    background-image: url(:/images/Background.png);}
 

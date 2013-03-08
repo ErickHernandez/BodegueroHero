@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "QFile"
 #include <QGridLayout>
+#include <windialog.h>
 
 
 
@@ -40,6 +41,9 @@ MainWindow::MainWindow(QWidget *parent) :
     //this->ui->screenManager->setCurrentIndex(7);// Por test nada mas
 
     initializeLanes();
+
+    //WinDialog *w = new WinDialog(this->parentWidget());
+    //w->show();
 
 }
 

@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     graphicsscenegame.cpp \
     dragwidget.cpp \
     action.cpp \
-    caja.cpp
+    caja.cpp \
+    windialog.cpp
 
 HEADERS  += mainwindow.h \
     dbConnection.h \
@@ -28,9 +29,11 @@ HEADERS  += mainwindow.h \
     graphicsscenegame.h \
     dragwidget.h \
     action.h \
-    caja.h
+    caja.h \
+    windialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    windialog.ui
 
 RESOURCES += \
     Images.qrc
