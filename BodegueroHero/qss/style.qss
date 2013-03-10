@@ -22,6 +22,7 @@
 
 
 
+
 QPushButton
 {
     color: #b1b1b1;
@@ -34,6 +35,8 @@ QPushButton
     padding-left: 5px;
     padding-right: 5px;
 }
+
+
 
 #QLable{border-radius: 4; border-style: solid;}
 

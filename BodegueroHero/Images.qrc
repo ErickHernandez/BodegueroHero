@@ -69,5 +69,6 @@
         <file>images/grua_izq.png</file>
         <file>images/FondoInicio.png</file>
         <file>images/FondoMenu.png</file>
+        <file>images/caja2.png</file>
     </qresource>
 </RCC>
