@@ -156,11 +156,31 @@ void MainWindow::on_actionBack_triggered()
 
     if(index>0)
     {
+        if (index==4)
+        {
+        this->ui->screenManager->setCurrentIndex(index-2);
+        }
         if(index == 7)// si esta en la pantalla de jugar
         {
             //EH: Preguntar si realmente quiere abandonar el juego.
-             this->ui->screenManager->setCurrentIndex(index-2);
-             this->resetPuzzle();
+              QMessageBox msgBox;
+             msgBox.setText("¿Realmente desea salir de juego?");
+             QPushButton *connectButton = msgBox.addButton(tr("Si"), QMessageBox::ActionRole);
+             QPushButton *abortButton = msgBox.addButton(QMessageBox::No);
+             msgBox.exec();
+
+             if (msgBox.clickedButton() == connectButton) {
+
+                 //this->ui->screenManager->setCurrentIndex(index-2);
+                  this->resetPuzzle();
+                  PUNTOS=getScores(CurrentUser,CurrentLevel);//piden los scores del nivel tutorial con este usuario
+                   setHighScore(PUNTOS);
+                 this->ui->screenManager->setCurrentIndex(5);
+
+             } else if (msgBox.clickedButton() == abortButton) {
+
+                    }
+                        //EH: Preguntar si realmente quiere abandonar el juego.
         }
         else
             //EH: Validar ciertas cosas, como dejar en blanco textbox, etc
@@ -172,31 +192,46 @@ void MainWindow::on_actionBack_triggered()
 void MainWindow::on_btn_CrearPerfil_clicked()
 {
     cargarPerfil();
-    if(UsuariosDisponibles>0){
+    if(!ui->NewPlayer->toPlainText().isEmpty()){
+        if(UsuariosDisponibles>0){
         QString nombre =ui->NewPlayer->toPlainText();
         CrearPerfil(nombre);
         ui->NewPlayer->clear();
         CurrentUser=nombre;
         cargarPerfil();
         ui->screenManager->setCurrentIndex(4);
+        }else
+        {
+             QMessageBox msgBox;
+              msgBox.setText("Si continua borrará el jugador mas antiguo en este menu \n ¿Desea Continuar?");
+              QPushButton *connectButton = msgBox.addButton(tr("Si"), QMessageBox::ActionRole);
+              QPushButton *abortButton = msgBox.addButton(QMessageBox::No);
+              msgBox.exec();
+
+            if (msgBox.clickedButton() == connectButton) {
+                QString nombre =ui->NewPlayer->toPlainText();
+
+                if (CrearPerfil(nombre)){
+                        ui->NewPlayer->clear();
+                    CurrentUser=nombre;
+                    cargarPerfil();
+                    ui->screenManager->setCurrentIndex(4);
+                }else{
+                    QMessageBox *mg= new QMessageBox();
+                    mg->setText("nombre de usuario ya existe");
+                    mg->exec();
+                }
+                } else if (msgBox.clickedButton() == abortButton) {
+              ui->screenManager->setCurrentIndex(2);
+            }
+        }
+
     }else
     {
-         QMessageBox msgBox;
-          msgBox.setText("Si continua borrará el jugador mas antiguo en este menu \n ¿Desea Continuar?");
-          QPushButton *connectButton = msgBox.addButton(tr("Si"), QMessageBox::ActionRole);
-          QPushButton *abortButton = msgBox.addButton(QMessageBox::No);
-          msgBox.exec();
+        WinDialog *w = new WinDialog();
 
-        if (msgBox.clickedButton() == connectButton) {
-            QString nombre =ui->NewPlayer->toPlainText();
-            CrearPerfil(nombre);
-            ui->NewPlayer->clear();
-            CurrentUser=nombre;
-            cargarPerfil();
-            ui->screenManager->setCurrentIndex(4);
-        } else if (msgBox.clickedButton() == abortButton) {
-          ui->screenManager->setCurrentIndex(2);
-        }
+        w->show();
+         w->setText("No se puede Crear un perfil porque el nombre aparece Vacio");
     }
 }
 
@@ -236,39 +271,39 @@ void MainWindow::setHighScore(QList<score> PUNTOS)
         QString highscore;
          switch(PUNTOS.at(x).nivel)
          {
-         case 1:
-         case 7:
+         case 0:
+         case 6:
              highscore="";
               highscore.setNum(PUNTOS.at(x).puntaje);
              this->ui->lbl_level1->setText(highscore);
          break;
 
+         case 1:
+         case 7:
+             highscore="";
+             highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level2->setText(highscore);
+         break;
          case 2:
          case 8:
              highscore="";
              highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level2->setText(highscore);
+             this->ui->lbl_level3->setText(highscore);
          break;
          case 3:
          case 9:
              highscore="";
              highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level3->setText(highscore);
+             this->ui->lbl_level4->setText(highscore);
          break;
          case 4:
          case 10:
              highscore="";
              highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level4->setText(highscore);
+             this->ui->lbl_level5->setText(highscore);
          break;
          case 5:
          case 11:
-             highscore="";
-             highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level5->setText(highscore);
-         break;
-         case 6:
-         case 12:
              highscore="";
              highscore.setNum(PUNTOS.at(x).puntaje);
              this->ui->lbl_level6->setText(highscore);
@@ -297,11 +332,11 @@ void MainWindow::on_btn_lvl1_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_1.txt"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_1.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,0,":puzzles/tutorial_1.txt"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_1.txt"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_1.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,6,":puzzles/avanzado_1.txt"));
     }
 }
 
@@ -375,11 +410,11 @@ void MainWindow::on_bnt_lvl3_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_3.txt"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_3.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,2,":puzzles/tutorial_3.txt"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_3.txt"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_3.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,8,":puzzles/avanzado_3.txt"));
     }
 }
 
@@ -389,11 +424,11 @@ void MainWindow::on_bnt_lvl5_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_5.txt"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_5.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,4,":puzzles/tutorial_5.txt"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_5.txt"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_5.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,10,":puzzles/avanzado_5.txt"));
     }
 }
 
@@ -403,11 +438,11 @@ void MainWindow::on_bnt_lvl2_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_2.txt"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_2.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,1,":puzzles/tutorial_2.txt"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_2.txt"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_2.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,7,":puzzles/avanzado_2.txt"));
     }
 }
 
@@ -417,11 +452,11 @@ void MainWindow::on_bnt_lvl4_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_4.txt"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_4.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,3,":puzzles/tutorial_4.txt"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_4.txt"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_4.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,8,":puzzles/avanzado_4.txt"));
     }
 }
 
@@ -431,11 +466,11 @@ void MainWindow::on_bnt_lvl6_clicked()
     if(CurrentLevel==0)
     {
         ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/tutorial_6.txt"));
-        ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/tutorial_6.txt"));
+        ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,5,":puzzles/tutorial_6.txt"));
     }else
     {
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_6.txt"));
-         ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_6.txt"));
+         ui->graphicsView_Game->setScene(new graphicsscenegame(CurrentUser,11,":puzzles/avanzado_6.txt"));
     }
 }
 
@@ -499,7 +534,8 @@ void MainWindow::on_btn_PlayGame_clicked()
 {
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
     scene->AnimarPuzzle();
-}
+
+  }
 
 void MainWindow::on_btn_StopGame_clicked()
 {
@@ -530,4 +566,17 @@ void MainWindow::resetPuzzle()
 void MainWindow::on_btn_ClearGame_clicked()
 {
     this->resetPuzzle();
+}
+
+void MainWindow::winer(int puntos)//esta funcion tenes ke llamar cuando ganas
+{
+    int nivel =CurrentLevel;
+    QString nombre= CurrentUser;
+    actualizar_puntos(nombre, puntos, nivel);
+    WinDialog *w = new WinDialog();
+    QString str= "Felicidades "+nombre+" ganaste, lo hiciste con "+QString::number(puntos)+ " puntos!!";
+    ui->screenManager->setCurrentIndex(6);
+    w->setText(str);
+    w->show();
+
 }

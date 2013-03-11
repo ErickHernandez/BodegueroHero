@@ -17,6 +17,8 @@
 #include <math.h>
 #include <stack>
 #include <QMessageBox>
+#include <windialog.h>
+#include <mainwindow.h>
 
 using namespace std;
 
@@ -24,7 +26,9 @@ class graphicsscenegame: public QGraphicsScene
 {
     Q_OBJECT
 public:
-    graphicsscenegame(QString puzzle, QObject *parent = 0);
+    graphicsscenegame(QString name, int level,QString puzzle, QObject *parent = 0);
+    QString player;
+    int level;
     void AnimarPuzzle();
     void DetenerPuzzle();
     void CambiarVelocidad();

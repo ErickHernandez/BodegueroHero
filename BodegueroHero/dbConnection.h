@@ -151,7 +151,7 @@ static QList<nivel> SelectAllNiveles()
 static int idJugador(QString nombre)
 {
       QString Q;
-      Q="select nombre from jugador where nombre=""'"+nombre+"'"")";
+      Q="select id from jugador where nombre =""'"+nombre+"'";
 //      Q.append(nombre);
 
         bool a;
@@ -164,8 +164,40 @@ static int idJugador(QString nombre)
       return id;
   }
 
+static bool actualizar_puntos(QString nombre,int puntos,int nivel)
+{
+        QString Q;
+        Q="Select nombre,puntaje from niveles where nombre=""'"+nombre+"' and nivel=""'"+ QString::number(nivel)+"'";
 
+        QSqlQuery R(Q);
+        bool a = R.exec();
+        R.next();
+        QString name =R.value(0).toString();
+        int id = idJugador(nombre);
+        int puntosH=R.value(1).toInt();
+        QString id2,pnts,nivl;
+        pnts.setNum(puntos);
+        nivl.setNum(nivel);
+        id2.setNum(id);
 
+            if(name.isEmpty() )
+            {
+                Q="insert into niveles(id,nombre,nivel,puntaje)values("+ id2 +",'"+ nombre +"',"+ nivl +","+ pnts +")";
+                QSqlQuery R2(Q);
+                bool a= R2.exec();
+                return a;
+            }else
+            {
+                if (puntosH>puntos)
+                {
+                    Q="update niveles set nombre='"+nombre+"',nivel="+nivl+",puntaje="+pnts+" where id="+id2;
+                    QSqlQuery R2(Q);
+                    bool a= R2.exec();
+                    return a;
+                }
+            }
+
+}
 static QString NombreJugador(int id)
 {
       QString Q;

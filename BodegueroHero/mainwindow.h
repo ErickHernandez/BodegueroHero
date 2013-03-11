@@ -25,7 +25,8 @@ public:
     ~MainWindow();
     void cargarPerfil();
     QString CurrentUser;    
-   // QString CurrentLevel;    
+    void winer(int puntos);
+    // QString CurrentLevel;
 
 private:
     Ui::MainWindow *ui;

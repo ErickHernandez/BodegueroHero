@@ -7,13 +7,14 @@
 #define Velocidad_Normal    10
 #define Velocidad_Rapida    4
 
-graphicsscenegame::graphicsscenegame(QString puzzle, QObject *parent): QGraphicsScene(parent)
+graphicsscenegame::graphicsscenegame(QString name,int level,QString puzzle, QObject *parent): QGraphicsScene(parent)
 {
     //LA GRUA NO TIENE UN CAJA INCIALMENTE
     this->cajitaDeLaGrua = 0;
     this->gruaAbierta = true;
     this->anguloActualGrua = 0;
-
+    this->player=name;
+    this->level=level;
 //    this->instruccionActual = 0;
 
     this->setXmlPuzzleTrees(puzzle);
@@ -184,7 +185,6 @@ void graphicsscenegame::DetenerPuzzle()
         this->ReiniciarPuzzle();
     }
 }
-
 
 void graphicsscenegame::AnimarPuzzle()
 {
@@ -526,9 +526,18 @@ void graphicsscenegame::SiguienteInstruccion()
         while(!this->stackDeInstrucciones.empty())
             this->stackDeInstrucciones.pop();
 
-        QMessageBox a;
+       /* QMessageBox a;
         a.setText("puzzle realizado con " + QString::number(this->getCantidadInstruccionesUtilizadas()) + " instrucciones");
         a.exec();
+    */
+
+
+         WinDialog *w = new WinDialog();
+         w->show();
+         w->setObjectName("Ganaste");
+        int p= this->getCantidadInstruccionesUtilizadas();
+        w->setText("Puzzle realizado con "+QString::number(p)+" instrucciones");
+        actualizar_puntos(player, p, level);
     }
 }
 
