@@ -34,7 +34,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="StartPage">
      <widget class="QPushButton" name="cmdStart">
@@ -336,7 +336,7 @@
      <widget class="QLabel" name="label_16">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>340</x>
         <y>540</y>
         <width>61</width>
         <height>61</height>
@@ -352,8 +352,8 @@
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>490</y>
+        <x>280</x>
+        <y>480</y>
         <width>81</width>
         <height>71</height>
        </rect>
@@ -362,7 +362,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+       <pixmap resource="Images.qrc">:/images/caja2.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -372,16 +372,16 @@
       <property name="geometry">
        <rect>
         <x>250</x>
-        <y>560</y>
-        <width>51</width>
-        <height>41</height>
+        <y>550</y>
+        <width>61</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+       <pixmap resource="Images.qrc">:/images/orange_box_game.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -392,7 +392,7 @@
        <rect>
         <x>600</x>
         <y>540</y>
-        <width>61</width>
+        <width>51</width>
         <height>61</height>
        </rect>
       </property>
@@ -400,13 +400,16 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+       <pixmap resource="Images.qrc">:/images/orange_box_game.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>660</x>
+        <x>790</x>
         <y>540</y>
         <width>61</width>
         <height>61</height>
@@ -424,7 +427,7 @@
        <rect>
         <x>450</x>
         <y>420</y>
-        <width>221</width>
+        <width>231</width>
         <height>60</height>
        </rect>
       </property>
@@ -472,35 +475,19 @@
        </font>
       </property>
       <property name="text">
-       <string>Crear Perfil</string>
+       <string>CREATE PROFILE</string>
       </property>
       <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_17">
-      <property name="geometry">
-       <rect>
-        <x>850</x>
-        <y>490</y>
-        <width>61</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>990</x>
-        <y>0</y>
+        <x>950</x>
+        <y>-10</y>
         <width>61</width>
-        <height>441</height>
+        <height>311</height>
        </rect>
       </property>
       <property name="text">
@@ -513,17 +500,20 @@
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>430</y>
-        <width>61</width>
-        <height>61</height>
+        <x>930</x>
+        <y>310</y>
+        <width>51</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+       <pixmap resource="Images.qrc">:/images/red_box_game.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QGroupBox" name="groupBox">
@@ -638,7 +628,7 @@
        </font>
       </property>
       <property name="title">
-       <string>Selecciona tu Perfil</string>
+       <string>SELECT YOUR PROFILE</string>
       </property>
       <property name="flat">
        <bool>true</bool>
@@ -924,6 +914,41 @@
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_36">
+      <property name="geometry">
+       <rect>
+        <x>910</x>
+        <y>290</y>
+        <width>91</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Tenaza_Cerrada.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_37">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>540</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/caja2.png</pixmap>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="NewGames">
      <widget class="QLabel" name="label_2">
@@ -977,8 +1002,8 @@
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>510</y>
+        <x>370</x>
+        <y>520</y>
         <width>61</width>
         <height>61</height>
        </rect>
@@ -993,8 +1018,8 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>530</y>
+        <x>370</x>
+        <y>480</y>
         <width>51</width>
         <height>41</height>
        </rect>
@@ -1013,7 +1038,7 @@
       <property name="geometry">
        <rect>
         <x>290</x>
-        <y>490</y>
+        <y>510</y>
         <width>81</width>
         <height>71</height>
        </rect>
@@ -1942,6 +1967,41 @@
         </font>
        </property>
       </widget>
+     </widget>
+     <widget class="QLabel" name="label_35">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>410</y>
+        <width>91</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Tenaza_Cerrada.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>520</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="Difficults">
