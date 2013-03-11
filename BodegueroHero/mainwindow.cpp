@@ -146,7 +146,11 @@ void MainWindow::on_cmdStart_clicked()
 
 void MainWindow::on_actionHome_triggered()
 {
+    int index = this->ui->screenManager->currentIndex();
     //EH: si esta en la pantalla de juegos preguntarle si quiere abandonar el juego.
+    if(index == 7)
+        this->resetPuzzle();
+
     this->ui->screenManager->setCurrentIndex(0);
 }
 
@@ -156,7 +160,9 @@ void MainWindow::on_actionBack_triggered()
 
     if(index>0)
     {
-        if(index == 7)// si esta en la pantalla de jugar
+        if(index == 4 || index == 3)
+            this->ui->screenManager->setCurrentIndex(index-2);
+        else if(index == 7)// si esta en la pantalla de jugar
         {
             //EH: Preguntar si realmente quiere abandonar el juego.
              this->ui->screenManager->setCurrentIndex(index-2);
