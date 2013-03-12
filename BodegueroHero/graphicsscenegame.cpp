@@ -6,6 +6,10 @@
 #define Pos_Grua_Inicial 167 + 26
 #define Velocidad_Normal    10
 #define Velocidad_Rapida    4
+#define Size_Nube1       103
+#define Size_Nube2       83
+#define Size_Nube3       82
+#define Size_Nube4       159
 
 graphicsscenegame::graphicsscenegame(QString puzzle, QObject *parent): QGraphicsScene(parent)
 {
@@ -17,6 +21,7 @@ graphicsscenegame::graphicsscenegame(QString puzzle, QObject *parent): QGraphics
 //    this->instruccionActual = 0;
 
     this->setXmlPuzzleTrees(puzzle);
+    this->PintarBackgroud();
     this->PintarPuzzle(this->xmlTreeInicial);
 
 //    this->thread = new QThread;
@@ -25,6 +30,9 @@ graphicsscenegame::graphicsscenegame(QString puzzle, QObject *parent): QGraphics
     this->timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(animar_v2()));
 
+    this->timer_nubes = new QTimer;
+    connect(timer_nubes,SIGNAL(timeout()),this,SLOT(animar_Nubes()));
+    this->timer_nubes->start(40);
 }
 
 void graphicsscenegame::setXmlPuzzleTrees(QString puzzle)
@@ -48,21 +56,13 @@ void graphicsscenegame::setXmlPuzzleTrees(QString puzzle)
     this->xmlTreeFinal = handler->getArbolEstadoFinal();
 }
 
-void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
+void graphicsscenegame::PintarBackgroud()
 {
-    for(int i=0; i<8; i++)
-    {
-        QVector<Caja *> temp;
-        this->pilasDeCajas.push_back(temp);
-    }
-
-
-    //MM: MOVI LAS OPCIONES DE DIBUJADO QUE HABIAN EN EL CONSTRUCTOR HACIA ESTA FUNCION
-
+    //PRIMERO DIBUJO EL BACKGROUND
     //MM: IMAGENES DEL GRAPHICS SCENE QUE SE USAN PARA ARMAR EL BACKGROUND
     this->setSceneRect(0,0,700,400);
 
-    QPixmap *pixmap = new QPixmap(":images/background_game.png");
+    QPixmap *pixmap = new QPixmap(":images/Background_game_simple.png");
     QGraphicsPixmapItem *background = new QGraphicsPixmapItem();
     background->setPixmap(*pixmap);
     this->addItem(background);
@@ -71,20 +71,117 @@ void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
     background = new QGraphicsPixmapItem();
     background->setPixmap(*pixmap);
     background->setPos(10, 285);
+    background->setZValue(20);
     this->addItem(background);
 
-    pixmap = new QPixmap(":images/Cables_game.png");
+    pixmap = new QPixmap(":images/Suelo_game.png");
     background = new QGraphicsPixmapItem();
     background->setPixmap(*pixmap);
-    background->setPos(20, 0);
+    background->setPos(0, 355);
+//    background->setPos(0, 354.97);
+    background->setZValue(20);
     this->addItem(background);
 
-    pixmap = new QPixmap(":images/Cables_game.png");
-    background = new QGraphicsPixmapItem();
-    background->setPixmap(*pixmap);
-    background->setPos(38, 0);
-    this->addItem(background);
+    //CABLES QUE SALEN DEL CENTRO DE MANDO
+    pixmap = new QPixmap(":images/Cable_largo.png");
+    cable_CentroDeMando_izq = new QGraphicsPixmapItem();
+    cable_CentroDeMando_izq->setPixmap(*pixmap);
+    cable_CentroDeMando_izq->setPos(20, -300);
+    cable_CentroDeMando_izq->setZValue(10);
+    this->addItem(cable_CentroDeMando_izq);
 
+
+    pixmap = new QPixmap(":images/Cable_largo.png");
+    cable_CentroDeMando_der = new QGraphicsPixmapItem();
+    cable_CentroDeMando_der->setPixmap(*pixmap);
+    cable_CentroDeMando_der->setPos(38, -300);
+    cable_CentroDeMando_der->setZValue(10);
+    this->addItem(cable_CentroDeMando_der);
+
+    //AGREGADO LO DE LAS NUBES EN MOVIMIENTO
+    QPointF posNube1(195,125);
+    QPointF posNube2(560,25);
+    QPointF posNube3(390,75);
+    QPointF posNube4(20,50);
+
+    //INSTANCIAS DE LAS NUBES Y SU COPIAS
+    //NUBE1
+    pixmap = new QPixmap(":images/Nube1_game.png");
+    nube1 = new QGraphicsPixmapItem();
+    nube1->setPixmap(*pixmap);
+    nube1->setPos(posNube1);
+    nube1->setZValue(5);
+    nube1->setTransformationMode(Qt::SmoothTransformation);
+    this->addItem(nube1);
+    //COPIA DE LA NUBE1
+    pixmap = new QPixmap(":images/Nube1_game.png");
+    nube1_2 = new QGraphicsPixmapItem();
+    nube1_2->setPixmap(*pixmap);
+    nube1_2->setPos(posNube1.x() - 700, posNube1.y());
+    nube1_2->setZValue(5);
+    nube1_2->setTransformationMode(Qt::SmoothTransformation);
+    this->addItem(nube1_2);
+
+    //NUBE2
+    pixmap = new QPixmap(":images/Nube2_game.png");
+    nube2 = new QGraphicsPixmapItem();
+    nube2->setPixmap(*pixmap);
+    nube2->setPos(posNube2);
+    nube2->setZValue(5);
+    nube2->setTransformationMode(Qt::SmoothTransformation);
+    this->addItem(nube2);
+    //COPIA DE LA NUBE2
+    pixmap = new QPixmap(":images/Nube2_game.png");
+    nube2_2 = new QGraphicsPixmapItem();
+    nube2_2->setPixmap(*pixmap);
+    nube2_2->setPos(posNube2.x() - 700, posNube2.y());
+    nube2_2->setZValue(5);
+    nube2_2->setTransformationMode(Qt::SmoothTransformation);
+    this->addItem(nube2_2);
+
+    //NUBE3
+    pixmap = new QPixmap(":images/Nube3_game.png");
+    nube3 = new QGraphicsPixmapItem();
+    nube3->setPixmap(*pixmap);
+    nube3->setPos(posNube3);
+    nube3->setZValue(5);
+    nube3->setTransformationMode(Qt::SmoothTransformation);
+    this->addItem(nube3);
+    //COPIA DE LA NUBE3
+    pixmap = new QPixmap(":images/Nube3_game.png");
+    nube3_2 = new QGraphicsPixmapItem();
+    nube3_2->setPixmap(*pixmap);
+    nube3_2->setPos(posNube3.x() - 700, posNube3.y());
+    nube3_2->setZValue(5);
+    nube3_2->setTransformationMode(Qt::SmoothTransformation);
+    this->addItem(nube3_2);
+
+    //NUBE4
+    pixmap = new QPixmap(":images/Nube4_game.png");
+    nube4 = new QGraphicsPixmapItem();
+    nube4->setPixmap(*pixmap);
+    nube4->setPos(posNube4);
+    nube4->setZValue(5);
+    nube4->setTransformationMode(Qt::SmoothTransformation);
+    this->addItem(nube4);
+    //COPIA DE LA NUBE4
+    pixmap = new QPixmap(":images/Nube4_game.png");
+    nube4_2 = new QGraphicsPixmapItem();
+    nube4_2->setPixmap(*pixmap);
+    nube4_2->setPos(posNube4.x() - 700, posNube4.y());
+    nube4_2->setZValue(5);
+    nube4_2->setTransformationMode(Qt::SmoothTransformation);
+    this->addItem(nube4_2);
+
+}
+
+void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
+{
+    for(int i=0; i<8; i++)
+    {
+        QVector<Caja *> temp;
+        this->pilasDeCajas.push_back(temp);
+    }
 
     this->posPilaInicial = puzzleTree->getIdStackInicial();
     this->posPilaFinal   = puzzleTree->getIdStackFinal();
@@ -115,26 +212,29 @@ void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
     this->cableDeLaGrua = new QGraphicsPixmapItem();
     this->cableDeLaGrua->setPixmap(*cable_grua);//Size_Caja * posInicialGrua + 20*posInicialGrua
     this->cableDeLaGrua->setPos(Pos_Grua_Inicial + (posActualGrua*(Size_Caja + 20)) , -453 + 50);
+    this->cableDeLaGrua->setZValue(20);
     this->addItem(this->cableDeLaGrua);
 
     QPixmap *grua_izq = new QPixmap(":images/grua_izq.png");
     this->grua_izq = new QGraphicsPixmapItem();
     this->grua_izq->setPixmap(*grua_izq);
     this->grua_izq->setPos(Pos_Grua_Inicial + (posActualGrua*(Size_Caja + 20)) - 13 - 14, 50);
+    this->grua_izq->setZValue(20);
     this->addItem(this->grua_izq);
 
     QPixmap *grua_der = new QPixmap(":images/grua_der.png");
     this->grua_der = new QGraphicsPixmapItem();
     this->grua_der->setPixmap(*grua_der);
     this->grua_der->setPos(Pos_Grua_Inicial + (posActualGrua*(Size_Caja + 20)) - 13 + 14, 50);
+    this->grua_der->setZValue(20);
     this->addItem(this->grua_der);
 
     //PARA QUE LA ROTACION SE MIRE SMOOTH
     this->grua_izq->setTransformationMode(Qt::SmoothTransformation);
     this->grua_der->setTransformationMode(Qt::SmoothTransformation);
 
-    this->grua_izq->setTransformOriginPoint(this->grua_izq->boundingRect().center());
-    this->grua_der->setTransformOriginPoint(this->grua_der->boundingRect().center());
+//    this->grua_izq->setTransformOriginPoint(this->grua_izq->boundingRect().center());
+//    this->grua_der->setTransformOriginPoint(this->grua_der->boundingRect().center());
 
 
     //ROTACION
@@ -171,7 +271,18 @@ void graphicsscenegame::ResetearPuzzle()
 
 void graphicsscenegame::ReiniciarPuzzle()
 {
-    this->clear();
+    this->removeItem(this->cableDeLaGrua);
+    this->removeItem(this->grua_der);
+    this->removeItem(this->grua_izq);
+
+    for(int i=this->posPilaInicial; i<=this->posPilaFinal; i++)
+    {
+        for(int j=0; j<this->pilasDeCajas[i].size(); j++)
+        {
+            this->removeItem(this->pilasDeCajas[i][j]);
+        }
+        this->pilasDeCajas[i].clear();
+    }
     this->pilasDeCajas.clear();
     this->PintarPuzzle(this->xmlTreeInicial);
 }
@@ -181,8 +292,47 @@ void graphicsscenegame::DetenerPuzzle()
     if(timer->isActive())
     {
         this->timer->stop();
-        this->ReiniciarPuzzle();
     }
+    this->ReiniciarPuzzle();
+}
+
+void graphicsscenegame::animar_Nubes()
+{
+    if(this->nube1->x() == 700-Size_Nube1)
+        this->nube1_2->setX(-Size_Nube1);
+    if(this->nube1_2->x() == 700-Size_Nube1)
+        this->nube1->setX(-Size_Nube1);
+
+
+    if(this->nube2->x() == 700-Size_Nube2)
+        this->nube2_2->setX(-Size_Nube2);
+    if(this->nube2_2->x() == 700-Size_Nube2)
+        this->nube2->setX(-Size_Nube2);
+
+
+    if(this->nube3->x() == 700-Size_Nube3)
+        this->nube3_2->setX(-Size_Nube3);
+    if(this->nube3_2->x() == 700-Size_Nube3)
+        this->nube3->setX(-Size_Nube3);
+
+
+    if(this->nube4->x() == 700-Size_Nube4)
+        this->nube4_2->setX(-Size_Nube4);
+    if(this->nube4_2->x() == 700-Size_Nube4)
+        this->nube4->setX(-Size_Nube4);
+
+
+    this->nube1->setX(nube1->x()+1);
+    this->nube1_2->setX(nube1_2->x()+1);
+
+    this->nube2->setX(nube2->x()+1);
+    this->nube2_2->setX(nube2_2->x()+1);
+
+    this->nube3->setX(nube3->x()+1);
+    this->nube3_2->setX(nube3_2->x()+1);
+
+    this->nube4->setX(nube4->x()+1);
+    this->nube4_2->setX(nube4_2->x()+1);
 }
 
 
@@ -204,7 +354,6 @@ void graphicsscenegame::AnimarPuzzle()
 
     this->subirGrua = false;
     this->ReiniciarPuzzle();
-//    this->instruccionActual = 0;
     this->stackDeInstrucciones.push(0);
     this->cajitaDeLaGrua = 0;
     this->timer->start(Velocidad_Normal);
@@ -280,6 +429,14 @@ void graphicsscenegame::animar_v2()
                 this->cajitaDeLaGrua->setY(this->cajitaDeLaGrua->y() + 1);
 
 
+            //HACER EL MOVIENTO DE LAS CUERDAS QUE SALEN DEL CENTRO DE MANDO
+            if(posY_gruaActual%2 == 0)
+            {
+                this->cable_CentroDeMando_izq->setY(this->cable_CentroDeMando_izq->y() + 1);
+                this->cable_CentroDeMando_der->setY(this->cable_CentroDeMando_der->y() - 1);
+            }
+
+
             //RELIZAR LA ANIMACION SI LA GRUA VA A AGARRAR UNA CAJA
             if(this->gruaAbierta == true)
             {
@@ -345,6 +502,13 @@ void graphicsscenegame::animar_v2()
             if(this->cajitaDeLaGrua != 0)
                 this->cajitaDeLaGrua->setY(this->cajitaDeLaGrua->y()-1);
 
+
+            //HACER EL MOVIENTO DE LAS CUERDAS QUE SALEN DEL CENTRO DE MANDO
+            if(posY_gruaActual%2 == 0)
+            {
+                this->cable_CentroDeMando_izq->setY(this->cable_CentroDeMando_izq->y() - 1);
+                this->cable_CentroDeMando_der->setY(this->cable_CentroDeMando_der->y() + 1);
+            }
 
 
             //SI LLEGUE A LA PARTE MAS ALTA, SEGUIR CON LA OTRA INSTRUCCION

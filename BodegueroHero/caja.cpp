@@ -21,6 +21,10 @@ Caja::Caja(XmlPuzzleTree::Colores color): QGraphicsPixmapItem()
     this->setPixmap(*pixmap);
     this->colorCaja = color;
 
+    QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect();
+    this->setGraphicsEffect(effect);
+    effect->setOffset(2,2);
+    this->setZValue(10);
 }
 
 XmlPuzzleTree::Colores Caja::getColorCaja()
