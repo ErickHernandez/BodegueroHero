@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <QGraphicsPixmapItem>
 #include "xmlpuzzletree.h"
+#include <QGraphicsDropShadowEffect>
 
 class Caja: public QGraphicsPixmapItem
 {

@@ -4,10 +4,6 @@
         <file>images/Caja1.png</file>
         <file>images/Centro de Mando.png</file>
         <file>images/Fondo.png</file>
-        <file>images/Nube 2.png</file>
-        <file>images/Nube 3.png</file>
-        <file>images/Nube 4.png</file>
-        <file>images/Nube1.png</file>
         <file>images/Tenaza_Abierta.png</file>
         <file>images/Tenaza_Cerrada.png</file>
         <file>images/dificultadesTexto.png</file>
@@ -69,5 +65,13 @@
         <file>images/grua_izq.png</file>
         <file>images/FondoInicio.png</file>
         <file>images/FondoMenu.png</file>
+        <file>images/caja2.png</file>
+        <file>images/Background_game_simple.png</file>
+        <file>images/Nube1_game.png</file>
+        <file>images/Nube2_game.png</file>
+        <file>images/Nube3_game.png</file>
+        <file>images/Nube4_game.png</file>
+        <file>images/Suelo_game.png</file>
+        <file>images/Cable_largo.png</file>
     </qresource>
 </RCC>

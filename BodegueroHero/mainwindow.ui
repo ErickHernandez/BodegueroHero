@@ -34,7 +34,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="StartPage">
      <widget class="QPushButton" name="cmdStart">
@@ -336,7 +336,7 @@
      <widget class="QLabel" name="label_16">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>340</x>
         <y>540</y>
         <width>61</width>
         <height>61</height>
@@ -352,8 +352,8 @@
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>490</y>
+        <x>280</x>
+        <y>480</y>
         <width>81</width>
         <height>71</height>
        </rect>
@@ -362,7 +362,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+       <pixmap resource="Images.qrc">:/images/caja2.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -372,16 +372,16 @@
       <property name="geometry">
        <rect>
         <x>250</x>
-        <y>560</y>
-        <width>51</width>
-        <height>41</height>
+        <y>550</y>
+        <width>61</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+       <pixmap resource="Images.qrc">:/images/orange_box_game.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -392,7 +392,7 @@
        <rect>
         <x>600</x>
         <y>540</y>
-        <width>61</width>
+        <width>51</width>
         <height>61</height>
        </rect>
       </property>
@@ -400,13 +400,16 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+       <pixmap resource="Images.qrc">:/images/orange_box_game.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>660</x>
+        <x>790</x>
         <y>540</y>
         <width>61</width>
         <height>61</height>
@@ -424,7 +427,7 @@
        <rect>
         <x>450</x>
         <y>420</y>
-        <width>221</width>
+        <width>231</width>
         <height>60</height>
        </rect>
       </property>
@@ -472,35 +475,19 @@
        </font>
       </property>
       <property name="text">
-       <string>Crear Perfil</string>
+       <string>CREATE PROFILE</string>
       </property>
       <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_17">
-      <property name="geometry">
-       <rect>
-        <x>850</x>
-        <y>490</y>
-        <width>61</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>10</y>
+        <x>950</x>
+        <y>-10</y>
         <width>61</width>
-        <height>431</height>
+        <height>311</height>
        </rect>
       </property>
       <property name="text">
@@ -513,17 +500,20 @@
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>980</x>
-        <y>440</y>
-        <width>61</width>
-        <height>61</height>
+        <x>930</x>
+        <y>310</y>
+        <width>51</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+       <pixmap resource="Images.qrc">:/images/red_box_game.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QGroupBox" name="groupBox">
@@ -638,7 +628,7 @@
        </font>
       </property>
       <property name="title">
-       <string>Selecciona tu Perfil</string>
+       <string>SELECT YOUR PROFILE</string>
       </property>
       <property name="flat">
        <bool>true</bool>
@@ -924,6 +914,41 @@
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_36">
+      <property name="geometry">
+       <rect>
+        <x>910</x>
+        <y>290</y>
+        <width>91</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Tenaza_Cerrada.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_37">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>540</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/caja2.png</pixmap>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="NewGames">
      <widget class="QLabel" name="label_2">
@@ -977,8 +1002,8 @@
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>510</y>
+        <x>370</x>
+        <y>520</y>
         <width>61</width>
         <height>61</height>
        </rect>
@@ -993,8 +1018,8 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>530</y>
+        <x>370</x>
+        <y>480</y>
         <width>51</width>
         <height>41</height>
        </rect>
@@ -1013,7 +1038,7 @@
       <property name="geometry">
        <rect>
         <x>290</x>
-        <y>490</y>
+        <y>510</y>
         <width>81</width>
         <height>71</height>
        </rect>
@@ -1943,57 +1968,60 @@
        </property>
       </widget>
      </widget>
-    </widget>
-    <widget class="QWidget" name="Difficults">
-     <widget class="QFrame" name="frame_2">
+     <widget class="QLabel" name="label_35">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>10</y>
-        <width>1000</width>
-        <height>161</height>
+        <x>930</x>
+        <y>410</y>
+        <width>91</width>
+        <height>71</height>
        </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/background.png);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLabel" name="lblDificultadTexto">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>40</y>
-         <width>557</width>
-         <height>69</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-image: url(:/images/dificultadesTexto.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="btnAvanzado">
-      <property name="geometry">
-       <rect>
-        <x>570</x>
-        <y>180</y>
-        <width>400</width>
-        <height>300</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/avanzado.png);</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Tenaza_Cerrada.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>520</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Difficults">
+     <widget class="QPushButton" name="btnAvanzado">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>200</y>
+        <width>300</width>
+        <height>199</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Showcard Gothic</family>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>SKILLED</string>
       </property>
       <property name="default">
        <bool>false</bool>
@@ -2005,22 +2033,399 @@
      <widget class="QPushButton" name="btnTutorial">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>180</y>
-        <width>400</width>
-        <height>300</height>
+        <x>180</x>
+        <y>200</y>
+        <width>300</width>
+        <height>199</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/tutorial.png);</string>
+      <property name="font">
+       <font>
+        <family>Showcard Gothic</family>
+        <pointsize>26</pointsize>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
       </property>
       <property name="text">
-       <string/>
+       <string>TUTORIAL</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="autoRepeat">
+       <bool>false</bool>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
       </property>
       <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>110</y>
+        <width>681</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>127</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>127</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>120</red>
+            <green>120</green>
+            <blue>120</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>127</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>127</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>Showcard Gothic</family>
+        <pointsize>20</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="title">
+       <string>SELECT A DIFFICULT</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>0</y>
+        <width>21</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Cables.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>340</y>
+        <width>101</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Tenaza_Cerrada.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>370</y>
+        <width>71</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/caja2.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_27">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>560</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>520</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>560</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/red_box_game.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_30">
+      <property name="geometry">
+       <rect>
+        <x>1040</x>
+        <y>470</y>
+        <width>71</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/caja2.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>520</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_32">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>480</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/green_box_game.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_33">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>540</y>
+        <width>71</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_34">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>480</y>
+        <width>71</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/Caja1.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_26">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>560</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Images.qrc">:/images/caja2.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>groupBox_6</zorder>
+     <zorder>label_18</zorder>
+     <zorder>label_19</zorder>
+     <zorder>label_20</zorder>
+     <zorder>label_27</zorder>
+     <zorder>label_28</zorder>
+     <zorder>label_29</zorder>
+     <zorder>label_30</zorder>
+     <zorder>label_31</zorder>
+     <zorder>label_32</zorder>
+     <zorder>label_33</zorder>
+     <zorder>label_34</zorder>
+     <zorder>label_26</zorder>
+     <zorder>btnTutorial</zorder>
+     <zorder>btnAvanzado</zorder>
     </widget>
     <widget class="QWidget" name="Levels">
      <widget class="QGroupBox" name="groupBox_3">
@@ -2029,7 +2434,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>100</x>
         <y>50</y>
         <width>840</width>
         <height>450</height>
@@ -2146,7 +2551,7 @@
       <widget class="QPushButton" name="btn_lvl1">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>40</x>
          <y>90</y>
          <width>161</width>
          <height>111</height>
@@ -2205,7 +2610,7 @@
       <widget class="QPushButton" name="bnt_lvl4">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>40</x>
          <y>310</y>
          <width>160</width>
          <height>110</height>
@@ -2261,7 +2666,7 @@
       <widget class="QPushButton" name="bnt_lvl5">
        <property name="geometry">
         <rect>
-         <x>310</x>
+         <x>340</x>
          <y>310</y>
          <width>160</width>
          <height>110</height>
@@ -2317,7 +2722,7 @@
       <widget class="QPushButton" name="bnt_lvl3">
        <property name="geometry">
         <rect>
-         <x>610</x>
+         <x>640</x>
          <y>90</y>
          <width>160</width>
          <height>110</height>
@@ -2373,7 +2778,7 @@
       <widget class="QPushButton" name="bnt_lvl6">
        <property name="geometry">
         <rect>
-         <x>610</x>
+         <x>640</x>
          <y>310</y>
          <width>160</width>
          <height>110</height>
@@ -2429,7 +2834,7 @@
       <widget class="QPushButton" name="bnt_lvl2">
        <property name="geometry">
         <rect>
-         <x>310</x>
+         <x>340</x>
          <y>90</y>
          <width>160</width>
          <height>111</height>
@@ -2485,7 +2890,7 @@
       <widget class="QLabel" name="lbl_level1">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>50</x>
          <y>150</y>
          <width>100</width>
          <height>31</height>
@@ -2540,7 +2945,7 @@
       <widget class="QPushButton" name="btn_HighScore1">
        <property name="geometry">
         <rect>
-         <x>140</x>
+         <x>170</x>
          <y>90</y>
          <width>31</width>
          <height>31</height>
@@ -2557,7 +2962,7 @@
       <widget class="QPushButton" name="btn_HighScore2">
        <property name="geometry">
         <rect>
-         <x>440</x>
+         <x>470</x>
          <y>90</y>
          <width>31</width>
          <height>31</height>
@@ -2574,7 +2979,7 @@
       <widget class="QLabel" name="lbl_level2">
        <property name="geometry">
         <rect>
-         <x>320</x>
+         <x>350</x>
          <y>150</y>
          <width>100</width>
          <height>31</height>
@@ -2629,7 +3034,7 @@
       <widget class="QLabel" name="lbl_level3">
        <property name="geometry">
         <rect>
-         <x>620</x>
+         <x>650</x>
          <y>150</y>
          <width>100</width>
          <height>31</height>
@@ -2684,7 +3089,7 @@
       <widget class="QPushButton" name="btn_HighScore3">
        <property name="geometry">
         <rect>
-         <x>740</x>
+         <x>770</x>
          <y>90</y>
          <width>31</width>
          <height>31</height>
@@ -2701,7 +3106,7 @@
       <widget class="QPushButton" name="btn_HighScore4">
        <property name="geometry">
         <rect>
-         <x>140</x>
+         <x>170</x>
          <y>310</y>
          <width>31</width>
          <height>31</height>
@@ -2718,7 +3123,7 @@
       <widget class="QLabel" name="lbl_level4">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>50</x>
          <y>370</y>
          <width>110</width>
          <height>31</height>
@@ -2773,7 +3178,7 @@
       <widget class="QLabel" name="lbl_level5">
        <property name="geometry">
         <rect>
-         <x>320</x>
+         <x>350</x>
          <y>370</y>
          <width>110</width>
          <height>31</height>
@@ -2828,7 +3233,7 @@
       <widget class="QPushButton" name="btn_HighScore5">
        <property name="geometry">
         <rect>
-         <x>440</x>
+         <x>470</x>
          <y>310</y>
          <width>31</width>
          <height>31</height>
@@ -2845,7 +3250,7 @@
       <widget class="QLabel" name="lbl_level6">
        <property name="geometry">
         <rect>
-         <x>620</x>
+         <x>650</x>
          <y>370</y>
          <width>100</width>
          <height>31</height>
@@ -2900,7 +3305,7 @@
       <widget class="QPushButton" name="btn_HighScore6">
        <property name="geometry">
         <rect>
-         <x>740</x>
+         <x>770</x>
          <y>310</y>
          <width>31</width>
          <height>31</height>
@@ -3634,6 +4039,9 @@ Velocidad</string>
    <property name="layoutDirection">
     <enum>Qt::RightToLeft</enum>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 67, 0);</string>
+   </property>
    <property name="movable">
     <bool>false</bool>
    </property>
@@ -3648,6 +4056,7 @@ Velocidad</string>
    </attribute>
    <addaction name="actionHome"/>
    <addaction name="actionBack"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionHome">

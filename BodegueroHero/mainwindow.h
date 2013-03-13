@@ -34,12 +34,14 @@ private:
 
 
     QList<score> PUNTOS;
-    DragWidget** laneBlocks;
-    void setHighScore(QList<score> puntos);
-    void initializeLanes();    
     QGridLayout* getNewLayout(int id);
+    DragWidget** laneBlocks;
+    QLabel *user;
+    void setHighScore(QList<score> puntos);
+    void initializeLanes();        
     void resetPuzzle();
  private slots:
+    void on_player1_clicked();
     void on_btn_ClearGame_clicked();
     void on_btn_ConfigurarVelocidad_clicked();
     void on_btn_StopGame_clicked();
