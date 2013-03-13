@@ -645,14 +645,7 @@ void MainWindow::respuesta(const QString & txt)
     }
 }
 
-void MainWindow::muxascajas()
-{}
 
-void MainWindow::findeljuego()
-{}
-
-void MainWindow::salido()
-{}
 
 void MainWindow::lockLanes()
 {
