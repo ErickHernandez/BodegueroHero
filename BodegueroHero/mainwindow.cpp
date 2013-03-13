@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
         Action::Actions[i] = Action::Empty();
 
 
+    gameRunning = false;
     laneBlocks = new DragWidget*[28];
     createConection();
     CrearTablas();
@@ -164,6 +165,8 @@ void MainWindow::on_actionHome_triggered()
         this->resetPuzzle();
 
     this->ui->screenManager->setCurrentIndex(0);
+    //gameRunning = false;
+    //unlockLanes();
 }
 
 void MainWindow::on_actionBack_triggered()
@@ -179,6 +182,8 @@ void MainWindow::on_actionBack_triggered()
             //EH: Preguntar si realmente quiere abandonar el juego.
              this->ui->screenManager->setCurrentIndex(index-2);
              this->resetPuzzle();
+            // gameRunning = false;
+            // unlockLanes();
         }
         else
             //EH: Validar ciertas cosas, como dejar en blanco textbox, etc
@@ -465,19 +470,6 @@ void MainWindow::on_bnt_lvl6_clicked()
 void MainWindow::initializeLanes()
 {
 
-//    for(int i=0; i<8; i++)
-//    {
-//        //EH: Carga de los lanes
-//        DragWidget *dw = new DragWidget(false, parentWidget());
-//        dw->setFrameRect(QRect(0,0,2,2));
-//        lanesLayout->addWidget(dw);
-
-//        //this->ui->lanes_frame->layout()->addWidget(dw);
-//        lanesLayout->addWidget(dw);
-
-//        this->laneBlocks.append(dw);
-//        this->ui->lanes_frame->setLayout(lanesLayout);
-//    }
     this->ui->block0->setLayout(getNewLayout(0));
     this->ui->block1->setLayout(getNewLayout(1));
     this->ui->block2->setLayout(getNewLayout(2));
@@ -522,12 +514,16 @@ void MainWindow::on_btn_PlayGame_clicked()
 {
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
     scene->AnimarPuzzle();
+    //gameRunning = true;
+    //lockLanes();
 }
 
 void MainWindow::on_btn_StopGame_clicked()
 {
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
     scene->DetenerPuzzle();
+    //gameRunning = false;
+    //unlockLanes();
 }
 
 void MainWindow::on_btn_ConfigurarVelocidad_clicked()
@@ -552,10 +548,84 @@ void MainWindow::resetPuzzle()
 
 void MainWindow::on_btn_ClearGame_clicked()
 {
-    this->resetPuzzle();
+    //if(!gameRunning)
+        this->resetPuzzle();
 }
 
 void MainWindow::on_player1_clicked()
 {
 
+}
+
+void MainWindow::muxascajas()
+{}
+
+void MainWindow::findeljuego()
+{}
+
+void MainWindow::salido()
+{}
+
+void MainWindow::lockLanes()
+{
+    this->ui->block0->setEnabled(false);
+    this->ui->block1->setEnabled(false);
+    this->ui->block2->setEnabled(false);
+    this->ui->block3->setEnabled(false);
+    this->ui->block4->setEnabled(false);
+    this->ui->block5->setEnabled(false);
+    this->ui->block6->setEnabled(false);
+    this->ui->block7->setEnabled(false);
+    this->ui->block8->setEnabled(false);
+    this->ui->block9->setEnabled(false);
+    this->ui->block10->setEnabled(false);
+    this->ui->block11->setEnabled(false);
+    this->ui->block12->setEnabled(false);
+    this->ui->block13->setEnabled(false);
+    this->ui->block14->setEnabled(false);
+    this->ui->block15->setEnabled(false);
+    this->ui->block16->setEnabled(false);
+    this->ui->block17->setEnabled(false);
+    this->ui->block18->setEnabled(false);
+    this->ui->block19->setEnabled(false);
+    this->ui->block20->setEnabled(false);
+    this->ui->block21->setEnabled(false);
+    this->ui->block22->setEnabled(false);
+    this->ui->block23->setEnabled(false);
+    this->ui->block24->setEnabled(false);
+    this->ui->block25->setEnabled(false);
+    this->ui->block26->setEnabled(false);
+    this->ui->block27->setEnabled(false);
+}
+
+void MainWindow::unlockLanes()
+{
+    this->ui->block0->setEnabled(true);
+    this->ui->block1->setEnabled(true);
+    this->ui->block2->setEnabled(true);
+    this->ui->block3->setEnabled(true);
+    this->ui->block4->setEnabled(true);
+    this->ui->block5->setEnabled(true);
+    this->ui->block6->setEnabled(true);
+    this->ui->block7->setEnabled(true);
+    this->ui->block8->setEnabled(true);
+    this->ui->block9->setEnabled(true);
+    this->ui->block10->setEnabled(true);
+    this->ui->block11->setEnabled(true);
+    this->ui->block12->setEnabled(true);
+    this->ui->block13->setEnabled(true);
+    this->ui->block14->setEnabled(true);
+    this->ui->block15->setEnabled(true);
+    this->ui->block16->setEnabled(true);
+    this->ui->block17->setEnabled(true);
+    this->ui->block18->setEnabled(true);
+    this->ui->block19->setEnabled(true);
+    this->ui->block20->setEnabled(true);
+    this->ui->block21->setEnabled(true);
+    this->ui->block22->setEnabled(true);
+    this->ui->block23->setEnabled(true);
+    this->ui->block24->setEnabled(true);
+    this->ui->block25->setEnabled(true);
+    this->ui->block26->setEnabled(true);
+    this->ui->block27->setEnabled(true);
 }
