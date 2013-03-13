@@ -77,6 +77,12 @@ private slots:
     void animar_v2();
     void terminoAnimacion();
     void animar_Nubes();
+
+signals:
+    void PuzzleFinalizado();
+    void Error_FueraDeRango();
+    void Error_CantidadMaximaCajas();
+
 };
 
 

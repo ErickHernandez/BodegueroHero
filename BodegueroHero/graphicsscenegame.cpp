@@ -381,15 +381,18 @@ void graphicsscenegame::animar_v2()
     if(Action::Actions[instruccionActual] == 1)
     {
 
-        //#####################################################################################################
-        //#                       TODO: MOSTRAR ERROR AL PONER MAS DE SEIS CAJAS                              #
-        //#####################################################################################################
 
         if(this->cajitaDeLaGrua != 0 && this->pilasDeCajas[posActualGrua].size() == 6)
         {
             this->timer->stop();
             while(!this->stackDeInstrucciones.empty())
                 this->stackDeInstrucciones.pop();
+
+            //#####################################################################################################
+            //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
+            //#####################################################################################################
+
+            emit Error_CantidadMaximaCajas();
 
             QMessageBox msg;
             msg.setText("Usted esta loco! Solo son seis cajas por pila, plis!");
@@ -528,15 +531,17 @@ void graphicsscenegame::animar_v2()
     if(Action::Actions[instruccionActual] == 2)
     {
 
-        //#####################################################################################################
-        //#                  TODO: MOSTRAR ERROR SI SE QUIERE SALIR DEL RANGO DE PILAS                        #
-        //#####################################################################################################
-
         if(this->posActualGrua == this->posPilaInicial)
         {
             this->timer->stop();
             while(!this->stackDeInstrucciones.empty())
                 this->stackDeInstrucciones.pop();
+
+            emit Error_FueraDeRango();
+
+            //#####################################################################################################
+            //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
+            //#####################################################################################################
 
             QMessageBox msg;
             msg.setText("Usted esta loco! No se salga del rango, plis!");
@@ -570,16 +575,18 @@ void graphicsscenegame::animar_v2()
     if(Action::Actions[instruccionActual] == 3)
     {
 
-        //#####################################################################################################
-        //#                  TODO: MOSTRAR ERROR SI SE QUIERE SALIR DEL RANGO DE PILAS                        #
-        //#####################################################################################################
-
-
         if(this->posActualGrua == this->posPilaFinal)
         {
             this->timer->stop();
             while(!this->stackDeInstrucciones.empty())
                 this->stackDeInstrucciones.pop();
+
+
+            emit Error_FueraDeRango();
+
+            //#####################################################################################################
+            //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
+            //#####################################################################################################
 
             QMessageBox msg;
             msg.setText("Usted esta loco! No se salga del rango, plis!");
@@ -680,15 +687,17 @@ void graphicsscenegame::SiguienteInstruccion()
         this->stackDeInstrucciones.push(instruccionActual);
     }
 
-    //#####################################################################################################
-    //#                        TODO: MOSTRAR LA PANTALLA DE FIN DEL JUEGO                                 #
-    //#####################################################################################################
-
     if(PuzzleResuelto())
     {
         this->timer->stop();
         while(!this->stackDeInstrucciones.empty())
             this->stackDeInstrucciones.pop();
+
+        emit PuzzleFinalizado();
+
+        //#####################################################################################################
+        //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
+        //#####################################################################################################
 
         QMessageBox a;
         a.setText("puzzle realizado con " + QString::number(this->getCantidadInstruccionesUtilizadas()) + " instrucciones");
