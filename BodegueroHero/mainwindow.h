@@ -25,7 +25,8 @@ public:
     ~MainWindow();
     void cargarPerfil();
     QString CurrentUser;    
-   // QString CurrentLevel;    
+    void winer(int puntos);
+    // QString CurrentLevel;
 
 private:
     Ui::MainWindow *ui;
@@ -70,6 +71,9 @@ private:
     void on_btSeleccionar_clicked();
     void on_pushButton_clicked();
     void recibir(const QString &);
+    void findeljuego();
+    void muxascajas();
+    void salido();
 signals:
 void escribir(const QString &);
 };
