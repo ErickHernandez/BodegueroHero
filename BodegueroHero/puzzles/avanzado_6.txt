@@ -27,17 +27,17 @@
 			<Caja color="rojo"/>
 		</Pila>
 
-		<Pila id="3">
+		<Pila id="4">
 			<Caja color="rojo"/>
 			<Caja color="verde"/>
 			<Caja color="rojo"/>
 		</Pila>
 
-		<Pila id="4">
+		<Pila id="5">
 			<Caja color="rojo"/>
 		</Pila>
 
-		<Pila id="5">
+		<Pila id="6">
 			<Caja color="verde"/>
 			<Caja color="verde"/>
 			<Caja color="verde"/>

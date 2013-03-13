@@ -275,6 +275,10 @@ void graphicsscenegame::ReiniciarPuzzle()
     this->removeItem(this->grua_der);
     this->removeItem(this->grua_izq);
 
+    if(this->cajitaDeLaGrua != 0)
+        this->removeItem(this->cajitaDeLaGrua);
+
+
     for(int i=this->posPilaInicial; i<=this->posPilaFinal; i++)
     {
         for(int j=0; j<this->pilasDeCajas[i].size(); j++)
