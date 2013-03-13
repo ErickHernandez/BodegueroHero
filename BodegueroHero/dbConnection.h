@@ -12,14 +12,14 @@
 
 struct jugador
 {
-int id;
-QString nombre;
+    int id;
+    QString nombre;
 };
 
 struct score
 {
-int nivel;
-int puntaje;
+    int nivel;
+    int puntaje;
 };
 
 // dbConection;
@@ -30,18 +30,20 @@ static bool createConection()
 
     QString dbName= dir.filePath("Aplication.sqlite");
 
-  QSqlDatabase dbConection= QSqlDatabase::addDatabase("QSQLITE");
+    QSqlDatabase dbConection= QSqlDatabase::addDatabase("QSQLITE");
     dbConection.setDatabaseName(dbName);
 
-    if (!dbConection.open()) {
+    if (!dbConection.open())
+    {
        QMessageBox::critical(0, qApp->tr("Error al abrir la Agenda"),
        qApp->tr("Ha sido imposible abrir los contactos de la Agenda"),
        QMessageBox::Ok);
        return false;
-     }
+    }
     //CrearTablas();
     return true;
 }
+
 static bool CrearTablas(){
   //  createConection();
     //Crea la tabla Jugador
@@ -67,22 +69,23 @@ static bool CrearTablas(){
      return true;
 
 }
+
 static bool CrearPerfil(QString nombre)
 {
     createConection();
     QString data = "insert into jugador (id,nombre)values(null,""'"+nombre+"'"")";
     QSqlQuery R;
-   bool ret= R.exec(data);
+    bool ret= R.exec(data);
     //dbConection.close();
     return ret;
 }
-
 
 static QList<score> getScores(QString nombre, int level)
 {
     QList<score> listadePuntos;
 
-    if(level==0){
+    if(level==0)
+    {
         QSqlQuery R("select nivel,puntaje from niveles where  nombre=""'"+nombre+"' and nivel<7");
         while(R.next()){
             score pt;
@@ -92,7 +95,8 @@ static QList<score> getScores(QString nombre, int level)
 
             listadePuntos.push_back(pt);
         }
-    }else
+    }
+    else
     {
         QSqlQuery R("select nivel,puntaje from niveles where nombre='"+nombre+"' and nivel>7");
         while(R.next()){
@@ -106,7 +110,9 @@ static QList<score> getScores(QString nombre, int level)
 
         }
 
-    }return listadePuntos;
+    }
+
+    return listadePuntos;
 }
 
 static QList<QString> SelectAllJugadoresL()

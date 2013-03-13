@@ -5,7 +5,6 @@
 #include <windialog.h>
 
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -45,6 +44,13 @@ MainWindow::MainWindow(QWidget *parent) :
     //WinDialog *w = new WinDialog(this->parentWidget());
     //w->show();
 
+    //EH: Esto solo va a manejar visualmente quien es el current user.
+    user = new QLabel(this->parentWidget());
+    QFont font;
+    font.setPointSize(20);
+    font.setBold(true);
+    user->setFont(font);
+    this->ui->mainToolBar->addWidget(user);
 }
 
 void MainWindow::cargarPerfil()
@@ -116,6 +122,11 @@ void MainWindow::recibir(const QString & txt)
 {
    this->CurrentUser=txt;
    ui->screenManager->setCurrentIndex(4);
+
+   //EH:Set current User to UI
+   QString a = "<font color=white>";
+   QString b = "</font>";
+   user->setText(a+txt+b);
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -200,6 +211,11 @@ void MainWindow::on_btn_CrearPerfil_clicked()
             CurrentUser=nombre;
             cargarPerfil();
             ui->screenManager->setCurrentIndex(4);
+
+            //EH:Set current User to UI
+            QString a = "<font color=white>";
+            QString b = "</font>";
+            user->setText(a+nombre+b);
         } else if (msgBox.clickedButton() == abortButton) {
           ui->screenManager->setCurrentIndex(2);
         }
@@ -536,4 +552,9 @@ void MainWindow::resetPuzzle()
 void MainWindow::on_btn_ClearGame_clicked()
 {
     this->resetPuzzle();
+}
+
+void MainWindow::on_player1_clicked()
+{
+
 }
