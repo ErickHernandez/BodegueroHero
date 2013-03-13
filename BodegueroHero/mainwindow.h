@@ -32,6 +32,7 @@ public:
 private:
     Ui::MainWindow *ui;
     int CurrentLevel;
+    bool gameRunning;
 
     void callHS();
     QList<score> PUNTOS;
@@ -41,6 +42,8 @@ private:
     void setHighScore(QList<score> puntos);
     void initializeLanes();        
     void resetPuzzle();
+    void lockLanes();
+    void unlockLanes();
  private slots:
     void on_player1_clicked();
     void on_btn_ClearGame_clicked();
