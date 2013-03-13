@@ -47,6 +47,7 @@ private:
     bool subirGrua;
     //int instruccionActual;
     QTimer *timer;
+    QTimer *timer_nubes;
     stack<int> stackDeInstrucciones;
 
 
@@ -54,6 +55,10 @@ private:
     void SiguienteInstruccion();
     bool PuzzleResuelto();
     int getCantidadInstruccionesUtilizadas();
+    QGraphicsPixmapItem *cable_CentroDeMando_izq;
+    QGraphicsPixmapItem *cable_CentroDeMando_der;
+    QGraphicsPixmapItem *nube1, *nube2, *nube3, *nube4;
+    QGraphicsPixmapItem *nube1_2, *nube2_2, *nube3_2, *nube4_2;
 
 
     //LOS ARBOLES QUE DEVOLVIO EL PARSER XML
@@ -63,6 +68,7 @@ private:
 
     //MM: FUNCIONES DE PINTADO
     void ReiniciarPuzzle();
+    void PintarBackgroud();
     void PintarPuzzle(XmlPuzzleTree *puzzleTree);
     void PintarBasesDeLasPilas(int posInicial, int posFinal);
 
@@ -70,6 +76,13 @@ private:
 private slots:
     void animar_v2();
     void terminoAnimacion();
+    void animar_Nubes();
+
+signals:
+    void PuzzleFinalizado();
+    void Error_FueraDeRango();
+    void Error_CantidadMaximaCajas();
+
 };
 
 
