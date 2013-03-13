@@ -25,6 +25,7 @@ public:
     ~MainWindow();
     void cargarPerfil();
     QString CurrentUser;    
+    int SelectLevel;
     void winer(int puntos);
     // QString CurrentLevel;
 
@@ -32,7 +33,7 @@ private:
     Ui::MainWindow *ui;
     int CurrentLevel;
 
-
+    void callHS();
     QList<score> PUNTOS;
     QGridLayout* getNewLayout(int id);
     DragWidget** laneBlocks;
@@ -71,11 +72,15 @@ private:
     void on_btSeleccionar_clicked();
     void on_pushButton_clicked();
     void recibir(const QString &);
-    void findeljuego();
+     void respuesta(const QString &);
+public slots:
+    void findeljuego(const int &);
     void muxascajas();
     void salido();
+
 signals:
 void escribir(const QString &);
+
 };
 
 #endif // MAINWINDOW_H

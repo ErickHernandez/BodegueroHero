@@ -179,6 +179,7 @@ void MainWindow::on_actionBack_triggered()
             //EH: Preguntar si realmente quiere abandonar el juego.
              this->ui->screenManager->setCurrentIndex(index-2);
              this->resetPuzzle();
+             callHS();
         }
         else
             //EH: Validar ciertas cosas, como dejar en blanco textbox, etc
@@ -186,17 +187,18 @@ void MainWindow::on_actionBack_triggered()
     }
 }
 
-
 void MainWindow::on_btn_CrearPerfil_clicked()
 {
     cargarPerfil();
     if(UsuariosDisponibles>0){
         QString nombre =ui->NewPlayer->toPlainText();
-        CrearPerfil(nombre);
-        ui->NewPlayer->clear();
-        CurrentUser=nombre;
-        cargarPerfil();
-        ui->screenManager->setCurrentIndex(4);
+        if(yaexiste(nombre)){
+            CrearPerfil(nombre);
+            ui->NewPlayer->clear();
+            CurrentUser=nombre;
+            cargarPerfil();
+            ui->screenManager->setCurrentIndex(4);
+        }
     }else
     {
          QMessageBox msgBox;
@@ -207,22 +209,22 @@ void MainWindow::on_btn_CrearPerfil_clicked()
 
         if (msgBox.clickedButton() == connectButton) {
             QString nombre =ui->NewPlayer->toPlainText();
-            CrearPerfil(nombre);
-            ui->NewPlayer->clear();
-            CurrentUser=nombre;
-            cargarPerfil();
-            ui->screenManager->setCurrentIndex(4);
+            if(yaexiste(nombre)){
+                CrearPerfil(nombre);
+                ui->NewPlayer->clear();
+                CurrentUser=nombre;
+                cargarPerfil();
+                ui->screenManager->setCurrentIndex(4);
 
             //EH:Set current User to UI
-            QString a = "<font color=white>";
-            QString b = "</font>";
-            user->setText(a+nombre+b);
+                QString a = "<font color=white>";
+                QString b = "</font>";
+                user->setText(a+nombre+b);}
         } else if (msgBox.clickedButton() == abortButton) {
           ui->screenManager->setCurrentIndex(2);
         }
     }
 }
-
 
 void MainWindow::on_label_26_linkActivated(QString link)
 {
@@ -237,9 +239,15 @@ void MainWindow::on_btn_ir_CrearPerfil_clicked()
 void MainWindow::on_btnTutorial_clicked()
 {
     this->CurrentLevel=0;
-   PUNTOS=getScores(CurrentUser,CurrentLevel);//piden los scores del nivel tutorial con este usuario
-    setHighScore(PUNTOS);
+    callHS();
     ui->screenManager->setCurrentIndex(5);
+
+}
+
+void MainWindow::callHS()
+{
+    PUNTOS=getScores(CurrentUser,CurrentLevel);//piden los scores del nivel tutorial con este usuario
+     setHighScore(PUNTOS);
 
 }
 
@@ -259,42 +267,42 @@ void MainWindow::setHighScore(QList<score> PUNTOS)
         QString highscore;
          switch(PUNTOS.at(x).nivel)
          {
+         case 0:
+         case 6:
+             highscore="";
+              highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level1->setText("SCORE: "+highscore);
+         break;
+
          case 1:
          case 7:
              highscore="";
-              highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level1->setText(highscore);
+             highscore.setNum(PUNTOS.at(x).puntaje);
+             this->ui->lbl_level2->setText("SCORE: "+highscore );
          break;
-
          case 2:
          case 8:
              highscore="";
              highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level2->setText(highscore);
+             this->ui->lbl_level3->setText("SCORE: "+highscore);
          break;
          case 3:
          case 9:
              highscore="";
              highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level3->setText(highscore);
+             this->ui->lbl_level4->setText("SCORE: "+highscore);
          break;
          case 4:
          case 10:
              highscore="";
              highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level4->setText(highscore);
+             this->ui->lbl_level5->setText("SCORE: "+highscore);
          break;
          case 5:
          case 11:
              highscore="";
              highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level5->setText(highscore);
-         break;
-         case 6:
-         case 12:
-             highscore="";
-             highscore.setNum(PUNTOS.at(x).puntaje);
-             this->ui->lbl_level6->setText(highscore);
+             this->ui->lbl_level6->setText("SCORE: "+highscore);
          break;
 
          }
@@ -308,14 +316,15 @@ void MainWindow::on_btnAvanzado_clicked()
 {
 
     this->CurrentLevel=6;
-    PUNTOS=getScores(CurrentUser,CurrentLevel);//piden los scores del nivel tutorial con este usuario
-
-    setHighScore(PUNTOS);
+  //  PUNTOS=getScores(CurrentUser,CurrentLevel);//piden los scores del nivel tutorial con este usuario
+    callHS();
+    //setHighScore(PUNTOS);
     ui->screenManager->setCurrentIndex(5);
 }
 
 void MainWindow::on_btn_lvl1_clicked()
 {
+    SelectLevel=0+CurrentLevel;
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
@@ -326,12 +335,17 @@ void MainWindow::on_btn_lvl1_clicked()
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_1.txt"));
          ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_1.txt"));
     }
+    graphicsscenegame *gs = (graphicsscenegame*) ui->graphicsView_Game->scene();
+    connect(gs,SIGNAL(PuzzleFinalizado(const int &)),this,SLOT(findeljuego(const int &)));
+
+    connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
+    connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
 }
 
 void MainWindow::on_btn_HighScore1_clicked()
 {
 
-QSqlQueryModel * model=SelectTop5(1+CurrentLevel);
+QSqlQueryModel * model=SelectTop5(0+CurrentLevel);
 model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
 model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
 QTableView *view = new QTableView;
@@ -341,7 +355,7 @@ QTableView *view = new QTableView;
 
 void MainWindow::on_btn_HighScore2_clicked()
 {
-    QSqlQueryModel * model=SelectTop5(2+CurrentLevel);
+    QSqlQueryModel * model=SelectTop5(1+CurrentLevel);
     model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
     model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
     QTableView *view = new QTableView;
@@ -350,10 +364,9 @@ void MainWindow::on_btn_HighScore2_clicked()
 
 }
 
-
 void MainWindow::on_btn_HighScore3_clicked()
 {
-    QSqlQueryModel * model=SelectTop5(3+CurrentLevel);
+    QSqlQueryModel * model=SelectTop5(2+CurrentLevel);
     model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
     model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
     QTableView *view = new QTableView;
@@ -363,7 +376,7 @@ void MainWindow::on_btn_HighScore3_clicked()
 
 void MainWindow::on_btn_HighScore4_clicked()
 {
-    QSqlQueryModel * model=SelectTop5(4+CurrentLevel);
+    QSqlQueryModel * model=SelectTop5(3+CurrentLevel);
     model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
     model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
     QTableView *view = new QTableView;
@@ -373,7 +386,7 @@ void MainWindow::on_btn_HighScore4_clicked()
 
 void MainWindow::on_btn_HighScore5_clicked()
 {
-    QSqlQueryModel * model=SelectTop5(5+CurrentLevel);
+    QSqlQueryModel * model=SelectTop5(4+CurrentLevel);
     model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
     model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
     QTableView *view = new QTableView;
@@ -381,10 +394,9 @@ void MainWindow::on_btn_HighScore5_clicked()
      view->show();
 }
 
-
 void MainWindow::on_btn_HighScore6_clicked()
 {
-    QSqlQueryModel * model=SelectTop5(6+CurrentLevel);
+    QSqlQueryModel * model=SelectTop5(5+CurrentLevel);
     model->setHeaderData(0, Qt::Horizontal, tr("Nombre"));
     model->setHeaderData(1, Qt::Horizontal, tr("Puntaje"));
     QTableView *view = new QTableView;
@@ -394,6 +406,7 @@ void MainWindow::on_btn_HighScore6_clicked()
 
 void MainWindow::on_bnt_lvl3_clicked()
 {
+        SelectLevel=2+CurrentLevel;
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
@@ -404,10 +417,16 @@ void MainWindow::on_bnt_lvl3_clicked()
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_3.txt"));
          ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_3.txt"));
     }
+    graphicsscenegame *gs = (graphicsscenegame*) ui->graphicsView_Game->scene();
+    connect(gs,SIGNAL(PuzzleFinalizado(const int &)),this,SLOT(findeljuego(const int &)));
+
+    connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
+    connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
 }
 
 void MainWindow::on_bnt_lvl5_clicked()
 {
+        SelectLevel=4+CurrentLevel;
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
@@ -418,10 +437,16 @@ void MainWindow::on_bnt_lvl5_clicked()
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_5.txt"));
          ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_5.txt"));
     }
+    graphicsscenegame *gs = (graphicsscenegame*) ui->graphicsView_Game->scene();
+    connect(gs,SIGNAL(PuzzleFinalizado(const int &)),this,SLOT(findeljuego(const int &)));
+
+    connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
+    connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
 }
 
 void MainWindow::on_bnt_lvl2_clicked()
 {
+        SelectLevel=1+CurrentLevel;
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
@@ -432,10 +457,16 @@ void MainWindow::on_bnt_lvl2_clicked()
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_2.txt"));
          ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_2.txt"));
     }
+    graphicsscenegame *gs = (graphicsscenegame*) ui->graphicsView_Game->scene();
+    connect(gs,SIGNAL(PuzzleFinalizado(const int &)),this,SLOT(findeljuego(const int &)));
+
+    connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
+    connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
 }
 
 void MainWindow::on_bnt_lvl4_clicked()
 {
+        SelectLevel=3+CurrentLevel;
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
@@ -446,10 +477,16 @@ void MainWindow::on_bnt_lvl4_clicked()
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_4.txt"));
          ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_4.txt"));
     }
+    graphicsscenegame *gs = (graphicsscenegame*) ui->graphicsView_Game->scene();
+    connect(gs,SIGNAL(PuzzleFinalizado(const int &)),this,SLOT(findeljuego(const int &)));
+
+    connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
+    connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
 }
 
 void MainWindow::on_bnt_lvl6_clicked()
 {
+        SelectLevel=5+CurrentLevel;
     ui->screenManager->setCurrentIndex(7);
     if(CurrentLevel==0)
     {
@@ -460,6 +497,11 @@ void MainWindow::on_bnt_lvl6_clicked()
          ui->graphicsView_Preview->setScene(new GraphicsScenePreview(":puzzles/avanzado_6.txt"));
          ui->graphicsView_Game->setScene(new graphicsscenegame(":puzzles/avanzado_6.txt"));
     }
+    graphicsscenegame *gs = (graphicsscenegame*) ui->graphicsView_Game->scene();
+    connect(gs,SIGNAL(PuzzleFinalizado(const int &)),this,SLOT(findeljuego(const int &)));
+
+    connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
+    connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
 }
 
 void MainWindow::initializeLanes()
@@ -558,4 +600,50 @@ void MainWindow::on_btn_ClearGame_clicked()
 void MainWindow::on_player1_clicked()
 {
 
+}
+
+void MainWindow::muxascajas(){
+    WinDialog *w = new WinDialog();
+    w->show();
+    w->setWindowTitle("Error");
+    connect(w,SIGNAL(responder(const QString &)),this,SLOT(respuesta(const QString &)));
+    w->setTexto("You put too much boxes on the stack, I love Washington too");
+}
+
+void MainWindow::salido()
+{
+    WinDialog *w = new WinDialog();
+    w->show();
+    w->setWindowTitle("Error");
+    connect(w,SIGNAL(responder(const QString &)),this,SLOT(respuesta(const QString &)));
+    w->setTexto("You can't do it, you are out of range Exitoo!");
+
+}
+
+void MainWindow::findeljuego(const int & pts){
+
+    winer(pts);
+
+
+}
+
+void MainWindow::winer(int puntos)
+{
+     WinDialog *w = new WinDialog();
+     w->show();
+    actualizar_puntos(CurrentUser,puntos,SelectLevel);
+    connect(w,SIGNAL(responder(const QString &)),this,SLOT(respuesta(const QString &)));
+    w->setWindowTitle("Winner!!");
+    w->setTexto("Congratulations!! \n"+this->CurrentUser+ " you are amazing, you solve it with "+ QString::number( puntos)+" instructions" );
+
+}
+void MainWindow::respuesta(const QString & txt)
+{
+   QString tx=txt;
+    QString tx2="Winner!!";
+    if (tx==(tx2)){
+    this->ui->screenManager->setCurrentIndex(5);
+
+    callHS();
+    }
 }

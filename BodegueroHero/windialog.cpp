@@ -10,5 +10,20 @@ WinDialog::WinDialog(QWidget *parent) :
 
 WinDialog::~WinDialog()
 {
+
     delete ui;
+}
+void WinDialog::setTexto(QString texto)
+{
+    ui->lbl_texto->setText(texto);
+}
+void WinDialog::closeEvent(QCloseEvent *e)
+{
+    responder(this->windowTitle());
+}
+
+void WinDialog::on_pushButton_clicked()
+{
+    this->hide();
+    responder(this->windowTitle());
 }

@@ -692,8 +692,8 @@ void graphicsscenegame::SiguienteInstruccion()
         this->timer->stop();
         while(!this->stackDeInstrucciones.empty())
             this->stackDeInstrucciones.pop();
-
-        emit PuzzleFinalizado();
+        int puntos = getCantidadInstruccionesUtilizadas();
+        emit PuzzleFinalizado(puntos);
 
         //#####################################################################################################
         //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
@@ -701,7 +701,7 @@ void graphicsscenegame::SiguienteInstruccion()
 
         QMessageBox a;
         a.setText("puzzle realizado con " + QString::number(this->getCantidadInstruccionesUtilizadas()) + " instrucciones");
-        a.exec();
+    //    a.exec();
     }
 }
 

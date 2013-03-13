@@ -86,7 +86,7 @@ static QList<score> getScores(QString nombre, int level)
 
     if(level==0)
     {
-        QSqlQuery R("select nivel,puntaje from niveles where  nombre=""'"+nombre+"' and nivel<7");
+        QSqlQuery R("select nivel,puntaje from niveles where  nombre=""'"+nombre+"' and nivel<6");
         while(R.next()){
             score pt;
 
@@ -98,7 +98,7 @@ static QList<score> getScores(QString nombre, int level)
     }
     else
     {
-        QSqlQuery R("select nivel,puntaje from niveles where nombre='"+nombre+"' and nivel>7");
+        QSqlQuery R("select nivel,puntaje from niveles where nombre='"+nombre+"' and nivel>5");
         while(R.next()){
             score pt;
 
@@ -157,7 +157,7 @@ static QList<nivel> SelectAllNiveles()
 static int idJugador(QString nombre)
 {
       QString Q;
-      Q="select nombre from jugador where nombre=""'"+nombre+"'"")";
+      Q="select id from jugador where nombre=""'"+nombre+"'""";
 //      Q.append(nombre);
 
         bool a;
@@ -192,13 +192,61 @@ static QString NombreJugador(int id)
 {
     QSqlQueryModel *R= new QSqlQueryModel();
     QString que="select nombre,puntaje from niveles where nivel="+QString::number(id);
-    que.append( " ORDER BY puntaje desc limit 5");
+    que.append( " ORDER BY puntaje asc limit 5");
     R->setQuery(que);
     return R;
 
 }
 
 
+    static bool actualizar_puntos(QString nombre,int puntos,int nivel)
+    {
+            QString Q;
+            Q="Select nombre,puntaje from niveles where nombre=""'"+nombre+"' and nivel="+QString::number(nivel)+"" ;
+
+            QSqlQuery R(Q);
+            bool a = R.exec();
+            R.next();
+            QString name =R.value(0).toString();
+            int ptsH = R.value(1).toInt();
+            int id = idJugador(nombre);
+            QString id2,pnts,nivl;
+            pnts.setNum(puntos);
+            nivl.setNum(nivel);
+            id2.setNum(id);
+
+            if(name.isEmpty() )
+            {
+                Q="insert into niveles(id,nombre,nivel,puntaje)values("+ id2 +",'"+ nombre +"',"+ nivl +","+ pnts +")";
+                QSqlQuery R2(Q);
+                bool a= R2.exec();
+                return a;
+            }else
+            {
+                if(ptsH>puntos){
+                    Q="update niveles set nombre='"+nombre+"',nivel="+nivl+",puntaje="+pnts+" where id="+id2;
+                    QSqlQuery R2(Q);
+                    bool a= R2.exec();
+                    return a;
+                }
+            }
+
+    }
+
+    static bool yaexiste(QString name)
+    {
+
+        QString Q="Select * from Jugador where nombre=""'"+name+"'";
+
+        QSqlQuery R(Q);
+        bool a = R.exec();
+        R.next();
+        if(!R.value(0).isNull())
+        {
+            return false;
+        }
+       return true;
+    }
 
 
 

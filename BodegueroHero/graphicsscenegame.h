@@ -17,7 +17,7 @@
 #include <math.h>
 #include <stack>
 #include <QMessageBox>
-
+#include <mainwindow.h>
 using namespace std;
 
 class graphicsscenegame: public QGraphicsScene
@@ -79,7 +79,7 @@ private slots:
     void animar_Nubes();
 
 signals:
-    void PuzzleFinalizado();
+    void PuzzleFinalizado(const int &);
     void Error_FueraDeRango();
     void Error_CantidadMaximaCajas();
 

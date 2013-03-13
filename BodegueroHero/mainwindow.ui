@@ -34,7 +34,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="StartPage">
      <widget class="QPushButton" name="cmdStart">
@@ -2890,8 +2890,8 @@
       <widget class="QLabel" name="lbl_level1">
        <property name="geometry">
         <rect>
-         <x>50</x>
-         <y>150</y>
+         <x>40</x>
+         <y>160</y>
          <width>100</width>
          <height>31</height>
         </rect>
@@ -2979,8 +2979,8 @@
       <widget class="QLabel" name="lbl_level2">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>150</y>
+         <x>340</x>
+         <y>160</y>
          <width>100</width>
          <height>31</height>
         </rect>
@@ -3034,8 +3034,8 @@
       <widget class="QLabel" name="lbl_level3">
        <property name="geometry">
         <rect>
-         <x>650</x>
-         <y>150</y>
+         <x>640</x>
+         <y>160</y>
          <width>100</width>
          <height>31</height>
         </rect>
@@ -3120,66 +3120,11 @@
          <normaloff>:/gold_star</normaloff>:/gold_star</iconset>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_level4">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>370</y>
-         <width>110</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="palette">
-        <palette>
-         <active>
-          <colorrole role="WindowText">
-           <brush brushstyle="SolidPattern">
-            <color alpha="255">
-             <red>184</red>
-             <green>184</green>
-             <blue>184</blue>
-            </color>
-           </brush>
-          </colorrole>
-         </active>
-         <inactive>
-          <colorrole role="WindowText">
-           <brush brushstyle="SolidPattern">
-            <color alpha="255">
-             <red>184</red>
-             <green>184</green>
-             <blue>184</blue>
-            </color>
-           </brush>
-          </colorrole>
-         </inactive>
-         <disabled>
-          <colorrole role="WindowText">
-           <brush brushstyle="SolidPattern">
-            <color alpha="255">
-             <red>120</red>
-             <green>120</green>
-             <blue>120</blue>
-            </color>
-           </brush>
-          </colorrole>
-         </disabled>
-        </palette>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
       <widget class="QLabel" name="lbl_level5">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>370</y>
+         <x>340</x>
+         <y>380</y>
          <width>110</width>
          <height>31</height>
         </rect>
@@ -3250,8 +3195,8 @@
       <widget class="QLabel" name="lbl_level6">
        <property name="geometry">
         <rect>
-         <x>650</x>
-         <y>370</y>
+         <x>640</x>
+         <y>380</y>
          <width>100</width>
          <height>31</height>
         </rect>
@@ -3317,6 +3262,61 @@
        <property name="icon">
         <iconset resource="Images.qrc">
          <normaloff>:/gold_star</normaloff>:/gold_star</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_level4">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>380</y>
+         <width>110</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="palette">
+        <palette>
+         <active>
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>184</red>
+             <green>184</green>
+             <blue>184</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </active>
+         <inactive>
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>184</red>
+             <green>184</green>
+             <blue>184</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </inactive>
+         <disabled>
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>120</red>
+             <green>120</green>
+             <blue>120</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </disabled>
+        </palette>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
        </property>
       </widget>
      </widget>
