@@ -21,6 +21,7 @@ class MainWindow : public QMainWindow
 
 public:
     int UsuariosDisponibles;
+    QString temp;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void cargarPerfil();
@@ -45,6 +46,7 @@ private:
     void lockLanes();
     void unlockLanes();
  private slots:
+    void on_btn_StepByStep_clicked();
     void on_player1_clicked();
     void on_btn_ClearGame_clicked();
     void on_btn_ConfigurarVelocidad_clicked();
@@ -75,11 +77,12 @@ private:
     void on_btSeleccionar_clicked();
     void on_pushButton_clicked();
     void recibir(const QString &);
-     void respuesta(const QString &);
+    void respuesta(const QString &);
 public slots:
     void findeljuego(const int &);
     void muxascajas();
     void salido();
+    void DibujarInstruccionActual();
 
 signals:
 void escribir(const QString &);

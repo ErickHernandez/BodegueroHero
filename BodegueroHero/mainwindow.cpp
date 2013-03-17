@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
+    QString temp = "";
 
     QFile file(":/qss/style.qss");//
 
@@ -345,6 +346,8 @@ void MainWindow::on_btn_lvl1_clicked()
 
     connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
     connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
+
+    connect(gs,SIGNAL(CambioDeInstruccion()),this,SLOT(DibujarInstruccionActual()));
 }
 
 void MainWindow::on_btn_HighScore1_clicked()
@@ -427,6 +430,8 @@ void MainWindow::on_bnt_lvl3_clicked()
 
     connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
     connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
+
+    connect(gs,SIGNAL(CambioDeInstruccion()),this,SLOT(DibujarInstruccionActual()));
 }
 
 void MainWindow::on_bnt_lvl5_clicked()
@@ -447,6 +452,8 @@ void MainWindow::on_bnt_lvl5_clicked()
 
     connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
     connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
+
+    connect(gs,SIGNAL(CambioDeInstruccion()),this,SLOT(DibujarInstruccionActual()));
 }
 
 void MainWindow::on_bnt_lvl2_clicked()
@@ -467,6 +474,8 @@ void MainWindow::on_bnt_lvl2_clicked()
 
     connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
     connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
+
+    connect(gs,SIGNAL(CambioDeInstruccion()),this,SLOT(DibujarInstruccionActual()));
 }
 
 void MainWindow::on_bnt_lvl4_clicked()
@@ -487,6 +496,8 @@ void MainWindow::on_bnt_lvl4_clicked()
 
     connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
     connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
+
+    connect(gs,SIGNAL(CambioDeInstruccion()),this,SLOT(DibujarInstruccionActual()));
 }
 
 void MainWindow::on_bnt_lvl6_clicked()
@@ -507,6 +518,8 @@ void MainWindow::on_bnt_lvl6_clicked()
 
     connect(gs,SIGNAL(Error_FueraDeRango()),this,SLOT(salido()));
     connect(gs,SIGNAL(Error_CantidadMaximaCajas()),this,SLOT(muxascajas()));
+
+    connect(gs,SIGNAL(CambioDeInstruccion()),this,SLOT(DibujarInstruccionActual()));
 }
 
 void MainWindow::initializeLanes()
@@ -564,6 +577,9 @@ void MainWindow::on_btn_StopGame_clicked()
 {
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
     scene->DetenerPuzzle();
+
+    //MM: AGREGADA LA SIGUIENTE INSTRUCCION
+    this->ui->btn_ConfigurarVelocidad->setIconSize(QSize(46,43));
     //gameRunning = false;
     //unlockLanes();
 }
@@ -572,6 +588,12 @@ void MainWindow::on_btn_ConfigurarVelocidad_clicked()
 {
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
     scene->CambiarVelocidad();
+
+    if(this->ui->btn_ConfigurarVelocidad->iconSize() == QSize(46,43))
+        this->ui->btn_ConfigurarVelocidad->setIconSize(QSize(56,53));
+    else
+        this->ui->btn_ConfigurarVelocidad->setIconSize(QSize(46,43));
+
 }
 
 void MainWindow::resetPuzzle()
@@ -590,6 +612,8 @@ void MainWindow::resetPuzzle()
 
 void MainWindow::on_btn_ClearGame_clicked()
 {
+    graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
+    scene->DetenerPuzzle();
     //if(!gameRunning)
         this->resetPuzzle();
 }
@@ -600,6 +624,7 @@ void MainWindow::on_player1_clicked()
 }
 
 void MainWindow::muxascajas(){
+    this->resetPuzzle();
     WinDialog *w = new WinDialog();
     w->show();
     w->setWindowTitle("Error");
@@ -709,4 +734,20 @@ void MainWindow::unlockLanes()
     this->ui->block25->setEnabled(true);
     this->ui->block26->setEnabled(true);
     this->ui->block27->setEnabled(true);
+}
+
+void MainWindow::on_btn_StepByStep_clicked()
+{
+    graphicsscenegame *game = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
+    game->EjecutarSiguienteInstruccion();
+}
+
+
+void MainWindow::DibujarInstruccionActual()
+{
+    graphicsscenegame *game = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
+
+    int instruccionActual = game->getInstruccionActual();
+
+    //[AKI BA EL CODHIGO DE ERICK :E]
 }

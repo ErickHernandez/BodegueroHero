@@ -23,8 +23,7 @@
 		</Pila>
 
 		<Pila id="4">
-			<Caja color="verde"/>
-			<Caja color="verde"/>			
+			<Caja color="verde"/>	
 		</Pila>
 
 		<Pila id="5">

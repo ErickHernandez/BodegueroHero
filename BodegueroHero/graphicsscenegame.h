@@ -29,12 +29,16 @@ public:
     void DetenerPuzzle();
     void CambiarVelocidad();
     void ResetearPuzzle();
+    void EjecutarSiguienteInstruccion();
+    int getInstruccionActual();
 
 private:
     int posActualGrua;
     int posPilaInicial, posPilaFinal;
     bool gruaAbierta;
     int anguloActualGrua;
+    bool stepByStep;
+    int velocidadActual;
 
     //ELEMTOS QUE TIENE EL GRAPHICS SCENE
     QGraphicsPixmapItem *cableDeLaGrua;
@@ -55,6 +59,7 @@ private:
     void SiguienteInstruccion();
     bool PuzzleResuelto();
     int getCantidadInstruccionesUtilizadas();
+    int instruccionActual;
     QGraphicsPixmapItem *cable_CentroDeMando_izq;
     QGraphicsPixmapItem *cable_CentroDeMando_der;
     QGraphicsPixmapItem *nube1, *nube2, *nube3, *nube4;
@@ -82,6 +87,7 @@ signals:
     void PuzzleFinalizado(const int &);
     void Error_FueraDeRango();
     void Error_CantidadMaximaCajas();
+    void CambioDeInstruccion();
 
 };
 

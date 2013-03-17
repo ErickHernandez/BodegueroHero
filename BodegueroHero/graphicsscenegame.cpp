@@ -13,19 +13,9 @@
 
 graphicsscenegame::graphicsscenegame(QString puzzle, QObject *parent): QGraphicsScene(parent)
 {
-    //LA GRUA NO TIENE UN CAJA INCIALMENTE
-    this->cajitaDeLaGrua = 0;
-    this->gruaAbierta = true;
-    this->anguloActualGrua = 0;
-
-//    this->instruccionActual = 0;
-
     this->setXmlPuzzleTrees(puzzle);
     this->PintarBackgroud();
     this->PintarPuzzle(this->xmlTreeInicial);
-
-//    this->thread = new QThread;
-//    connect(thread,SIGNAL(started()),this,SLOT(animar_v2()));
 
     this->timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(animar_v2()));
@@ -177,6 +167,11 @@ void graphicsscenegame::PintarBackgroud()
 
 void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
 {
+    this->stackDeInstrucciones.push(0);
+    this->stepByStep = false;
+    this->cajitaDeLaGrua = 0;
+    this->velocidadActual = Velocidad_Normal;
+
     for(int i=0; i<8; i++)
     {
         QVector<Caja *> temp;
@@ -263,14 +258,13 @@ void graphicsscenegame::PintarBasesDeLasPilas(int posInicial, int posFinal)
 
 void graphicsscenegame::ResetearPuzzle()
 {
-    if(this->timer->isActive())
-        this->timer->stop();
 
     this->ReiniciarPuzzle();
 }
 
 void graphicsscenegame::ReiniciarPuzzle()
 {
+    //REMOVER GRAPHICS ITEMS
     this->removeItem(this->cableDeLaGrua);
     this->removeItem(this->grua_der);
     this->removeItem(this->grua_izq);
@@ -287,7 +281,16 @@ void graphicsscenegame::ReiniciarPuzzle()
         }
         this->pilasDeCajas[i].clear();
     }
-    this->pilasDeCajas.clear();
+
+    //RESETEAR VARIABLES
+    this->instruccionActual = 0;
+    this->subirGrua = false;
+    while(!this->stackDeInstrucciones.empty())
+        this->stackDeInstrucciones.pop();
+    this->cajitaDeLaGrua = 0;
+    this->stepByStep = false;
+
+    //POR ULTIMO PINTAR EL PUZZLE OTRA VEZ
     this->PintarPuzzle(this->xmlTreeInicial);
 }
 
@@ -342,25 +345,7 @@ void graphicsscenegame::animar_Nubes()
 
 void graphicsscenegame::AnimarPuzzle()
 {
-
-    if(this->timer->isActive())
-        this->timer->stop();
-
-
-    int actions[28];
-    for(int i=0; i<28; i++)
-        actions[i] = Action::Actions[i];
-
-    int x = 2;
-    int suma = 20 + x;
-
-
-
-    this->subirGrua = false;
-    this->ReiniciarPuzzle();
-    this->stackDeInstrucciones.push(0);
-    this->cajitaDeLaGrua = 0;
-    this->timer->start(Velocidad_Normal);
+    this->timer->start(this->velocidadActual);
 
 }
 
@@ -392,15 +377,7 @@ void graphicsscenegame::animar_v2()
             while(!this->stackDeInstrucciones.empty())
                 this->stackDeInstrucciones.pop();
 
-            //#####################################################################################################
-            //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
-            //#####################################################################################################
-
             emit Error_CantidadMaximaCajas();
-
-            QMessageBox msg;
-            msg.setText("Usted esta loco! Solo son seis cajas por pila, plis!");
-            msg.exec();
 
             return;
         }
@@ -543,14 +520,6 @@ void graphicsscenegame::animar_v2()
 
             emit Error_FueraDeRango();
 
-            //#####################################################################################################
-            //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
-            //#####################################################################################################
-
-            QMessageBox msg;
-            msg.setText("Usted esta loco! No se salga del rango, plis!");
-            msg.exec();
-
             return;
         }
 
@@ -587,14 +556,6 @@ void graphicsscenegame::animar_v2()
 
 
             emit Error_FueraDeRango();
-
-            //#####################################################################################################
-            //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
-            //#####################################################################################################
-
-            QMessageBox msg;
-            msg.setText("Usted esta loco! No se salga del rango, plis!");
-            msg.exec();
 
             return;
         }
@@ -668,10 +629,23 @@ void graphicsscenegame::animar_v2()
 
 void graphicsscenegame::CambiarVelocidad()
 {
+    //BEFORE
+//    if(this->timer->interval() == Velocidad_Normal)
+//        this->timer->setInterval(Velocidad_Rapida);
+//    else
+//        this->timer->setInterval(Velocidad_Normal);
+
+    //AFTER
     if(this->timer->interval() == Velocidad_Normal)
         this->timer->setInterval(Velocidad_Rapida);
     else
         this->timer->setInterval(Velocidad_Normal);
+
+    if(this->velocidadActual == Velocidad_Normal)
+        this->velocidadActual = Velocidad_Rapida;
+    else
+        this->velocidadActual = Velocidad_Normal;
+
 }
 
 void graphicsscenegame::terminoAnimacion()
@@ -683,12 +657,26 @@ void graphicsscenegame::terminoAnimacion()
 void graphicsscenegame::SiguienteInstruccion()
 {
     if((stackDeInstrucciones.top()+1) % 8 == 0 || stackDeInstrucciones.top() == 27)
+    {
         this->stackDeInstrucciones.pop();
+        if(this->stackDeInstrucciones.empty())
+            return;
+    }
     else
     {
         int instruccionActual = this->stackDeInstrucciones.top() + 1;
         this->stackDeInstrucciones.pop();
         this->stackDeInstrucciones.push(instruccionActual);
+    }
+
+    //MM: agregado
+    if(Action::Actions[this->stackDeInstrucciones.top()] != 0)
+    {
+        this->instruccionActual = this->stackDeInstrucciones.top();
+        if(this->timer->isActive() && this->stepByStep)
+            this->timer->stop();
+
+        emit CambioDeInstruccion();
     }
 
     if(PuzzleResuelto())
@@ -698,14 +686,6 @@ void graphicsscenegame::SiguienteInstruccion()
             this->stackDeInstrucciones.pop();
         int puntos = getCantidadInstruccionesUtilizadas();
         emit PuzzleFinalizado(puntos);
-
-        //#####################################################################################################
-        //#                             TODO: ELIMIAR EL MESSAGE BOX                                          #
-        //#####################################################################################################
-
-        QMessageBox a;
-        a.setText("puzzle realizado con " + QString::number(this->getCantidadInstruccionesUtilizadas()) + " instrucciones");
-    //    a.exec();
     }
 }
 
@@ -750,4 +730,19 @@ int graphicsscenegame::getCantidadInstruccionesUtilizadas()
             count++;
     }
     return count;
+}
+
+
+int graphicsscenegame::getInstruccionActual()
+{
+    return this->instruccionActual;
+}
+
+void graphicsscenegame::EjecutarSiguienteInstruccion()
+{
+    if(!this->stepByStep)
+        this->stepByStep = true;
+
+    if(!this->timer->isActive())
+        this->AnimarPuzzle();
 }
