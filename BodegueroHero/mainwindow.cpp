@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
-    QString temp = "";
+    temp = "";
 
     QFile file(":/qss/style.qss");//
 
@@ -748,6 +748,8 @@ void MainWindow::DibujarInstruccionActual()
     graphicsscenegame *game = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
 
     int instruccionActual = game->getInstruccionActual();
-
+    QMessageBox a;
+    a.setText("qwe");
+    a.exec();
     //[AKI BA EL CODHIGO DE ERICK :E]
 }

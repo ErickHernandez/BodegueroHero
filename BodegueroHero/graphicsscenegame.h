@@ -39,6 +39,7 @@ private:
     int anguloActualGrua;
     bool stepByStep;
     int velocidadActual;
+    bool hacerCommitCambioInstruccion;
 
     //ELEMTOS QUE TIENE EL GRAPHICS SCENE
     QGraphicsPixmapItem *cableDeLaGrua;

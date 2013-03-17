@@ -169,6 +169,7 @@ void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
 {
     this->stackDeInstrucciones.push(0);
     this->stepByStep = false;
+    this->hacerCommitCambioInstruccion = true;
     this->cajitaDeLaGrua = 0;
     this->velocidadActual = Velocidad_Normal;
 
@@ -289,6 +290,7 @@ void graphicsscenegame::ReiniciarPuzzle()
         this->stackDeInstrucciones.pop();
     this->cajitaDeLaGrua = 0;
     this->stepByStep = false;
+    this->hacerCommitCambioInstruccion = true;
 
     //POR ULTIMO PINTAR EL PUZZLE OTRA VEZ
     this->PintarPuzzle(this->xmlTreeInicial);
@@ -364,6 +366,13 @@ void graphicsscenegame::animar_v2()
     {
         this->SiguienteInstruccion();
         return;
+    }
+
+    if(hacerCommitCambioInstruccion)
+    {
+        this->instruccionActual = this->stackDeInstrucciones.top();
+        this->hacerCommitCambioInstruccion = false;
+        emit CambioDeInstruccion();
     }
 
     //DOWN
@@ -675,9 +684,8 @@ void graphicsscenegame::SiguienteInstruccion()
         this->instruccionActual = this->stackDeInstrucciones.top();
         if(this->timer->isActive() && this->stepByStep)
             this->timer->stop();
-
-        emit CambioDeInstruccion();
     }
+    this->hacerCommitCambioInstruccion = true;
 
     if(PuzzleResuelto())
     {
