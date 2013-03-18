@@ -607,7 +607,8 @@ void MainWindow::on_btn_PlayGame_clicked()
 void MainWindow::on_btn_StopGame_clicked()
 {
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
-    resetInstruction(scene->getInstruccionActual());
+    if(scene->getInstruccionActual() >= 0)
+        resetInstruction(scene->getInstruccionActual());
     scene->DetenerPuzzle();
 
     //MM: AGREGADA LA SIGUIENTE INSTRUCCION
@@ -661,7 +662,7 @@ void MainWindow::on_player1_clicked()
 }
 
 void MainWindow::muxascajas(){
-    this->resetPuzzle();
+
     WinDialog *w = new WinDialog();
     w->show();
     w->setWindowTitle("Error");
@@ -680,7 +681,7 @@ void MainWindow::salido()
 }
 
 void MainWindow::findeljuego(const int & pts){
-
+    this->resetPuzzle();
     winer(pts);
 
 

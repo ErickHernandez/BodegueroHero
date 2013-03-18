@@ -167,7 +167,7 @@ void graphicsscenegame::PintarBackgroud()
 
 void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
 {
-    this->instruccionActual = 0;
+    this->instruccionActual = -1;
     this->instruccionAnterior = -1;
     this->stackDeInstrucciones.push(0);
     this->stepByStep = false;
