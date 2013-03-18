@@ -3,7 +3,7 @@
 #include "QFile"
 #include <QGridLayout>
 #include <windialog.h>
-
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,7 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     gameRunning = false;
+    this->currentSpeed = 1;
     laneBlocks = new DragWidget*[28];
+    frames = new QFrame*[28];
     createConection();
     CrearTablas();
     cargarPerfil();
@@ -524,35 +526,62 @@ void MainWindow::on_bnt_lvl6_clicked()
 
 void MainWindow::initializeLanes()
 {
-
+    frames[0] = this->ui->block0;
     this->ui->block0->setLayout(getNewLayout(0));
+    frames[1] = this->ui->block1;
     this->ui->block1->setLayout(getNewLayout(1));
+    frames[2] = this->ui->block2;
     this->ui->block2->setLayout(getNewLayout(2));
+    frames[3] = this->ui->block3;
     this->ui->block3->setLayout(getNewLayout(3));
+    frames[4] = this->ui->block4;
     this->ui->block4->setLayout(getNewLayout(4));
+    frames[5] = this->ui->block5;
     this->ui->block5->setLayout(getNewLayout(5));
+    frames[6] = this->ui->block6;
     this->ui->block6->setLayout(getNewLayout(6));
+    frames[7] = this->ui->block7;
     this->ui->block7->setLayout(getNewLayout(7));
+    frames[8] = this->ui->block8;
     this->ui->block8->setLayout(getNewLayout(8));
+    frames[9] = this->ui->block9;
     this->ui->block9->setLayout(getNewLayout(9));
+    frames[10] = this->ui->block10;
     this->ui->block10->setLayout(getNewLayout(10));
+    frames[11] = this->ui->block11;
     this->ui->block11->setLayout(getNewLayout(11));
+    frames[12] = this->ui->block12;
     this->ui->block12->setLayout(getNewLayout(12));
+    frames[13] = this->ui->block13;
     this->ui->block13->setLayout(getNewLayout(13));
+    frames[14] = this->ui->block14;
     this->ui->block14->setLayout(getNewLayout(14));
+    frames[15] = this->ui->block15;
     this->ui->block15->setLayout(getNewLayout(15));
+    frames[16] = this->ui->block16;
     this->ui->block16->setLayout(getNewLayout(16));
+    frames[17] = this->ui->block17;
     this->ui->block17->setLayout(getNewLayout(17));
+    frames[18] = this->ui->block18;
     this->ui->block18->setLayout(getNewLayout(18));
+    frames[19] = this->ui->block19;
     this->ui->block19->setLayout(getNewLayout(19));
+    frames[20] = this->ui->block20;
     this->ui->block20->setLayout(getNewLayout(20));
+    frames[21] = this->ui->block21;
     this->ui->block21->setLayout(getNewLayout(21));
+    frames[22] = this->ui->block22;
     this->ui->block22->setLayout(getNewLayout(22));
+    frames[23] = this->ui->block23;
     this->ui->block23->setLayout(getNewLayout(23));
+    frames[24] = this->ui->block24;
     this->ui->block24->setLayout(getNewLayout(24));
+    frames[25] = this->ui->block25;
     this->ui->block25->setLayout(getNewLayout(25));
+    frames[26] = this->ui->block26;
     this->ui->block26->setLayout(getNewLayout(26));
-    this->ui->block27->setLayout(getNewLayout(27));
+    frames[27] = this->ui->block27;
+    this->ui->block27->setLayout(getNewLayout(27));    
 }
 
 QGridLayout* MainWindow::getNewLayout(int id)
@@ -594,6 +623,10 @@ void MainWindow::on_btn_ConfigurarVelocidad_clicked()
     else
         this->ui->btn_ConfigurarVelocidad->setIconSize(QSize(46,43));
 
+    if(this->currentSpeed == 1)
+        this->currentSpeed = 2;
+    else
+        this->currentSpeed = 1;
 }
 
 void MainWindow::resetPuzzle()
@@ -674,66 +707,14 @@ void MainWindow::respuesta(const QString & txt)
 
 void MainWindow::lockLanes()
 {
-    this->ui->block0->setEnabled(false);
-    this->ui->block1->setEnabled(false);
-    this->ui->block2->setEnabled(false);
-    this->ui->block3->setEnabled(false);
-    this->ui->block4->setEnabled(false);
-    this->ui->block5->setEnabled(false);
-    this->ui->block6->setEnabled(false);
-    this->ui->block7->setEnabled(false);
-    this->ui->block8->setEnabled(false);
-    this->ui->block9->setEnabled(false);
-    this->ui->block10->setEnabled(false);
-    this->ui->block11->setEnabled(false);
-    this->ui->block12->setEnabled(false);
-    this->ui->block13->setEnabled(false);
-    this->ui->block14->setEnabled(false);
-    this->ui->block15->setEnabled(false);
-    this->ui->block16->setEnabled(false);
-    this->ui->block17->setEnabled(false);
-    this->ui->block18->setEnabled(false);
-    this->ui->block19->setEnabled(false);
-    this->ui->block20->setEnabled(false);
-    this->ui->block21->setEnabled(false);
-    this->ui->block22->setEnabled(false);
-    this->ui->block23->setEnabled(false);
-    this->ui->block24->setEnabled(false);
-    this->ui->block25->setEnabled(false);
-    this->ui->block26->setEnabled(false);
-    this->ui->block27->setEnabled(false);
+    for(int i =0; i<28; i++)
+        this->frames[i]->setEnabled(false);
 }
 
 void MainWindow::unlockLanes()
 {
-    this->ui->block0->setEnabled(true);
-    this->ui->block1->setEnabled(true);
-    this->ui->block2->setEnabled(true);
-    this->ui->block3->setEnabled(true);
-    this->ui->block4->setEnabled(true);
-    this->ui->block5->setEnabled(true);
-    this->ui->block6->setEnabled(true);
-    this->ui->block7->setEnabled(true);
-    this->ui->block8->setEnabled(true);
-    this->ui->block9->setEnabled(true);
-    this->ui->block10->setEnabled(true);
-    this->ui->block11->setEnabled(true);
-    this->ui->block12->setEnabled(true);
-    this->ui->block13->setEnabled(true);
-    this->ui->block14->setEnabled(true);
-    this->ui->block15->setEnabled(true);
-    this->ui->block16->setEnabled(true);
-    this->ui->block17->setEnabled(true);
-    this->ui->block18->setEnabled(true);
-    this->ui->block19->setEnabled(true);
-    this->ui->block20->setEnabled(true);
-    this->ui->block21->setEnabled(true);
-    this->ui->block22->setEnabled(true);
-    this->ui->block23->setEnabled(true);
-    this->ui->block24->setEnabled(true);
-    this->ui->block25->setEnabled(true);
-    this->ui->block26->setEnabled(true);
-    this->ui->block27->setEnabled(true);
+    for(int i =0; i<28; i++)
+        this->frames[i]->setEnabled(true);
 }
 
 void MainWindow::on_btn_StepByStep_clicked()
@@ -748,8 +729,28 @@ void MainWindow::DibujarInstruccionActual()
     graphicsscenegame *game = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
 
     int instruccionActual = game->getInstruccionActual();
-    QMessageBox a;
-    a.setText("qwe");
-    a.exec();
-    //[AKI BA EL CODHIGO DE ERICK :E]
+    this->currentAction = instruccionActual;
+
+    //[AKI BA EL CODHIGO DE ERICK :E]\
+    //this->laneBlocks[instruccionActual]->move(this->laneBlocks[instruccionActual]->x(), this->laneBlocks[instruccionActual]->y()-50);
+    this->laneBlocks[instruccionActual]->newIcon->resize(50,50);
+    this->laneBlocks[instruccionActual]->resize(50,50);
+    //this->frames[instruccionActual]->resize(45,45);
+    //this->laneBlocks[instruccionActual]->newIcon->resize(50,50);
+    //this->frames[instruccionActual]->update();;
+    this->laneBlocks[instruccionActual]->newIcon->update();
+    this->laneBlocks[instruccionActual]->update();
+
+    if(this->currentSpeed == 1)
+        QTimer::singleShot(300, this, SLOT(resetInstruction()));
+    else
+        QTimer::singleShot(100, this, SLOT(resetInstruction()));
+}
+
+void MainWindow::resetInstruction()
+{
+    this->laneBlocks[currentAction]->newIcon->resize(41,41);
+    this->laneBlocks[currentAction]->resize(41,41);
+    this->laneBlocks[currentAction]->newIcon->update();
+    this->laneBlocks[currentAction]->update();
 }

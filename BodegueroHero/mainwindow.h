@@ -33,18 +33,21 @@ public:
 private:
     Ui::MainWindow *ui;
     int CurrentLevel;
+    int currentAction;
+    int currentSpeed;
     bool gameRunning;
 
     void callHS();
     QList<score> PUNTOS;
     QGridLayout* getNewLayout(int id);
     DragWidget** laneBlocks;
+    QFrame** frames;
     QLabel *user;
     void setHighScore(QList<score> puntos);
     void initializeLanes();        
     void resetPuzzle();
     void lockLanes();
-    void unlockLanes();
+    void unlockLanes();    
  private slots:
     void on_btn_StepByStep_clicked();
     void on_player1_clicked();
@@ -77,7 +80,8 @@ private:
     void on_btSeleccionar_clicked();
     void on_pushButton_clicked();
     void recibir(const QString &);
-    void respuesta(const QString &);
+    void respuesta(const QString &);    
+    void resetInstruction();
 public slots:
     void findeljuego(const int &);
     void muxascajas();
