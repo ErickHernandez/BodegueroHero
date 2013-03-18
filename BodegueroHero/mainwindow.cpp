@@ -605,6 +605,7 @@ void MainWindow::on_btn_PlayGame_clicked()
 void MainWindow::on_btn_StopGame_clicked()
 {
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
+    resetInstruction(scene->getInstruccionActual());
     scene->DetenerPuzzle();
 
     //MM: AGREGADA LA SIGUIENTE INSTRUCCION
@@ -646,6 +647,7 @@ void MainWindow::resetPuzzle()
 void MainWindow::on_btn_ClearGame_clicked()
 {
     graphicsscenegame *scene = (graphicsscenegame*) this->ui->graphicsView_Game->scene();
+    resetInstruction(scene->getInstruccionActual());
     scene->DetenerPuzzle();
     //if(!gameRunning)
         this->resetPuzzle();
@@ -741,16 +743,24 @@ void MainWindow::DibujarInstruccionActual()
     this->laneBlocks[instruccionActual]->newIcon->update();
     this->laneBlocks[instruccionActual]->update();
 
-    if(this->currentSpeed == 1)
-        QTimer::singleShot(300, this, SLOT(resetInstruction()));
-    else
-        QTimer::singleShot(100, this, SLOT(resetInstruction()));
+    resetInstruction(game->getInstruccionAnterior());
+
+//    if(this->currentSpeed == 1)
+//        QTimer::singleShot(300, this, SLOT(resetInstruction()));
+//    else
+//        QTimer::singleShot(100, this, SLOT(resetInstruction()));
 }
 
-void MainWindow::resetInstruction()
+void MainWindow::resetInstruction(int instruction)
 {
-    this->laneBlocks[currentAction]->newIcon->resize(41,41);
-    this->laneBlocks[currentAction]->resize(41,41);
-    this->laneBlocks[currentAction]->newIcon->update();
-    this->laneBlocks[currentAction]->update();
+//    this->laneBlocks[currentAction]->newIcon->resize(41,41);
+//    this->laneBlocks[currentAction]->resize(41,41);
+//    this->laneBlocks[currentAction]->newIcon->update();
+//    this->laneBlocks[currentAction]->update();
+    if(instruction < 0)
+        return;
+    this->laneBlocks[instruction]->newIcon->resize(41,41);
+    this->laneBlocks[instruction]->resize(41,41);
+    this->laneBlocks[instruction]->newIcon->update();
+    this->laneBlocks[instruction]->update();
 }

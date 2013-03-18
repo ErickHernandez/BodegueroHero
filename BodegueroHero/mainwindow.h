@@ -81,7 +81,7 @@ private:
     void on_pushButton_clicked();
     void recibir(const QString &);
     void respuesta(const QString &);    
-    void resetInstruction();
+    void resetInstruction(int);
 public slots:
     void findeljuego(const int &);
     void muxascajas();

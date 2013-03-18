@@ -167,6 +167,8 @@ void graphicsscenegame::PintarBackgroud()
 
 void graphicsscenegame::PintarPuzzle(XmlPuzzleTree *puzzleTree)
 {
+    this->instruccionActual = 0;
+    this->instruccionAnterior = -1;
     this->stackDeInstrucciones.push(0);
     this->stepByStep = false;
     this->hacerCommitCambioInstruccion = true;
@@ -368,6 +370,7 @@ void graphicsscenegame::animar_v2()
         return;
     }
 
+    //MM: AGREGADO
     if(hacerCommitCambioInstruccion)
     {
         this->instruccionActual = this->stackDeInstrucciones.top();
@@ -681,6 +684,9 @@ void graphicsscenegame::SiguienteInstruccion()
     //MM: agregado
     if(Action::Actions[this->stackDeInstrucciones.top()] != 0)
     {
+
+        this->instruccionAnterior = this->instruccionActual;
+
         this->instruccionActual = this->stackDeInstrucciones.top();
         if(this->timer->isActive() && this->stepByStep)
             this->timer->stop();
@@ -744,6 +750,11 @@ int graphicsscenegame::getCantidadInstruccionesUtilizadas()
 int graphicsscenegame::getInstruccionActual()
 {
     return this->instruccionActual;
+}
+
+int graphicsscenegame::getInstruccionAnterior()
+{
+    return this->instruccionAnterior;
 }
 
 void graphicsscenegame::EjecutarSiguienteInstruccion()

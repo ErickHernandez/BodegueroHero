@@ -31,6 +31,7 @@ public:
     void ResetearPuzzle();
     void EjecutarSiguienteInstruccion();
     int getInstruccionActual();
+    int getInstruccionAnterior();
 
 private:
     int posActualGrua;
@@ -60,7 +61,7 @@ private:
     void SiguienteInstruccion();
     bool PuzzleResuelto();
     int getCantidadInstruccionesUtilizadas();
-    int instruccionActual;
+    int instruccionActual, instruccionAnterior;
     QGraphicsPixmapItem *cable_CentroDeMando_izq;
     QGraphicsPixmapItem *cable_CentroDeMando_der;
     QGraphicsPixmapItem *nube1, *nube2, *nube3, *nube4;
