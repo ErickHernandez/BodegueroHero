@@ -222,12 +222,14 @@ void MainWindow::on_btn_CrearPerfil_clicked()
                 ui->NewPlayer->clear();
                 CurrentUser=nombre;
                 cargarPerfil();
-                ui->screenManager->setCurrentIndex(4);
 
-            //EH:Set current User to UI
+                //EH:Set current User to UI
                 QString a = "<font color=white>";
                 QString b = "</font>";
-                user->setText(a+nombre+b);}
+                user->setText(a+nombre+b);
+
+                ui->screenManager->setCurrentIndex(4);                
+            }
         } else if (msgBox.clickedButton() == abortButton) {
           ui->screenManager->setCurrentIndex(2);
         }

@@ -84,6 +84,18 @@ QPushButton
     padding-right: 0px;
 }
 
+#btn_StepByStep
+{
+	color: none;
+    background-color: none;
+	border-width: none;
+    border-color: none;
+    border-style: none;
+	padding: 0px;    
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 #QLable{border-radius: 4; border-style: solid;}
 
 #lane1{background-image: url(:/images/lane1.png); border-radius: 4; border-style: solid;}
